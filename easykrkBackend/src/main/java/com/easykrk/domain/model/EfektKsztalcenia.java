@@ -1,5 +1,6 @@
 package com.easykrk.domain.model;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -16,6 +17,9 @@ public abstract class EfektKsztalcenia {
 
 	@Id
 	private String id;
+	
+	@Version
+    private Long version;
 	
 	@NotBlank
     @Length(max = 255)

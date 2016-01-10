@@ -1,6 +1,8 @@
 package com.easykrk.domain.model;
 import java.util.List;
 
+import javax.persistence.Version;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -17,6 +19,9 @@ public class GrupaKursow extends Zajecia {
 	@NotBlank
     @Length(max = 255)
 	private String kodGrupyKursow;
+	
+	@Version
+    private Long version;
 	
 	private Kurs kursGlowny;
 	private List<Kurs> kursySkladowe;
