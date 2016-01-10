@@ -1,13 +1,11 @@
-package com.easykrk.model;
-
-
-
+package com.easykrk.domain.model;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -23,23 +21,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class FormaProwadzeniaZajec {
+public class Kurs extends Zajecia {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	@NotBlank
-    @Length(max = 255)
-	private String nazwa;
-	
-	@NotBlank
-    @Length(max = 255)
-	private String skrot;
 	
 	@NotNull
-	private boolean czyPraktyczny;
- 
-	private List<Przedmiot> przedmioty;
-	private Kurs kurs;
+    @Min(0)
+	private int liczbaGodzinWTygodniu;
+	
+	@NotBlank
+    @Length(max = 255)
+	private String kodKursu;
+	
+	private FormaProwadzeniaZajec formaProwadzeniaZajec;
+	private Semestr semestr;
+	private GrupaKursow grupaKursow;
+	private boolean czyGlowny;
 }

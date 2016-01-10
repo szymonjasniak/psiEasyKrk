@@ -1,10 +1,12 @@
-package com.easykrk.model;
+package com.easykrk.domain.model;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,17 +18,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PlanStudiow {
-	
+public class Semestr {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
+	@NotNull
+    @Min(0)
+	private int numer;
 	
- private ProgramKsztalcenia programKsztalcenia;
- private Kierunek kierunek;
- private PlanStudiow planStudiow;
- private Cykl cykl;
- private Semestr semestr;
- private List<Przedmiot> przedmioty;
- 
+	@NotNull
+    @Min(0)
+	private int dopuszczalnyDeficyt;
+	
+	private List<PlanStudiow> planyStudiow;
+	private List<Kurs> kursy;
 }

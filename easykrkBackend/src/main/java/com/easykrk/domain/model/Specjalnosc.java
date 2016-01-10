@@ -1,10 +1,14 @@
-package com.easykrk.model;
+package com.easykrk.domain.model;
+
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,15 +20,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class UdzialProcentowy {
+public class Specjalnosc {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	@NotNull
-    @Min(0)
-	private float wartosc;
 	
-	private ObszarKsztalcenia obszarKsztalcenia;
+	@NotBlank
+    @Length(max = 255)
+	private String nazwa;
+	
+	@NotBlank
+    @Length(max = 10)
+	private String skrot;
+	
 	private ProgramKsztalcenia programKsztalcenia;
+	private List<Kek> kek;
+	private List<ModulKsztalcenia> modulyKsztalcenia;
+	private Kierunek kierunek;
+	
 }

@@ -1,10 +1,8 @@
-package com.easykrk.model;
+package com.easykrk.domain.model;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -14,42 +12,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Zajecia {
+public class UdzialProcentowy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@NotNull
     @Min(0)
-	private int ects;
+	private float wartosc;
 	
-	@NotNull
-	@ManyToOne(fetch=FetchType.EAGER) 
-	private FormaZaliczenia formaZaliczenia;
-	
-	@NotNull
-    @Min(0)
-	private int zzu;
-	
-	@NotNull
-    @Min(0)
-	private int cnps;
-	
-	@NotNull
-    @Min(0)
-	private int ects_p;
-	
-	@NotNull
-    @Min(0)
-	private int ects_bk;
-	
+	private ObszarKsztalcenia obszarKsztalcenia;
 	private ProgramKsztalcenia programKsztalcenia;
-	
-	private Przedmiot przedmiot;
-
-
-	
 }

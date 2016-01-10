@@ -1,4 +1,4 @@
-package com.easykrk.model;
+package com.easykrk.domain.model;
 import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.Length;

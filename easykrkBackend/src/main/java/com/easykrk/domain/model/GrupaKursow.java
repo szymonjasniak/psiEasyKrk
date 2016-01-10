@@ -1,4 +1,4 @@
-package com.easykrk.model;
+package com.easykrk.domain.model;
 import java.util.List;
 
 import org.hibernate.validator.constraints.Length;

@@ -1,12 +1,11 @@
-package com.easykrk.model;
+package com.easykrk.domain.model;
+
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -21,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Wydzial {
+public class FormaZaliczenia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,16 +30,6 @@ public class Wydzial {
     @Length(max = 255)
 	private String nazwa;
 	
-	@NotBlank
-    @Length(max = 10)
-	private String skrotLiterowy;
 	
-	@NotBlank
-    @Length(max = 3)
-	private String skrotZLiczba;
-	
-	
-	
-	@OneToMany
-	private List<Kierunek> kierunki;
+	private List<Zajecia> zajecia;
 }

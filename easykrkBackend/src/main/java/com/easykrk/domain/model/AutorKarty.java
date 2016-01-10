@@ -1,4 +1,4 @@
-package com.easykrk.model;
+package com.easykrk.domain.model;
 
 import java.util.List;
 
@@ -20,18 +20,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class KartaPrzedmiotu {
-	
+public class AutorKarty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
+	@NotBlank
+    @Length(max = 255)
+	private String imie;
 	
 	@NotBlank
     @Length(max = 255)
-	private String jezyk;
+	private String nazwisko;
+	
+	@NotBlank
+    @Length(max = 255)
+	private String tytul;
 	
 	
-	private AutorKarty autorKarty;
-	private List<Przedmiot> przedmioty;
-
+	private List<KartaPrzedmiotu> kartyPrzedmiotu;
 }

@@ -1,4 +1,4 @@
-package com.easykrk.model;
+package com.easykrk.domain.model;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,7 +19,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PoziomKsztalcenia {
+public class FormaStudiow {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -27,8 +28,6 @@ public class PoziomKsztalcenia {
 	@NotBlank
     @Length(max = 255)
 	private String nazwa;
-	
+
 	private List<ProgramKsztalcenia> programyKsztalcenia;
-	private List<Mek> mek;
-	
 }

@@ -1,4 +1,4 @@
-package com.easykrk.model;
+package com.easykrk.domain.model;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,36 +21,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Przedmiot {
+public class ModulKsztalcenia {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotBlank
+    @Length(max = 255)
+	private String nazwa;
+	
+	@NotBlank
+    @Length(max = 255)
+	private String typ;
+ 
 	@NotNull
-    @Min(0)
-	private int ects;
-	
-	@NotBlank
-    @Length(max = 255)
-	private String nazwaAngielska;
-	
-	@NotBlank
-    @Length(max = 255)
-	private String nazwaPolska;
-	
-	@NotNull
-	private boolean czyOgolnouczelniany;
-	
-	@NotBlank
-    @Length(max = 255)
-	private String kodPrzedmiotu;
-	
-	private List<Pek> pek;
-	private List<PlanStudiow> planyStudiow;
-	private List<KartaPrzedmiotu> kartyPrzedmiotu;
-	private List<FormaProwadzeniaZajec> formaProwadzeniaZajec;
-	private List<Kek> kek;
-	private ModulKsztalcenia modulKsztalcenia;
-	private List<Zajecia> zajecia;
-
+	@Min(0)
+	private int minimalnaLiczbaEcts;
+ 
+ private ModulKsztalcenia nadkategoria;
+ private ModulKsztalcenia podkategoria;
+ private KartaPrzedmiotu kartaPrzedmiotu;
+ private Kierunek kierunek;
+ private List<ProgramKsztalcenia> programKsztalcenia;
+ private Specjalnosc specjalnosc;
+ 
 }
