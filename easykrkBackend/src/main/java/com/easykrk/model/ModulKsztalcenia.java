@@ -1,6 +1,16 @@
 package com.easykrk.model;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,10 +20,24 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class ModulKsztalcenia {
- private String nazwa;
- private String typ;
- private int minimalnaLiczbaEcts;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	@NotBlank
+    @Length(max = 255)
+	private String nazwa;
+	
+	@NotBlank
+    @Length(max = 255)
+	private String typ;
+ 
+	@NotNull
+	@Min(0)
+	private int minimalnaLiczbaEcts;
  
  private ModulKsztalcenia nadkategoria;
  private ModulKsztalcenia podkategoria;
