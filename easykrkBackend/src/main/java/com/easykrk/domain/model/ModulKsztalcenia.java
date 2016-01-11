@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -43,11 +44,19 @@ public class ModulKsztalcenia {
 	@Min(0)
 	private int minimalnaLiczbaEcts;
  
- private ModulKsztalcenia nadkategoria;
- private ModulKsztalcenia podkategoria;
- private KartaPrzedmiotu kartaPrzedmiotu;
- private Kierunek kierunek;
- private List<ProgramKsztalcenia> programKsztalcenia;
- private Specjalnosc specjalnosc;
+	@ManyToOne
+	private Kierunek kierunek;
+	
+	@ManyToOne
+	private Specjalnosc specjalnosc;
+	
+	@ManyToOne
+	private ModulKsztalcenia nadkategoria;
+	
+	@ManyToOne
+	private ModulKsztalcenia podkategoria;
+	
+ 	//private List<ProgramKsztalcenia> programKsztalcenia;
+	
  
 }

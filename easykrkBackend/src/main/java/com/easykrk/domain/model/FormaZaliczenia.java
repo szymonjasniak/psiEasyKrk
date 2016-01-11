@@ -35,5 +35,5 @@ public class FormaZaliczenia {
 	private String nazwa;
 	
 	
-	private List<Zajecia> zajecia;
+	//private List<Zajecia> zajecia;
 }

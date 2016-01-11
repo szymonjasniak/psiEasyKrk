@@ -1,6 +1,7 @@
 package com.easykrk.domain.model;
 import java.util.List;
 
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.Length;
@@ -23,6 +24,9 @@ public class GrupaKursow extends Zajecia {
 	@Version
     private Long version;
 	
+	@OneToOne
 	private Kurs kursGlowny;
-	private List<Kurs> kursySkladowe;
+	
+	
+	//private List<Kurs> kursySkladowe;
 }

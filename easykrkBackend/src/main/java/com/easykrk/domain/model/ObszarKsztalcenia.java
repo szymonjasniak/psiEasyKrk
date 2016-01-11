@@ -33,6 +33,7 @@ public class ObszarKsztalcenia {
     @Length(max = 255)
 	private String nazwa;
 	
+	
 	private UdzialProcentowy udzialProcentowy;
 	private List<Mek> mek;
 }

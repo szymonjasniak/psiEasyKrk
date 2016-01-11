@@ -33,5 +33,5 @@ public class FormaStudiow {
     @Length(max = 255)
 	private String nazwa;
 
-	private List<ProgramKsztalcenia> programyKsztalcenia;
+	//private List<ProgramKsztalcenia> programyKsztalcenia;
 }

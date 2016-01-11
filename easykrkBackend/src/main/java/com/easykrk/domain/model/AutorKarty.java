@@ -42,5 +42,5 @@ public class AutorKarty {
 	private String tytul;
 	
 	
-	private List<KartaPrzedmiotu> kartyPrzedmiotu;
+	//private List<KartaPrzedmiotu> kartyPrzedmiotu;
 }

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Kek extends EfektKsztalcenia{
 
-	private List<Mek> mek;
+	//private List<Mek> mek;
 	private ProgramKsztalcenia programKsztalcenia;
 	private Specjalnosc specjalnosc;
 	private Przedmiot przedmiot;

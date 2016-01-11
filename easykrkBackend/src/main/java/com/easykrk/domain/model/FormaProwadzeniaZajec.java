@@ -44,6 +44,6 @@ public class FormaProwadzeniaZajec {
 	@NotNull
 	private boolean czyPraktyczny;
  
-	private List<Przedmiot> przedmioty;
-	private Kurs kurs;
+	//private List<Przedmiot> przedmioty;
+	//private Kurs kurs;
 }

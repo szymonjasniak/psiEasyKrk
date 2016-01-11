@@ -34,7 +34,7 @@ public class Cykl {
     @Length(max = 255)
 	private String nazwa;
 	
-	private List<PlanStudiow> planyStudiow;
-	private List<ProgramKsztalcenia> programyKsztalcenia;
-	private List<Zajecia> zajecia;
+	//private List<PlanStudiow> planyStudiow;
+	//private List<ProgramKsztalcenia> programyKsztalcenia;
+	//private List<Zajecia> zajecia;
 }

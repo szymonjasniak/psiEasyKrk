@@ -3,6 +3,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -29,6 +30,9 @@ public class UdzialProcentowy {
     @Min(0)
 	private float wartosc;
 	
+	
 	private ObszarKsztalcenia obszarKsztalcenia;
+	
+	
 	private ProgramKsztalcenia programKsztalcenia;
 }

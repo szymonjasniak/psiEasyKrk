@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
 import lombok.AllArgsConstructor;
@@ -26,10 +27,13 @@ public class PlanStudiow {
 	@Version
     private Long version;
 	
+	@ManyToOne
+	private Cykl cykl;
+	
  private ProgramKsztalcenia programKsztalcenia;
  private Kierunek kierunek;
  private PlanStudiow planStudiow;
- private Cykl cykl;
+
  private Semestr semestr;
  private List<Przedmiot> przedmioty;
  

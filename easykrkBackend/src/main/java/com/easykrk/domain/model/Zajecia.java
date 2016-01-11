@@ -4,6 +4,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 import javax.validation.constraints.Min;
@@ -49,6 +50,9 @@ public class Zajecia {
 	@NotNull
     @Min(0)
 	private int ects_bk;
+	
+	@ManyToMany
+	private Cykl cykl;
 	
 	private ProgramKsztalcenia programKsztalcenia;
 	

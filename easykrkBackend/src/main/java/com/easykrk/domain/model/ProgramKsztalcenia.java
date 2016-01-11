@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -31,14 +34,20 @@ public class ProgramKsztalcenia {
     @Min(0)
 	private int liczbaSemestrow;
 	
-	private Specjalnosc specjalnosc;
-	private List<ModulKsztalcenia> modulyKsztalcenia;
-	private Kierunek kierunek;
-	private PlanStudiow planStudiow;
+	@ManyToOne
 	private Cykl cykl;
+	
+	@ManyToMany
+	private List<FormaStudiow> formyStudiow;
+	
+	@ManyToMany
+	private List<ModulKsztalcenia> modulyKsztalcenia;
+	
+	private Specjalnosc specjalnosc;	
+	private Kierunek kierunek;
+	private PlanStudiow planStudiow;	
 	private ProfilKsztalcenia profilKsztalcenia;
 	private List<PoziomKsztalcenia> poziomyKsztalcenia;
-	private List<FormaStudiow> formyStudiow;
 	private List<UdzialProcentowy> udzialyProcentowe;
 	private List<Kek> kek;
 	

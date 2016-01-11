@@ -40,7 +40,8 @@ public class Kierunek {
     @Length(max = 10)
 	private String skrot;
 	
-	private List<ModulKsztalcenia> modulyKsztalcenia;
+	
+	//private List<ModulKsztalcenia> modulyKsztalcenia;
 	private List<Specjalnosc> specjalnosci;
 	private List<ProgramKsztalcenia> programyKsztalcenia;
 	private List<PlanStudiow> planyStudiow;
