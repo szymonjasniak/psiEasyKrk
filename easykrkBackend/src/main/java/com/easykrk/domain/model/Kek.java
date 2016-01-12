@@ -2,6 +2,7 @@ package com.easykrk.domain.model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -10,6 +11,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
+@Entity
 public class Kek extends EfektKsztalcenia {
 
     @ManyToMany

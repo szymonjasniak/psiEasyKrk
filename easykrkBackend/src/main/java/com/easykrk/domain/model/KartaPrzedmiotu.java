@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.Length;
@@ -23,23 +24,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class KartaPrzedmiotu {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	@Version
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Version
     private Long version;
-	
-	@NotBlank
+
+    @NotBlank
     @Length(max = 255)
-	private String jezyk;
-	
-	@ManyToOne
-	private AutorKarty autorKarty;
-	
-	
-	
-	private List<Przedmiot> przedmioty;
+    private String jezyk;
+
+    @ManyToOne
+    private AutorKarty autorKarty;
+
+    @OneToMany
+    private List<Przedmiot> przedmioty;
 
 }

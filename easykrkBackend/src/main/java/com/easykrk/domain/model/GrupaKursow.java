@@ -1,4 +1,5 @@
 package com.easykrk.domain.model;
+
 import java.util.List;
 
 import javax.persistence.ManyToMany;
@@ -18,16 +19,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GrupaKursow extends Zajecia {
-	@NotBlank
+    @NotBlank
     @Length(max = 255)
-	private String kodGrupyKursow;
-	
-	@Version
+    private String kodGrupyKursow;
+
+    @Version
     private Long version;
-	
-	@OneToOne
-	private Kurs kursGlowny;
-	
-	@ManyToMany
-	private List<Kurs> kursySkladowe;
+
+    @OneToOne
+    private Kurs kursGlowny;
+
+    @ManyToMany
+    private List<Kurs> kursySkladowe;
 }

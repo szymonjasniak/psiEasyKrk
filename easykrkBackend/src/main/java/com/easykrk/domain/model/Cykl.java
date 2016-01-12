@@ -1,7 +1,5 @@
 package com.easykrk.domain.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,19 +20,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Cykl {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
 
-	@Version
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Version
     private Long version;
-	
-	@NotBlank
+
+    @NotBlank
     @Length(max = 255)
-	private String nazwa;
-	
-	//private List<PlanStudiow> planyStudiow;
-	//private List<ProgramKsztalcenia> programyKsztalcenia;
-	//private List<Zajecia> zajecia;
+    private String nazwa;
+
+    // private List<PlanStudiow> planyStudiow;
+    // private List<ProgramKsztalcenia> programyKsztalcenia;
+    // private List<Zajecia> zajecia;
 }

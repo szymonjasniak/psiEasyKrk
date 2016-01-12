@@ -23,26 +23,26 @@ import lombok.NoArgsConstructor;
 @Entity
 public class PlanStudiow {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@Version
-	private Long version;
+    @Version
+    private Long version;
 
-	@ManyToOne
-	private Cykl cykl;
+    @ManyToOne
+    private Cykl cykl;
 
-	@OneToOne
-	private ProgramKsztalcenia programKsztalcenia;
+    @OneToOne
+    private ProgramKsztalcenia programKsztalcenia;
 
-	@OneToOne
-	private Kierunek kierunek;
+    @OneToOne
+    private Kierunek kierunek;
 
-	@OneToMany
-	private Semestr semestr;
+    @OneToMany
+    private List<Semestr> semestr;
 
-	@OneToMany
-	private List<Przedmiot> przedmioty;
+    @OneToMany
+    private List<Przedmiot> przedmioty;
 
 }

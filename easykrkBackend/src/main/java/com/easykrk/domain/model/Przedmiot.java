@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -27,51 +28,51 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Przedmiot {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@Version
-	private Long version;
+    @Version
+    private Long version;
 
-	@NotNull
-	@Min(0)
-	private int ects;
+    @NotNull
+    @Min(0)
+    private int ects;
 
-	@NotBlank
-	@Length(max = 255)
-	private String nazwaAngielska;
+    @NotBlank
+    @Length(max = 255)
+    private String nazwaAngielska;
 
-	@NotBlank
-	@Length(max = 255)
-	private String nazwaPolska;
+    @NotBlank
+    @Length(max = 255)
+    private String nazwaPolska;
 
-	@NotNull
-	private boolean czyOgolnouczelniany;
+    @NotNull
+    private boolean czyOgolnouczelniany;
 
-	@NotBlank
-	@Length(max = 255)
-	private String kodPrzedmiotu;
+    @NotBlank
+    @Length(max = 255)
+    private String kodPrzedmiotu;
 
-	@ManyToOne
-	private List<FormaProwadzeniaZajec> formaProwadzeniaZajec;
+    @ManyToMany
+    private List<FormaProwadzeniaZajec> formaProwadzeniaZajec;
 
-	@OneToMany
-	private List<Pek> pek;
+    @OneToMany
+    private List<Pek> pek;
 
-	@ManyToOne
-	private List<PlanStudiow> planyStudiow;
+    @ManyToMany
+    private List<PlanStudiow> planyStudiow;
 
-	@OneToOne
-	private KartaPrzedmiotu kartaPrzedmiotu;
+    @OneToOne
+    private KartaPrzedmiotu kartaPrzedmiotu;
 
-	@OneToMany
-	private List<Kek> kek;
+    @OneToMany
+    private List<Kek> kek;
 
-	@ManyToOne
-	private ModulKsztalcenia modulKsztalcenia;
+    @ManyToOne
+    private ModulKsztalcenia modulKsztalcenia;
 
-	@OneToMany
-	private List<Zajecia> zajecia;
+    @OneToMany
+    private List<Zajecia> zajecia;
 
 }
