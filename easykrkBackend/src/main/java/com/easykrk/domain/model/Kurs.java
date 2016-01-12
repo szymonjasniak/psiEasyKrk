@@ -40,5 +40,7 @@ public class Kurs extends Zajecia {
 	@ManyToOne
 	private GrupaKursow grupaKursow;
 	//private boolean czyGlowny;
+	
+	@OneToOne
 	private Semestr semestr;
 }

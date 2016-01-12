@@ -1,11 +1,11 @@
 package com.easykrk.domain.model;
+
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
@@ -23,28 +23,26 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Wydzial {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Version
-    private Long version;
-	
+	private Long version;
+
 	@NotBlank
-    @Length(max = 255)
+	@Length(max = 255)
 	private String nazwa;
-	
+
 	@NotBlank
-    @Length(max = 10)
+	@Length(max = 10)
 	private String skrotLiterowy;
-	
+
 	@NotBlank
-    @Length(max = 3)
+	@Length(max = 3)
 	private String skrotZLiczba;
-	
-	
-	
+
 	@OneToMany
 	private List<Kierunek> kierunki;
 }

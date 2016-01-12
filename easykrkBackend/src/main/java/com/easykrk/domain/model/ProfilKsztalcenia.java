@@ -1,10 +1,12 @@
 package com.easykrk.domain.model;
+
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.Length;
@@ -25,14 +27,15 @@ public class ProfilKsztalcenia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Version
-    private Long version;
-	
+	private Long version;
+
 	@NotBlank
-    @Length(max = 255)
+	@Length(max = 255)
 	private String nazwa;
-	
-	private List<ProgramKsztalcenia> programyKsztalcenia;
+
+	// private List<ProgramKsztalcenia> programyKsztalcenia;
+	@OneToMany
 	private List<Mek> mek;
 }

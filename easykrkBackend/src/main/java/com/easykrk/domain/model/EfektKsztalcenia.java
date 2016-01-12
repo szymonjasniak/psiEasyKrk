@@ -1,5 +1,6 @@
 package com.easykrk.domain.model;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.Length;
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@MappedSuperclass
 public abstract class EfektKsztalcenia {
 
 	@Id

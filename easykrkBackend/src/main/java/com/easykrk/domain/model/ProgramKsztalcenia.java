@@ -3,11 +3,10 @@ package com.easykrk.domain.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 import javax.validation.constraints.Min;
@@ -26,30 +25,42 @@ import lombok.NoArgsConstructor;
 public class ProgramKsztalcenia {
 	@Id
 	private String id;
-	
+
 	@Version
-    private Long version;
-	
+	private Long version;
+
 	@NotNull
-    @Min(0)
+	@Min(0)
 	private int liczbaSemestrow;
-	
+
 	@ManyToOne
 	private Cykl cykl;
-	
+
 	@ManyToMany
 	private List<FormaStudiow> formyStudiow;
-	
+
 	@ManyToMany
 	private List<ModulKsztalcenia> modulyKsztalcenia;
-	
-	private Specjalnosc specjalnosc;	
-	private Kierunek kierunek;
-	private PlanStudiow planStudiow;	
-	private ProfilKsztalcenia profilKsztalcenia;
-	private List<PoziomKsztalcenia> poziomyKsztalcenia;
+
+	@OneToMany
 	private List<UdzialProcentowy> udzialyProcentowe;
+
+	@OneToOne
+	private Specjalnosc specjalnosc;
+
+	@OneToOne
+	private Kierunek kierunek;
+
+	@OneToOne
+	private PlanStudiow planStudiow;
+
+	@ManyToOne
+	private ProfilKsztalcenia profilKsztalcenia;
+
+	@ManyToOne
+	private PoziomKsztalcenia poziomKsztalcenia;
+
+	@OneToMany
 	private List<Kek> kek;
-	
 
 }

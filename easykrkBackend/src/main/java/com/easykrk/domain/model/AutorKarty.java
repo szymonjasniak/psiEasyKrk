@@ -1,7 +1,5 @@
 package com.easykrk.domain.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,22 +23,22 @@ public class AutorKarty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Version
-    private Long version;
+	private Long version;
 
 	@NotBlank
-    @Length(max = 255)
+	@Length(max = 255)
 	private String imie;
-	
+
 	@NotBlank
-    @Length(max = 255)
+	@Length(max = 255)
 	private String nazwisko;
-	
+
 	@NotBlank
-    @Length(max = 255)
+	@Length(max = 255)
 	private String tytul;
-	
-	
-	//private List<KartaPrzedmiotu> kartyPrzedmiotu;
+
+	// @OneToMany(fetch=FetchType.LAZY)
+	// private List<KartaPrzedmiotu> kartyPrzedmiotu;
 }

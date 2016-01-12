@@ -1,5 +1,4 @@
 package com.easykrk.domain.model;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,18 +22,18 @@ public class Semestr {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Version
-    private Long version;
+	private Long version;
 
 	@NotNull
-    @Min(0)
+	@Min(0)
 	private int numer;
-	
+
 	@NotNull
-    @Min(0)
+	@Min(0)
 	private int dopuszczalnyDeficyt;
-	
-	private List<PlanStudiow> planyStudiow;
-	private List<Kurs> kursy;
+
+	// private List<PlanStudiow> planyStudiow;
+	// private List<Kurs> kursy;
 }

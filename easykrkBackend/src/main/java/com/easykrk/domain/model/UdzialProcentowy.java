@@ -1,9 +1,11 @@
 package com.easykrk.domain.model;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Version;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -22,17 +24,19 @@ public class UdzialProcentowy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Version
-    private Long version;
+	private Long version;
 
 	@NotNull
-    @Min(0)
+	@Min(0)
 	private float wartosc;
-	
-	
+
+	@ManyToOne
+	@PrimaryKeyJoinColumn
 	private ObszarKsztalcenia obszarKsztalcenia;
-	
-	
+
+	@ManyToOne
+	@PrimaryKeyJoinColumn
 	private ProgramKsztalcenia programKsztalcenia;
 }

@@ -1,6 +1,7 @@
 package com.easykrk.domain.model;
 import java.util.List;
 
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
@@ -27,6 +28,6 @@ public class GrupaKursow extends Zajecia {
 	@OneToOne
 	private Kurs kursGlowny;
 	
-	
-	//private List<Kurs> kursySkladowe;
+	@ManyToMany
+	private List<Kurs> kursySkladowe;
 }

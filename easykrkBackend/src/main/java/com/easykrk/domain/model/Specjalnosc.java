@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.Length;
@@ -26,23 +28,26 @@ public class Specjalnosc {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Version
-    private Long version;
-	
+	private Long version;
+
 	@NotBlank
-    @Length(max = 255)
+	@Length(max = 255)
 	private String nazwa;
-	
+
 	@NotBlank
-    @Length(max = 10)
+	@Length(max = 10)
 	private String skrot;
-	
+
+	@OneToOne
 	private ProgramKsztalcenia programKsztalcenia;
+
+	@OneToMany
 	private List<Kek> kek;
-	//private List<ModulKsztalcenia> modulyKsztalcenia;
-	
-	
+	// private List<ModulKsztalcenia> modulyKsztalcenia;
+
+	@ManyToOne
 	private Kierunek kierunek;
-	
+
 }

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.Length;
@@ -40,12 +42,17 @@ public class Kierunek {
     @Length(max = 10)
 	private String skrot;
 	
-	
-	//private List<ModulKsztalcenia> modulyKsztalcenia;
+	@OneToMany
+	private List<ModulKsztalcenia> modulyKsztalcenia;
+	@OneToMany
 	private List<Specjalnosc> specjalnosci;
+	@OneToMany
 	private List<ProgramKsztalcenia> programyKsztalcenia;
+	@OneToMany
 	private List<PlanStudiow> planyStudiow;
-	private List<KartaPrzedmiotu> kartyPrzemdiotu;
+	
+	//private List<KartaPrzedmiotu> kartyPrzemdiotu;
+	@OneToOne
 	private Wydzial wydzial;
 
 }
