@@ -1,0 +1,35 @@
+2016/01/29 16:44:42 [notice] 9328#9332: signal process started
+2016/01/29 16:44:42 [error] 9328#9332: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/01/29 16:45:40 [notice] 9596#9600: signal process started
+2016/01/29 16:45:40 [error] 9596#9600: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/01/29 16:49:56 [notice] 1184#5220: signal process started
+2016/01/29 16:49:56 [error] 1184#5220: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/01/29 16:50:54 [notice] 3260#9276: signal process started
+2016/01/29 16:50:54 [error] 3260#9276: invalid PID number "" in "C:\EasyKrk\repo\nginx/logs/nginx.pid"
+2016/01/29 16:51:34 [notice] 9944#10140: signal process started
+2016/01/29 16:51:34 [error] 9944#10140: OpenEvent("Global\ngx_stop_4384") failed (2: The system cannot find the file specified)
+2016/01/29 16:55:16 [notice] 8780#4956: signal process started
+2016/01/29 16:55:16 [error] 8780#4956: OpenEvent("Global\ngx_stop_4384") failed (2: The system cannot find the file specified)
+2016/01/29 16:55:17 [notice] 9992#10080: signal process started
+2016/01/29 16:55:17 [error] 9992#10080: OpenEvent("Global\ngx_stop_4384") failed (2: The system cannot find the file specified)
+2016/01/29 16:55:18 [notice] 9376#6324: signal process started
+2016/01/29 16:55:18 [error] 9376#6324: OpenEvent("Global\ngx_stop_4384") failed (2: The system cannot find the file specified)
+2016/01/29 16:55:18 [notice] 9784#9244: signal process started
+2016/01/29 16:55:18 [error] 9784#9244: OpenEvent("Global\ngx_stop_4384") failed (2: The system cannot find the file specified)
+2016/01/29 16:55:19 [notice] 7864#5640: signal process started
+2016/01/29 16:55:19 [error] 7864#5640: OpenEvent("Global\ngx_stop_4384") failed (2: The system cannot find the file specified)
+2016/01/29 16:55:20 [notice] 9576#9504: signal process started
+2016/01/29 16:55:20 [error] 9576#9504: OpenEvent("Global\ngx_stop_4384") failed (2: The system cannot find the file specified)
+2016/01/29 17:07:34 [notice] 9576#9392: signal process started
+2016/01/29 17:09:27 [notice] 8780#6792: signal process started
+2016/01/29 17:09:27 [error] 8780#6792: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/01/29 17:09:29 [notice] 1984#9140: signal process started
+2016/01/29 17:09:29 [error] 1984#9140: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/01/29 17:09:30 [notice] 10144#932: signal process started
+2016/01/29 17:09:30 [error] 10144#932: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/01/29 17:09:30 [notice] 10212#10220: signal process started
+2016/01/29 17:09:30 [error] 10212#10220: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/01/29 17:09:31 [notice] 6880#9720: signal process started
+2016/01/29 17:09:31 [error] 6880#9720: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/01/29 17:09:31 [notice] 9312#9452: signal process started
+2016/01/29 17:09:31 [error] 9312#9452: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
