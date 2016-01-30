@@ -1,5 +1,5 @@
 {
-	"efekt":"Education Effects",
+	
 	"kierunkowe":"Course",
 	"macierz":"Matrix MEK-CEK",
 	"plan":"Study Plan",
@@ -17,6 +17,15 @@
         "cnps":"CNPS",
         "zaliczenie":"Exam",
         "semestr":"Semester",
+        "opiekun":"Opiekun przedmiotu",
+        "czyGrupa":"Courses group",,
+		"kursGlowny":"Main course",
 		"zatwierdz":"Submit"
+	},
+	"efekt":{
+		"efekt":"Education Effects",
+		"id":"ID",
+		"opis":"Description",
+		"kategoria":"Category"
 	}
 }
