@@ -1,6 +1,6 @@
 
 {
-	"efekt":"Efekt kształcenia",
+	
 	"kierunkowe":"Kierunkowe",
 	"macierz":"Macierz śladowania MEK-KEK",
 	"plan":"Plan studiów",
@@ -18,8 +18,15 @@
         "cnps":"CNPS",
         "zaliczenie":"Sposób zaliczenia",
         "semestr":"Semestr",
-		
-		
+		"opiekun":"Opiekun przedmiotu",
+		"czyGrupa":"Grupa kursów",
+		"kursGlowny":"Przedmiot główny",
 		"zatwierdz":"Zatwierdź"
+	},
+	"efekt":{
+		"efekt":"Efekt kształcenia",
+		"id":"ID",
+		"opis":"Opis",
+		"kategoria":"Kategoria"
 	}
 }

@@ -19,8 +19,9 @@
 					short!</span> <span class="error" ng-show="myForm.cykl.$error.maxlength">Too
 					long!</span>
 			</div>
-			<hr>
+			<hr class="divider">
 		</div>
+
 		<div class="form-group col-xs-12">
 			<div class="form-group col-xs-6">
 				<label for="nazwaPolska" translate text="przedmiot.nazwaPolska"></label>
@@ -54,22 +55,62 @@
 				<div role="alert">
 					<span class="error" ng-show="myForm.modul.$error.required">Required!</span>
 				</div>
+				<label for="opiekun" translate text="przedmiot.opiekun"></label> <input
+					class="form-control input" id="opiekun" type="text" name="opiekun"
+					ng-model="przedmiot.opiekun" required>
+				<div role="alert">
+					<span class="error" ng-show="myForm.opiekun.$error.required">Required!</span>
+				</div>
 			</div>
-			<div class="form-group col-xs-6">
-			<button type="button" id="addData" class="btn btn-success" ng-click="addData()">Add Data</button>
-      <button type="button" id="removeFirstRow" class="btn btn-success" ng-click="removeFirstRow()">Remove First Row</button>
-      <button type="button" id="reset" class="btn btn-success" ng-click="reset()">Reset</button>
-<div>
-					<div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-cellnav class="myGrid"></div>
+
+			<div class="form-group col-xs-6 pull-right">
+
+				<div class="inline">
+					<div>
+						<label for="czyGrupa" translate text="przedmiot.czyGrupa"></label>
+						<input type="checkbox" class="form-control input" id="czyGrupa"
+							type="text" name="czyGrupa" ng-model="przedmiot.czyGrupa">
+					</div>
+					<div ng-show="przedmiot.czyGrupa">
+						<label for="sel1" translate text="przedmiot.kursGlowny"></label> <select
+							class="form-control" id="sel1">
+							<option ng-repeat="item in zajecia">{{item.forma}}</option>
+						</select>
+					</div>
+
 				</div>
 
+				<div class="form-group col-xs-10">
+
+					<div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-cellnav
+						class="myGrid"></div>
+
+				</div>
+				<div class="form-group col-xs-2">
+					<button type="button" id="addData" class="btn btn-success"
+						ng-click="addData()">+</button>
+				</div>
+
+
+			</div>
+		</div>
+		<div class="form-group col-xs-12">
+			<div class="form-group col-xs-11">
+				<div id="grid2" ui-grid="gridOptionsEK" ui-grid-edit ui-grid-cellnav></div>
+
+
+			</div>
+			<div class="form-group col-xs-1">
+				<button type="button" id="addData" class="btn btn-success"
+					ng-click="addData()">+</button>
+				<button type="button" id="addData" class="btn btn-success"
+					ng-click="addData()">-</button>
+			</div>
+			<div class="form-group col-xs-12 pull-right">
 				<button type="submit" class="btn btn-default" translate
 					text="przedmiot.zatwierdz"></button>
 			</div>
 		</div>
-
 	</form>
-<row>
-				
-				</row>
+
 </div>
