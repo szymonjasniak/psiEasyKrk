@@ -1,8 +1,13 @@
 {
-"efekt":"Education Effects",
-"kierunkowe":"Course",
-"macierz":"Matrix MEK-CEK",
-"plan":"Study Plan",
-"przedmiot":"Subject",
-"program":"Education Program"
+	"efekt":"Education Effects",
+	"kierunkowe":"Course",
+	"macierz":"Matrix MEK-CEK",
+	"plan":"Study Plan",
+	"przedmiot":"Subject",
+	"program":"Education Program",
+	"przedmiot":{
+		"cykl":"Cycle",
+		"nazwaPolska":"Polish name",
+		"zatwierdz":"Submit"
+	}
 }

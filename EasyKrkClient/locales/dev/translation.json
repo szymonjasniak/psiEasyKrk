@@ -1,9 +1,14 @@
 
 {
-"efekt":"Efekt kształcenia",
-"kierunkowe":"Kierunkowe",
-"macierz":"Macierz śladowania MEK-KEK",
-"plan":"Plan studiów",
-"przedmiot":"Przedmiot",
-"program":"Program kształcenia"
+	"efekt":"Efekt kształcenia",
+	"kierunkowe":"Kierunkowe",
+	"macierz":"Macierz śladowania MEK-KEK",
+	"plan":"Plan studiów",
+	"przedmiot":"Przedmiot",
+	"program":"Program kształcenia",
+	"przedmiot":{
+		"cykl":"Cykl",
+		"nazwaPolska":"Nazwa w jęz. polskim",
+		"zatwierdz":"Zatwierdź"
+	}
 }
