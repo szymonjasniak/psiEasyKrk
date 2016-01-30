@@ -15,6 +15,7 @@
 <!-- language -->
 <script type="text/javascript" src="script/i18next-1.11.0.min.js"></script>
 <!-- Others -->
+<script type="text/javascript" src="app/przedmiot/przedmiot.js"></script>
 <script type="text/javascript" src="app/app.js"></script>
 </head>
 
@@ -50,7 +51,7 @@
 						aria-expanded="false" translate text="program"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#" translate text="plan"></a></li>
-							<li><a href="#" translate text="przedmiot"></a></li>
+							<li><a href="#przedmiot" translate text="przedmiot"></a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -61,13 +62,9 @@
 
 	<div class="container">
 
-		<div class="starter-template">
-			<h1>Bootstrap starter template</h1>
-			<p class="lead">
-				Use this document as a way to quickly start any new project.<br>
-				All you get is this text and a mostly barebones HTML document.
-			</p>
-		</div>
+		<div id="content">
+				<div ng-view style="height: 100%"></div>
+            </div>
 
 	</div>
 	<!-- /.container -->
