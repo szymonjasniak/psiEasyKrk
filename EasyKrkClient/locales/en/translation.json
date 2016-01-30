@@ -3,11 +3,20 @@
 	"kierunkowe":"Course",
 	"macierz":"Matrix MEK-CEK",
 	"plan":"Study Plan",
-	"przedmiot":"Subject",
+	"przedmiotNav":"Subject",
 	"program":"Education Program",
 	"przedmiot":{
 		"cykl":"Cycle",
-		"nazwaPolska":"Polish name",
+		"nazwaPolska":"Polish name",		
+		"nazwaAngielska":"English name",
+		"kod":"Subject code",
+		"modul":"Education module",
+		"forma":"Form",
+        "lGodzin":"Hours",
+        "ects":"ECTS",
+        "cnps":"CNPS",
+        "zaliczenie":"Exam",
+        "semestr":"Semester",
 		"zatwierdz":"Submit"
 	}
 }
