@@ -1,136 +1,73 @@
 <div ng-controller="PrzedmiotController">
 	<form name="myForm" class="form-horizontal" role="form">
-	<div class="form-group col-xs-6">
-		<label for="programKsztalcenia" translate text="program"></label>
-		<input  class="form-control input" id="programKsztalcenia" type="text" name="programKsztalcenia" ng-model="przedmiot.program" required>
-		<div role="alert">
-			<span class="error" ng-show="myForm.programKsztalcenia.$error.required">Required!</span>
-		</div>
-		<label for="cykl" translate text="przedmiot.cykl" />
-		<select class="form-control input" id="cykl" type="text" name="cykl" ng-model="przedmiot.cykl" ng-minlength="3" ng-maxlength="10">
-			<option>2015/2016</option>		
-			<option>2016/2017</option>
-		</select>
-		<div role="alert">
-			<span class="error" ng-show="myForm.cykl.$error.minlength">Too short!</span>
-			<span class="error"	ng-show="myForm.cykl.$error.maxlength">Too long!</span>
-		</div>
-		<hr>		
-		</div>
-		<div class="form-group col-xs-12">
 		<div class="form-group col-xs-6">
-			<label for="nazwaPolska" translate text="przedmiot.nazwaPolska"></label>
-			<input  class="form-control input" id="nazwaPolska" type="text" name="nazwaPolska" ng-model="przedmiot.nazwaPolska" required>
+			<label for="programKsztalcenia" translate text="program"></label> <input
+				class="form-control input" id="programKsztalcenia" type="text"
+				name="programKsztalcenia" ng-model="przedmiot.program" required>
 			<div role="alert">
-				<span class="error" ng-show="myForm.nazwaPolska.$error.required">Required!</span>
+				<span class="error"
+					ng-show="myForm.programKsztalcenia.$error.required">Required!</span>
 			</div>
-			
-			<label for="nazwaAngielska" translate text="przedmiot.nazwaAngielska"></label>
-			<input  class="form-control input" id="nazwaAngielska" type="text" name="nazwaAngielska" ng-model="przedmiot.nazwaAngielska" required>
-			<div role="alert">
-				<span class="error" ng-show="myForm.nazwaAngielska.$error.required">Required!</span>
-			</div>
-			
-			<label for="kod" translate text="przedmiot.kod"></label>
-			<input  class="form-control input" id="kod" type="text" name="kod" ng-model="przedmiot.kod" required>
-			<div role="alert">
-				<span class="error" ng-show="myForm.kod.$error.required">Required!</span>
-			</div>
-			
-			<label for="modul" translate text="przedmiot.modul"></label>
-			<select class="form-control input" id="modul" type="text" name="modul" ng-model="przedmiot.modul" ng-minlength="3" ng-maxlength="10">
-				<option>Obowiazkowy - Technologie informacyjne</option>		
-				<option>Obowiazkowy - Matematyka</option>
+			<label for="cykl" translate text="przedmiot.cykl" /> <select
+				class="form-control input" id="cykl" type="text" name="cykl"
+				ng-model="przedmiot.cykl" ng-minlength="3" ng-maxlength="10">
+				<option>2015/2016</option>
+				<option>2016/2017</option>
 			</select>
 			<div role="alert">
-				<span class="error" ng-show="myForm.modul.$error.required">Required!</span>
+				<span class="error" ng-show="myForm.cykl.$error.minlength">Too
+					short!</span> <span class="error" ng-show="myForm.cykl.$error.maxlength">Too
+					long!</span>
 			</div>
+			<hr>
+		</div>
+		<div class="form-group col-xs-12">
+			<div class="form-group col-xs-6">
+				<label for="nazwaPolska" translate text="przedmiot.nazwaPolska"></label>
+				<input class="form-control input" id="nazwaPolska" type="text"
+					name="nazwaPolska" ng-model="przedmiot.nazwaPolska" required>
+				<div role="alert">
+					<span class="error" ng-show="myForm.nazwaPolska.$error.required">Required!</span>
+				</div>
+
+				<label for="nazwaAngielska" translate
+					text="przedmiot.nazwaAngielska"></label> <input
+					class="form-control input" id="nazwaAngielska" type="text"
+					name="nazwaAngielska" ng-model="przedmiot.nazwaAngielska" required>
+				<div role="alert">
+					<span class="error" ng-show="myForm.nazwaAngielska.$error.required">Required!</span>
+				</div>
+
+				<label for="kod" translate text="przedmiot.kod"></label> <input
+					class="form-control input" id="kod" type="text" name="kod"
+					ng-model="przedmiot.kod" required>
+				<div role="alert">
+					<span class="error" ng-show="myForm.kod.$error.required">Required!</span>
+				</div>
+
+				<label for="modul" translate text="przedmiot.modul"></label> <select
+					class="form-control input" id="modul" type="text" name="modul"
+					ng-model="przedmiot.modul" ng-minlength="3" ng-maxlength="10">
+					<option>Obowiazkowy - Technologie informacyjne</option>
+					<option>Obowiazkowy - Matematyka</option>
+				</select>
+				<div role="alert">
+					<span class="error" ng-show="myForm.modul.$error.required">Required!</span>
+				</div>
 			</div>
 			<div class="form-group col-xs-6">
 			
-			<div class="container-fluid">
-        <div class="table-responsive col-xs-12">
-            <table class="table table-bordered table-striped">
-                <colgroup>
-                    <col span="1" />
-                     <col span="1" />
-                      <col span="1" />
-                       <col span="1" />
-                        <col span="1" />
-                        
-                </colgroup>
-                <thead>
-                    <tr class="info">
-                        <th translate text="przedmiot.forma"></th>
-                        <th translate text="przedmiot.lGodzin"></th>
-                        <th translate text="przedmiot.ects"></th>
-                        <th translate text="przedmiot.cnps"></th>
-                        <th translate text="przedmiot.zaliczenie"></th>
-                        <th translate text="przedmiot.semestr"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr  ng-repeat="x in zajecia">  
-                        <td>
-                         	<span ng-hide="inputShow && index==$index && hideOnBlur" ng-dblclick="editRecord(record.name,$index);hideOnBlur = true">{{x.forma}}</span>
-            				<input ng-show="inputShow && index==$index && hideOnBlur" ng-blur="hideOnBlur=false" ng-model="x.forma">                			
-                        </td>
-                        <td>
-                        	<span ng-hide="inputShow && index==$index && hideOnBlur" ng-dblclick="editRecord(record.name,$index);hideOnBlur = true">{{x.liczba}}</span>
-            				<input ng-show="inputShow && index==$index && hideOnBlur" ng-blur="hideOnBlur=false" ng-model="x.liczba">
-                        </td>
-                        <td>
-                        <input  class="form-control input" id="cnps" type="text" name="kod" ng-model="x.ects" required>
-                        </td>
-                        <td>
-                        <input  class="form-control input" id="cnps" type="text" name="kod" ng-model="x.cnps" required>
-                        </td>
-                        <td>
-                        <input  class="form-control input" id="cnps" type="text" name="kod" ng-model="x.zaliczenie" required>
-                        </td>
-                        <td>
-                        <input  class="form-control input" id="cnps" type="text" name="kod" ng-model="x.semestr" required>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-    </div>
-</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-				<button type="submit" class="btn btn-default" translate text="przedmiot.zatwierdz"></button>
+<div>
+					<div id="grid1" ui-grid="gridOptions" class="myGrid"></div>
+				</div>
+
+				<button type="submit" class="btn btn-default" translate
+					text="przedmiot.zatwierdz"></button>
 			</div>
 		</div>
-		
-		
-		
-		
-		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-			
-		</div>
+
 	</form>
-	
+<row>
+				
+				</row>
 </div>

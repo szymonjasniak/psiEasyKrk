@@ -1,4 +1,4 @@
-var app = angular.module('application', ['ngRoute','application.przedmiot'])
+var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot'])
 .config(function($routeProvider) {
 	$routeProvider
 	.when('/przedmiot', {
