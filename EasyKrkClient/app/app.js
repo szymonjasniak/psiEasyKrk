@@ -1,7 +1,14 @@
-// app.js
-// Main RooMan Application
-
-var app = angular.module('application', ['ngRoute'])
+var app = angular.module('application', ['ngRoute','application.przedmiot'])
+.config(function($routeProvider) {
+	$routeProvider
+	.when('/przedmiot', {
+		templateUrl : 'app/przedmiot/przedmiot.html',
+		controller  : 'PrzedmiotController'
+	})
+	.otherwise({
+		redirectTo	: '/'
+	})
+})
 .service('translateService', function(){
 	language_complete = navigator.language.split("-");
 	language = (language_complete[0]);
