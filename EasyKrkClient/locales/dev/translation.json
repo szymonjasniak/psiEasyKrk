@@ -4,11 +4,22 @@
 	"kierunkowe":"Kierunkowe",
 	"macierz":"Macierz śladowania MEK-KEK",
 	"plan":"Plan studiów",
-	"przedmiot":"Przedmiot",
+	"przedmiotNav":"Przedmiot",
 	"program":"Program kształcenia",
 	"przedmiot":{
 		"cykl":"Cykl",
 		"nazwaPolska":"Nazwa w jęz. polskim",
+		"nazwaAngielska":"Nazwa w jęz. angielskim",
+		"kod":"Kod przedmiotu",
+		"modul":"Moduł kształcenia",		
+		"forma":"Forma zajęć",
+        "lGodzin":"Liczba godzin",
+        "ects":"ECTS",
+        "cnps":"CNPS",
+        "zaliczenie":"Sposób zaliczenia",
+        "semestr":"Semestr",
+		
+		
 		"zatwierdz":"Zatwierdź"
 	}
 }
