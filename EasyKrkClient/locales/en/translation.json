@@ -5,6 +5,7 @@
 	"plan":"Study Plan",
 	"przedmiotNav":"Subject",
 	"program":"Education Program",
+	"szukaj":"Find"
 	"przedmiot":{
 		"cykl":"Cycle",
 		"nazwaPolska":"Polish name",		
@@ -21,6 +22,7 @@
         "czyGrupa":"Courses group",,
 		"kursGlowny":"Main course",
 		"kursy":"Courses",
+		"znalezionePrzedmioty":"Search result",
 		"zatwierdz":"Submit"
 	},
 	"efekt":{

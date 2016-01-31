@@ -1,10 +1,43 @@
 angular.module('application.przedmiot', []).controller('PrzedmiotController',
 		function($scope) {
 
+			$scope.przedmioty = [ {
+				kod : "INZ00105",
+				nazwa : "Projektowanie systemów",
+				opiekun : "Jan Kowalski"
+			}, {
+				kod : "INZ02305",
+				nazwa : "Projektowanie interfejsu",
+				opiekun : "Kacper Kowalski"
+			} ];
+
+			$scope.gridOptionsPrzedmiot = {};			
+			$scope.gridOptionsPrzedmiot = {
+				data : $scope.przedmioty,
+				enableHorizontalScrollbar : 0,
+				enableVerticalScrollbar : 2,
+				enableRowSelection: true,
+				columnDefs : [ {
+					field : 'kod',
+					displayName : i18n.t("przedmiot.kod"),
+				}, {
+					field : 'nazwa',
+					displayName : i18n.t("przedmiot.nazwaPolska")
+				}, {
+					field : 'opiekun',
+					displayName : i18n.t("przedmiot.opiekun"),
+				} ]
+
+			};
+
 			$scope.przedmiot = {
 				program : 'guest',
 				cykl : '2015/2016',
-				nazwaPolska : "Nazwa"
+				nazwaPolska : "Nazwa",
+				nazwaAngielska : "nazwa",
+				kod : "kod",
+				modul : "modul",
+				opiekun : ""
 			};
 
 			$scope.possibleForms = [ {
@@ -95,7 +128,7 @@ angular.module('application.przedmiot', []).controller('PrzedmiotController',
 				columnDefs : [ {
 					field : 'id',
 					displayName : i18n.t("efekt.id"),
-					width: 60
+					width : 60
 				}, {
 					field : 'opis',
 					displayName : i18n.t("efekt.opis")
@@ -130,7 +163,6 @@ angular.module('application.przedmiot', []).controller('PrzedmiotController',
 					"kategoria" : ""
 				});
 			};
-			
 
 		}).filter('mapFormy', function() {
 	var genderHash = {
