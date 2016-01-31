@@ -1,9 +1,13 @@
-var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot', 'ui.grid.edit', 'ui.grid.cellNav','ui.grid.selection'])
+var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot', 'ui.grid.edit', 'ui.grid.cellNav','ui.grid.selection','application.listaPrzedmioty'])
 .config(function($routeProvider) {
 	$routeProvider
 	.when('/przedmiot', {
 		templateUrl : 'app/przedmiot/przedmiot.html',
 		controller  : 'PrzedmiotController'
+	})
+	.when('/listaPrzedmioty', {
+		templateUrl : 'app/przedmiot/listaPrzedmioty.html',
+		controller  : 'ListaPrzedmiotController'
 	})
 	.otherwise({
 		redirectTo	: '/'

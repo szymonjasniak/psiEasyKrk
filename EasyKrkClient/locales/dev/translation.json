@@ -6,6 +6,7 @@
 	"plan":"Plan studiów",
 	"przedmiotNav":"Przedmiot",
 	"program":"Program kształcenia",
+	"szukaj":"Szukaj",
 	"przedmiot":{
 		"cykl":"Cykl",
 		"nazwaPolska":"Nazwa w jęz. polskim",
@@ -22,6 +23,7 @@
 		"czyGrupa":"Grupa kursów",
 		"kursGlowny":"Przedmiot główny",
 		"kursy":"Kursy",
+		"znalezionePrzedmioty":"Znalezione przedmioty",
 		"zatwierdz":"Zatwierdź"
 	},
 	"efekt":{

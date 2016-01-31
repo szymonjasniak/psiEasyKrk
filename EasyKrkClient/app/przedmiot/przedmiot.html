@@ -26,9 +26,15 @@
 			<div class="form-group col-xs-6">
 				<label for="nazwaPolska" translate text="przedmiot.nazwaPolska"></label>
 				<input class="form-control input" id="nazwaPolska" type="text"
-					name="nazwaPolska" ng-model="przedmiot.nazwaPolska" required>
+					name="nazwaPolska" ng-model="przedmiot.nazwaPolska"
+					ng-minlength="3" ng-maxlength="10" required>
 				<div role="alert">
 					<span class="error" ng-show="myForm.nazwaPolska.$error.required">Required!</span>
+					<span class="error"
+						ng-show="myForm.nazwaPolska.$dirty && myForm.nazwaPolska.$error.minlength">Too
+						short!</span> <span class="error"
+						ng-show="myForm.nazwaPolska.$dirty && myForm.nazwaPolska.$error.maxlength">Too
+						long!</span>
 				</div>
 
 				<label for="nazwaAngielska" translate
@@ -53,13 +59,16 @@
 					<option>Obowiazkowy - Matematyka</option>
 				</select>
 				<div role="alert">
-					<span class="error" ng-show="myForm.modul.$error.required">Required!</span>
+					<span class="error"
+						ng-show="myForm.modul.$dirty && myForm.modul.$error.required">Required!</span>
 				</div>
+
 				<label for="opiekun" translate text="przedmiot.opiekun"></label> <input
 					class="form-control input" id="opiekun" type="text" name="opiekun"
-					ng-model="przedmiot.opiekun" required>
+					ng-model="przedmiot.opiekun" required placeholder="Jan Kowalski">
 				<div role="alert">
-					<span class="error" ng-show="myForm.opiekun.$error.required">Required!</span>
+					<span class="error"
+						ng-show="myForm.opiekun.$dirty && myForm.opiekun.$error.required">Required!</span>
 				</div>
 			</div>
 
@@ -82,15 +91,15 @@
 
 				<div class="form-group col-xs-10">
 					<label for="grid1" translate text="przedmiot.kursy"></label>
-					<div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-cellnav 
+					<div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-cellnav
 						class="myGrid"></div>
 
 				</div>
 				<div class="form-group col-xs-2 pull-center">
-				
-				<br>
-					<button type="button" id="addData" class="btn btn-success btn-sm btn-block"
-						ng-click="addData()">+</button>
+
+					<br>
+					<button type="button" id="addData"
+						class="btn btn-success btn-sm btn-block" ng-click="addData()">+</button>
 				</div>
 
 
@@ -98,15 +107,16 @@
 		</div>
 		<div class="form-group col-xs-12">
 			<div class="form-group col-xs-11">
-				<div id="grid2" ui-grid="gridOptionsEK" ui-grid-edit ui-grid-cellnav  class="myGrid"></div>
+				<div id="grid2" ui-grid="gridOptionsEK" ui-grid-edit ui-grid-cellnav
+					class="myGrid"></div>
 
 
 			</div>
 			<div class="form-group col-xs-1">
-				<button type="button" id="addData" class="btn btn-success btn-sm btn-block"
-					ng-click="addDataEK()">+</button>
-				<button type="button" id="addData" class="btn btn-success btn-sm btn-block"
-					ng-click="addDataEK()">-</button>
+				<button type="button" id="addData"
+					class="btn btn-success btn-sm btn-block" ng-click="addDataEK()">+</button>
+				<button type="button" id="addData"
+					class="btn btn-success btn-sm btn-block" ng-click="addDataEK()">-</button>
 			</div>
 			<div class="form-group col-xs-12 pull-right">
 				<button type="submit" class="btn btn-default" translate
