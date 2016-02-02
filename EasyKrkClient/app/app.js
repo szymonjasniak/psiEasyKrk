@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot', 'ui.grid.edit', 'ui.grid.cellNav','ui.grid.selection','application.listaPrzedmioty',"application.KEK"])
 .config(function($routeProvider) {
 	$routeProvider
-	.when('/przedmiot', {
+	.when('/przedmiot/:id', {
 		templateUrl : 'app/przedmiot/przedmiot.html',
 		controller  : 'PrzedmiotController'
 	})
@@ -34,37 +33,3 @@ var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','applica
 			  }		
 	}
 })
-=======
-var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot', 'ui.grid.edit', 'ui.grid.cellNav','ui.grid.selection','application.listaPrzedmioty'])
-.config(function($routeProvider) {
-	$routeProvider
-	.when('/przedmiot/:id', {
-		templateUrl : 'app/przedmiot/przedmiot.html',
-		controller  : 'PrzedmiotController'
-	})
-	.when('/listaPrzedmioty', {
-		templateUrl : 'app/przedmiot/listaPrzedmioty.html',
-		controller  : 'ListaPrzedmiotController'
-	})
-	.otherwise({
-		redirectTo	: '/'
-	})
-})
-.service('translateService', function(){
-	language_complete = navigator.language.split("-");
-	language = (language_complete[0]);
-	console.log("Language (service): %s", language);
-	var i18 = i18n.init({ lng: language, debug: true, getAsync:false });
-})
-.directive("translate", function(translateService){
-	return function(scope, element, attrs){
-			  if(attrs.typeofelement){
-				  element.attr(attrs.typeofelement, i18n.t(attrs.text));
-			  }
-			  else{
-				  element.text(i18n.t(attrs.text));  
-			  }		
-	}
-})
->>>>>>> branch 'master' of https://github.com/szymonjasniak/psiEasyKrk
-;
