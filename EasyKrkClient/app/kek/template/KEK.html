@@ -1,0 +1,37 @@
+<div ng-controller="KEKController">
+	<form name="KEKMainForm" class="form-horizontal" role="form">
+	
+		<div class="form-group col-xs-6">
+		<div class="input-group">
+		
+			<label for="programKsztalcenia" translate text="program"></label> 
+			<input
+				class="form-control input" id="programKsztalcenia" type="text"
+				name="programKsztalcenia" ng-model="przedmiot.program" >
+				
+				<span class="input-group-btn" style="vertical-align:bottom">
+				<button class="btn  search-button" type="button" ng-click="showSearch()" style="margin-left:0px"></button>
+				</span>
+			</div>
+			
+			<label for="cykl" translate text="przedmiot.cykl" />
+			 <select
+				class="form-control input" id="cykl" type="text" name="cykl"
+				ng-model="przedmiot.cykl" ng-minlength="3" ng-maxlength="10">
+				<option>2015/2016</option>
+				<option>2016/2017</option>
+			</select>
+			<div role="alert">
+				<span class="error" ng-show="myForm.cykl.$error.minlength">Too
+					short!</span> <span class="error" ng-show="myForm.cykl.$error.maxlength">Too
+					long!</span>
+			</div>
+
+		</div>
+
+	</form>
+
+
+
+
+</div>
