@@ -33,3 +33,6 @@
 2016/01/29 17:09:31 [error] 6880#9720: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
 2016/01/29 17:09:31 [notice] 9312#9452: signal process started
 2016/01/29 17:09:31 [error] 9312#9452: CreateFile() "C:\EasyKrk\repo\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/02/02 18:33:59 [emerg] 6480#9032: CreateDirectory() "C:\Users\ABajdiuk\git\psiEasyKrk\nginx/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2016/02/02 18:34:31 [notice] 3800#1092: signal process started
+2016/02/02 18:34:31 [error] 3800#1092: OpenEvent("Global\ngx_quit_6716") failed (2: The system cannot find the file specified)
