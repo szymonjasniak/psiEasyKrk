@@ -25,12 +25,24 @@
 		"kursy":"Kursy",
 		"znalezionePrzedmioty":"Znalezione przedmioty",
 		"przypisaneKEK":"Przypisane KEK",
-		"zatwierdz":"Zatwierdź"
+		"zatwierdz":"Zatwierdź",
+		"anuluj":"Anuluj"
+		
 	},
 	"efekt":{
 		"efekt":"Efekt kształcenia",
 		"id":"ID",
 		"opis":"Opis",
-		"kategoria":"Kategoria"
-	}
+		"kategoria":"Kategoria",
+		"obszar":"Obszar"
+	},
+	"kategoria":{
+		"kategoria":"Kategoria",
+		"wiedza":"wiedza",
+		"umiejetnosci":"umiejętności",
+		"kompetencje_spoleczne":"kompetencje społeczne"
+	},
+	"przypisaneMEK":"przypisane Ministerialne Efekty Kształcenia"
+	
+	
 }

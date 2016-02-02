@@ -24,12 +24,22 @@
 		"kursy":"Courses",
 		"znalezionePrzedmioty":"Search result",,
 		"przypisaneKEK":"Assigned CEK",
-		"zatwierdz":"Submit"
+		"zatwierdz":"Submit",
+		"anuluj":"Cancel"
+		
 	},
 	"efekt":{
 		"efekt":"Education Effects",
 		"id":"ID",
 		"opis":"Description",
-		"kategoria":"Category"
-	}
+		"kategoria":"Category",
+		"obszar":"Area"
+	},
+	"kategoria":{
+		"kategoria":"Category",
+		"wiedza":"knowledge",
+		"umiejetnosci":"skills",
+		"kompetencje_spoleczne":"other competencies"
+	},
+	"przypisaneMEK":"assigned Ministerial Study Effects"
 }
