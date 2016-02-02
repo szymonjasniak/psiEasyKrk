@@ -24,7 +24,12 @@
 		"kursy":"Courses",
 		"znalezionePrzedmioty":"Search result",,
 		"przypisaneKEK":"Assigned CEK",
-		"zatwierdz":"Submit"
+		"zatwierdz":"Submit",
+		"krotkaNazwa":"Too short",
+		"dlugaNazwa":"Too long",
+		"wymagane":"Required",
+		"kodPattern":"Invalid code",
+		"kodPattern":"Invalid number for education programm"
 	},
 	"efekt":{
 		"efekt":"Education Effects",
