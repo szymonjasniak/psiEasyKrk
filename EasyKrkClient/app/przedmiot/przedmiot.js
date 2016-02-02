@@ -1,35 +1,6 @@
 angular.module('application.przedmiot', []).controller('PrzedmiotController',
 		function($scope) {
 
-			$scope.przedmioty = [ {
-				kod : "INZ00105",
-				nazwa : "Projektowanie systemów",
-				opiekun : "Jan Kowalski"
-			}, {
-				kod : "INZ02305",
-				nazwa : "Projektowanie interfejsu",
-				opiekun : "Kacper Kowalski"
-			} ];
-
-			$scope.gridOptionsPrzedmiot = {};			
-			$scope.gridOptionsPrzedmiot = {
-				data : $scope.przedmioty,
-				enableHorizontalScrollbar : 0,
-				enableVerticalScrollbar : 2,
-				enableRowSelection: true,
-				columnDefs : [ {
-					field : 'kod',
-					displayName : i18n.t("przedmiot.kod"),
-				}, {
-					field : 'nazwa',
-					displayName : i18n.t("przedmiot.nazwaPolska")
-				}, {
-					field : 'opiekun',
-					displayName : i18n.t("przedmiot.opiekun"),
-				} ]
-
-			};
-
 			$scope.przedmiot = {
 				program : 'guest',
 				cykl : '2015/2016',
@@ -98,23 +69,19 @@ angular.module('application.przedmiot', []).controller('PrzedmiotController',
 					editDropdownOptionsArray : $scope.possibleForms
 				}, {
 					field : 'liczba',
-					displayName : i18n.t("przedmiot.liczba")
+					displayName : i18n.t("przedmiot.lGodzin")
 				}, {
 					field : 'ects',
-					displayName : i18n.t("przedmiot.ects"),
-					width : 70
+					displayName : i18n.t("przedmiot.ects")
 				}, {
 					field : 'cnps',
-					displayName : i18n.t("przedmiot.cnps"),
-					width : 70
+					displayName : i18n.t("przedmiot.cnps")
 				}, {
 					field : 'zaliczenie',
-					displayName : i18n.t("przedmiot.zaliczenie"),
-					width : 100
+					displayName : i18n.t("przedmiot.zaliczenie")
 				}, {
 					field : 'semestr',
-					displayName : i18n.t("przedmiot.semestr"),
-					width : 100
+					displayName : i18n.t("przedmiot.semestr")
 				} ]
 
 			};
