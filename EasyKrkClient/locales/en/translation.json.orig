@@ -1,0 +1,77 @@
+<<<<<<< HEAD
+{
+	
+	"kierunkowe":"Course",
+	"macierz":"Matrix MEK-CEK",
+	"plan":"Study Plan",
+	"przedmiotNav":"Subject",
+	"program":"Education Program",
+	"szukaj":"Find"
+	"przedmiot":{
+		"cykl":"Cycle",
+		"nazwaPolska":"Polish name",		
+		"nazwaAngielska":"English name",
+		"kod":"Subject code",
+		"modul":"Education module",
+		"forma":"Form",
+        "lGodzin":"Hours",
+        "ects":"ECTS",
+        "cnps":"CNPS",
+        "zaliczenie":"Exam",
+        "semestr":"Semester",
+        "opiekun":"Opiekun przedmiotu",
+        "czyGrupa":"Courses group",,
+		"kursGlowny":"Main course",
+		"kursy":"Courses",
+		"znalezionePrzedmioty":"Search result",,
+		"przypisaneKEK":"Assigned CEK",
+		"zatwierdz":"Submit",
+		"krotkaNazwa":"Too short",
+		"dlugaNazwa":"Too long",
+		"wymagane":"Required",
+		"kodPattern":"Invalid code",
+		"kodPattern":"Invalid number for education programm"
+	},
+	"efekt":{
+		"efekt":"Education Effects",
+		"id":"ID",
+		"opis":"Description",
+		"kategoria":"Category"
+	}
+=======
+{
+	
+	"kierunkowe":"Course",
+	"macierz":"Matrix MEK-CEK",
+	"plan":"Study Plan",
+	"przedmiotNav":"Subject",
+	"program":"Education Program",
+	"szukaj":"Find"
+	"przedmiot":{
+		"cykl":"Cycle",
+		"nazwaPolska":"Polish name",		
+		"nazwaAngielska":"English name",
+		"kod":"Subject code",
+		"modul":"Education module",
+		"forma":"Form",
+        "lGodzin":"Hours",
+        "ects":"ECTS",
+        "cnps":"CNPS",
+        "zaliczenie":"Exam",
+        "semestr":"Semester",
+        "opiekun":"Opiekun przedmiotu",
+        "czyGrupa":"Courses group",,
+		"kursGlowny":"Main course",
+		"kursy":"Courses",
+		"znalezionePrzedmioty":"Search result",,
+		"przypisaneKEK":"Assigned CEK",
+		"zatwierdz":"Submit"
+	},
+	"efekt":{
+		"efekt":"Education Effects",
+		"id":"ID",
+		"opis":"Description",
+		"kategoria":"Category"
+	}
+>>>>>>> branch 'master' of https://github.com/szymonjasniak/psiEasyKrk.git
+}

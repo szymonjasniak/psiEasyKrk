@@ -1,4 +1,5 @@
-var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot', 'ui.grid.edit', 'ui.grid.cellNav','ui.grid.selection','application.listaPrzedmioty',"application.KEK"])
+
+var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot', 'ui.grid.edit', 'ui.grid.cellNav','ui.grid.selection','ui.grid.validate','application.listaPrzedmioty',"application.KEK"])
 .config(function($routeProvider) {
 	$routeProvider
 	.when('/przedmiot/:id', {
@@ -33,3 +34,4 @@ var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','applica
 			  }		
 	}
 })
+;
