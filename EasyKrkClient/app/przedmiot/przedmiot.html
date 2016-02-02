@@ -19,10 +19,11 @@
 					short!</span> <span class="error" ng-show="myForm.cykl.$error.maxlength">Too
 					long!</span>
 			</div>
-			<hr class="divider">
+			
 		</div>
 
 		<div class="form-group col-xs-12">
+		<hr class="divider">
 			<div class="form-group col-xs-6">
 				<label for="nazwaPolska" translate text="przedmiot.nazwaPolska"></label>
 				<input class="form-control input" id="nazwaPolska" type="text"
@@ -99,27 +100,30 @@
 
 					<br>
 					<button type="button" id="addData"
-						class="btn btn-success btn-sm btn-block" ng-click="addData()">+</button>
+						class="btn btn-success save_button" ng-click="addData()">+</button>
 				</div>
 
 
 			</div>
 		</div>
 		<div class="form-group col-xs-12">
+		
 			<div class="form-group col-xs-11">
+			<label for="grid2" translate text="przedmiot.przypisaneKEK"></label>
 				<div id="grid2" ui-grid="gridOptionsEK" ui-grid-edit ui-grid-cellnav
 					class="myGrid"></div>
 
 
 			</div>
 			<div class="form-group col-xs-1">
+			<br>
 				<button type="button" id="addData"
-					class="btn btn-success btn-sm btn-block" ng-click="addDataEK()">+</button>
+					class="btn btn-success save_button" ng-click="addDataEK()">+</button>
 				<button type="button" id="addData"
-					class="btn btn-success btn-sm btn-block" ng-click="addDataEK()">-</button>
+					class="btn btn-success save_button" ng-click="addDataEK()">-</button>
 			</div>
 			<div class="form-group col-xs-12 pull-right">
-				<button type="submit" class="btn btn-default" translate
+				<button type="submit" class="btn btn-success btn-lg btn-group" translate
 					text="przedmiot.zatwierdz"></button>
 			</div>
 		</div>

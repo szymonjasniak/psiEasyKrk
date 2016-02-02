@@ -22,7 +22,8 @@
         "czyGrupa":"Courses group",,
 		"kursGlowny":"Main course",
 		"kursy":"Courses",
-		"znalezionePrzedmioty":"Search result",
+		"znalezionePrzedmioty":"Search result",,
+		"przypisaneKEK":"Assigned CEK",
 		"zatwierdz":"Submit"
 	},
 	"efekt":{
