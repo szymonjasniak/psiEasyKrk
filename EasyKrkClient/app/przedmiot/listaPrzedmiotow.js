@@ -1,5 +1,4 @@
-angular
-		.module('application.listaPrzedmioty', [])
+angular.module('application.listaPrzedmioty', [])
 		.controller(
 				'ListaPrzedmiotController',
 				[

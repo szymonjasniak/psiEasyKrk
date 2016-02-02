@@ -1,37 +1,62 @@
 <div ng-controller="KEKController">
+
 	<form name="KEKMainForm" class="form-horizontal" role="form">
-	
-		<div class="form-group col-xs-6">
-		<div class="input-group">
-		
-			<label for="programKsztalcenia" translate text="program"></label> 
-			<input
-				class="form-control input" id="programKsztalcenia" type="text"
-				name="programKsztalcenia" ng-model="przedmiot.program" >
-				
-				<span class="input-group-btn" style="vertical-align:bottom">
-				<button class="btn  search-button" type="button" ng-click="showSearch()" style="margin-left:0px"></button>
-				</span>
-			</div>
-			
-			<label for="cykl" translate text="przedmiot.cykl" />
-			 <select
-				class="form-control input" id="cykl" type="text" name="cykl"
-				ng-model="przedmiot.cykl" ng-minlength="3" ng-maxlength="10">
-				<option>2015/2016</option>
-				<option>2016/2017</option>
-			</select>
-			<div role="alert">
-				<span class="error" ng-show="myForm.cykl.$error.minlength">Too
-					short!</span> <span class="error" ng-show="myForm.cykl.$error.maxlength">Too
-					long!</span>
+
+		<div class="form-group col-xs-12">
+			<div class="form-group col-xs-6">
+				<div class="input-group">
+
+					<label for="programKsztalcenia" translate text="program"></label> <input
+						class="form-control input" id="programKsztalcenia" type="text"
+						name="programKsztalcenia" ng-model="przedmiot.program"> <span
+						class="input-group-btn" style="vertical-align: bottom">
+						<button class="btn  search-button" type="button"
+							ng-click="showSearch()" style="margin-left: 0px"></button>
+					</span>
+				</div>
+
+				<label for="cykl" translate text="przedmiot.cykl" /> <select
+					class="form-control input" id="cykl" type="text" name="cykl"
+					ng-model="cykl">
+					<option>2015/2016</option>
+					<option>2016/2017</option>
+				</select> <label for="kategoria" translate text="kategoria.kategoria" /> <select
+					class="form-control input" id="kategoria" type="text"
+					name="kategoria" ng-model="kategoria">
+					<option ng-repeat="kat in kategorie" vaule="{{kat}}" translate
+						text="{{kat}}"></option>
+
+				</select> <label for="kekID">ID</label> <input class="form-control input"
+					id="kekID" type="text" name="kekID" ng-model="id"
+					readonly="readonly">
+
 			</div>
 
+			<div class="form-group col-xs-6 pull-right">
+				<label for="opis" translate text="efekt.opis" />
+				<textarea rows="10" class="form-control" id="opis" name="opis"></textarea>
+			</div>
+			<label for="lowerBlock" translate text="przypisaneMEK" />
+			<div class="form-inline" id="lowerBlock">
+				<div class="form-group col-xs-11">
+					<div id="gridMEK" ui-grid="gridOptionsMEK" ui-grid-cellnav
+						ui-grid-selection class="myGrid" external-scopes="gridHandlers">
+					</div>
+				</div>
+				<div class="form-group col-xs-1">
+					<button type="button" id="addData"
+						class="btn btn-success save_button" ng-click="addData()">+</button>
+					<button type="button" id="addData"
+						class="btn btn-success save_button" ng-click="removeData()">-</button>
+				</div>
+			</div>
 		</div>
-
+		<div class="text-right">
+			<button type="submit" class="btn btn-success btn-lg " translate
+				text="przedmiot.zatwierdz"></button>
+			<button type="submit" class="btn btn-success btn-lg " translate
+				text="przedmiot.anuluj"></button>
+		</div>
 	</form>
-
-
-
 
 </div>
