@@ -19,11 +19,11 @@
 					short!</span> <span class="error" ng-show="myForm.cykl.$error.maxlength">Too
 					long!</span>
 			</div>
-			
+
 		</div>
 
 		<div class="form-group col-xs-12">
-		<hr class="divider">
+			<hr class="divider">
 			<div class="form-group col-xs-6">
 				<label for="nazwaPolska" translate text="przedmiot.nazwaPolska"></label>
 				<input class="form-control input" id="nazwaPolska" type="text"
@@ -89,44 +89,41 @@
 					</div>
 
 				</div>
-
-				<div class="form-group col-xs-10">
-					<label for="grid1" translate text="przedmiot.kursy"></label>
-					<div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-cellnav
-						class="myGrid"></div>
-
+				<label for="block1" translate text="przedmiot.kursy"></label>
+				<div id="block1">
+					<div class="form-inline">
+						<div class="form-group col-xs-11">
+							<div id="grid1" ui-grid="gridOptions" ui-grid-edit
+								ui-grid-cellnav class="myGrid"></div>
+						</div>
+						<div class="form-group col-xs-1">
+							<button type="button" id="addData"
+								class="btn btn-success save_button" ng-click="addData()">+</button>
+						</div>
+					</div>
 				</div>
-				<div class="form-group col-xs-2 pull-center">
-
-					<br>
-					<button type="button" id="addData"
-						class="btn btn-success save_button" ng-click="addData()">+</button>
-				</div>
-
-
 			</div>
 		</div>
 		<div class="form-group col-xs-12">
-		
-			<div class="form-group col-xs-11">
-			<label for="grid2" translate text="przedmiot.przypisaneKEK"></label>
-				<div id="grid2" ui-grid="gridOptionsEK" ui-grid-edit ui-grid-cellnav
-					class="myGrid"></div>
-
-
-			</div>
-			<div class="form-group col-xs-1">
-			<br>
-				<button type="button" id="addData"
-					class="btn btn-success save_button" ng-click="addDataEK()">+</button>
-				<button type="button" id="addData"
-					class="btn btn-success save_button" ng-click="addDataEK()">-</button>
-			</div>
-			<div class="form-group col-xs-12 pull-right">
-				<button type="submit" class="btn btn-success btn-lg btn-group" translate
-					text="przedmiot.zatwierdz"></button>
+			<label for="block2" translate text="przedmiot.przypisaneKEK"></label>
+			<div id="block1">
+				<div class="form-inline">
+					<div class="form-group col-xs-11">
+						<div id="grid2" ui-grid="gridOptionsEK" ui-grid-edit
+							ui-grid-cellnav class="myGrid"></div>
+					</div>
+					<div class="form-group col-xs-1">
+						<button type="button" id="addData"
+							class="btn btn-success save_button" ng-click="addDataEK()">+</button>
+						<button type="button" id="addData"
+							class="btn btn-success save_button" ng-click="addDataEK()">-</button>
+					</div>
+					<div class="form-group col-xs-12 pull-right">
+						<button type="submit" class="btn btn-success btn-lg btn-group"
+							translate text="przedmiot.zatwierdz"></button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</form>
-
 </div>
