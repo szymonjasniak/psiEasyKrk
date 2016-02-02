@@ -1,17 +1,22 @@
-angular.module('application.przedmiot', []).controller('PrzedmiotController',
-		function($scope) {
+angular.module('application.przedmiot', [])
+.controller('PrzedmiotController', ['$scope', 'uiGridValidateService', function ($scope, uiGridValidateService) {
 
 			$scope.przedmiot = {
-				program : 'guest',
+				/*program : 'guest',
 				cykl : '2015/2016',
 				nazwaPolska : "Nazwa",
 				nazwaAngielska : "nazwa",
 				kod : "kod",
 				modul : "modul",
-				opiekun : ""
+				opiekun : ""*/
 			};
+			
+			
 
-			$scope.possibleForms = [ {
+			$scope.prowadzacy = ["john", "bill", "charlie", "robert", "alban", "oscar", "marie", "celine", "brad", "drew", "rebecca", "michel", "francis", "jean", "paul", "pierre", "nicolas", "alfred", "gerard", "louis", "albert", "edouard", "benoit", "guillaume", "nicolas", "joseph"];
+
+			
+			$scope.formyZajec = [ {
 				id : 1,
 				'forma' : "W"
 			}, {
@@ -52,6 +57,9 @@ angular.module('application.przedmiot', []).controller('PrzedmiotController',
 			} ];
 
 			$scope.ek = [];
+			
+			$scope.moduly = [{nazwa: "Obowiązkowy - TI"}, {nazwa:"Obowiązkowy-IT"},{nazwa:"Wybieralny - IO"}];
+			$scope.cykle = [{nazwa: "2014/2015"}, {nazwa:"2015/2016"},{nazwa:"2016/2017"}];
 
 			$scope.gridOptions = {};
 			$scope.gridOptions.enableCellEditOnFocus = true;
@@ -66,22 +74,34 @@ angular.module('application.przedmiot', []).controller('PrzedmiotController',
 					cellFilter : 'mapFormy',
 					editableCellTemplate : 'ui-grid/dropdownEditor',
 					editDropdownValueLabel : 'forma',
-					editDropdownOptionsArray : $scope.possibleForms
+					editDropdownOptionsArray : $scope.formyZajec,
+					validators: {required: true},
+					cellTemplate: 'ui-grid/cellTitleValidator'
 				}, {
 					field : 'liczba',
-					displayName : i18n.t("przedmiot.lGodzin")
+					displayName : i18n.t("przedmiot.lGodzin"),
+					validators: {required: true},
+					cellTemplate: 'ui-grid/cellTitleValidator'
 				}, {
 					field : 'ects',
-					displayName : i18n.t("przedmiot.ects")
+					displayName : i18n.t("przedmiot.ects"),
+					validators: {required: true},
+					cellTemplate: 'ui-grid/cellTitleValidator'
 				}, {
 					field : 'cnps',
-					displayName : i18n.t("przedmiot.cnps")
+					displayName : i18n.t("przedmiot.cnps"),
+					validators: {required: true},
+					cellTemplate: 'ui-grid/cellTitleValidator'
 				}, {
 					field : 'zaliczenie',
-					displayName : i18n.t("przedmiot.zaliczenie")
+					displayName : i18n.t("przedmiot.zaliczenie"),
+					validators: {required: true},
+					cellTemplate: 'ui-grid/cellTitleValidator'
 				}, {
 					field : 'semestr',
-					displayName : i18n.t("przedmiot.semestr")
+					displayName : i18n.t("przedmiot.semestr"),
+					validators: {required: true},
+					cellTemplate: 'ui-grid/cellTitleValidator'
 				} ]
 
 			};
@@ -106,9 +126,9 @@ angular.module('application.przedmiot', []).controller('PrzedmiotController',
 
 			};
 
-			$scope.addData = function() {
+			$scope.dodaj = function() {
 				var n = $scope.gridOptions.data.length;
-				if (n >= $scope.possibleForms.length) {
+				if (n >= $scope.formyZajec.length) {
 
 				} else {
 					$scope.gridOptions.data.push({
@@ -122,7 +142,7 @@ angular.module('application.przedmiot', []).controller('PrzedmiotController',
 				}
 			};
 
-			$scope.addDataEK = function() {
+			$scope.dodajEK = function() {
 				var n = $scope.gridOptionsEK.data.length;
 				$scope.gridOptionsEK.data.push({
 					"id" : "",
@@ -131,20 +151,38 @@ angular.module('application.przedmiot', []).controller('PrzedmiotController',
 				});
 			};
 
-		}).filter('mapFormy', function() {
-	var genderHash = {
-		1 : 'W',
-		2 : 'C',
-		3 : 'L',
-		4 : 'S',
-		5 : 'P'
-	};
-
+		}])
+.filter('mapFormy', function() {	
+	var mappingForm = {
+			1 : 'W',
+			2 : 'C',
+			3 : 'L',
+			4 : 'S',
+			5 : 'P'
+		};
 	return function(input) {
+		
 		if (!input) {
 			return '';
 		} else {
-			return genderHash[input];
+			return mappingForm[input];
 		}
 	};
-});
+	
+})
+.directive('autocomplete', function($timeout) {
+
+    return {
+        restrict : 'A',
+        require : 'ngModel',
+        link : function(scope, iElement, iAttrs) {
+            iElement.autocomplete({
+                source: scope.prowadzacy,
+                select: function() {
+                    $timeout(function() {
+                      iElement.trigger('input');
+                    }, 0);
+                }
+            });
+    }
+    }});

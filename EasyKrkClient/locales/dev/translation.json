@@ -26,8 +26,12 @@
 		"znalezionePrzedmioty":"Znalezione przedmioty",
 		"przypisaneKEK":"Przypisane KEK",
 		"zatwierdz":"Zatwierdź",
-		"anuluj":"Anuluj"
-		
+		"anuluj":"Anuluj",
+		"krotkaNazwa":"Nazwa zbyt krótka",
+		"dlugaNazwa":"Nazwa zbyt długa",
+		"wymagane":"Pole wymagane",
+		"kodPattern":"Kod niepoprawnie zbudowany. Wzorzec to ABC123456",
+		"kodPattern":"Niepoprawny numer programu kształcenia"
 	},
 	"efekt":{
 		"efekt":"Efekt kształcenia",
@@ -46,3 +50,4 @@
 	
 	
 }
+

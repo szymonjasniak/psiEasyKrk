@@ -19,13 +19,18 @@
         "zaliczenie":"Exam",
         "semestr":"Semester",
         "opiekun":"Opiekun przedmiotu",
-        "czyGrupa":"Courses group",,
+        "czyGrupa":"Courses group",
 		"kursGlowny":"Main course",
 		"kursy":"Courses",
-		"znalezionePrzedmioty":"Search result",,
+		"znalezionePrzedmioty":"Search result",
 		"przypisaneKEK":"Assigned CEK",
 		"zatwierdz":"Submit",
-		"anuluj":"Cancel"
+		"anuluj":"Cancel",
+		"krotkaNazwa":"Too short",
+		"dlugaNazwa":"Too long",
+		"wymagane":"Required",
+		"kodPattern":"Invalid code",
+		"kodPattern":"Invalid number for education programm"
 		
 	},
 	"efekt":{
