@@ -31,7 +31,7 @@
 		"dlugaNazwa":"Nazwa zbyt długa",
 		"wymagane":"Pole wymagane",
 		"kodPattern":"Kod niepoprawnie zbudowany. Wzorzec to ABC123456",
-		"kodPattern":"Niepoprawny numer programu kształcenia"
+		"programPattern":"Niepoprawny numer programu kształcenia"
 	},
 	"efekt":{
 		"efekt":"Efekt kształcenia",
