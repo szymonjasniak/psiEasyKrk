@@ -1,4 +1,4 @@
-var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot', 'ui.grid.edit', 'ui.grid.cellNav','ui.grid.selection','application.listaPrzedmioty'])
+var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot', 'ui.grid.edit', 'ui.grid.cellNav','ui.grid.selection','application.listaPrzedmioty',"application.KEK"])
 .config(function($routeProvider) {
 	$routeProvider
 	.when('/przedmiot', {
@@ -8,6 +8,10 @@ var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','applica
 	.when('/listaPrzedmioty', {
 		templateUrl : 'app/przedmiot/listaPrzedmioty.html',
 		controller  : 'ListaPrzedmiotController'
+	})
+	.when('/kierunkowe',{
+		templateUrl: "app/KEK/template/KEK.html",
+		controller: "KEKController"
 	})
 	.otherwise({
 		redirectTo	: '/'
