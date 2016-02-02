@@ -1,6 +1,6 @@
 angular.module('application.przedmiot', [])
-.controller('PrzedmiotController', ['$scope', 'uiGridValidateService', function ($scope, uiGridValidateService) {
-
+.controller('PrzedmiotController', ['$scope','$window', 'uiGridValidateService', function ($scope, $window,uiGridValidateService) {	
+	
 			$scope.przedmiot = {
 				/*program : 'guest',
 				cykl : '2015/2016',
@@ -61,8 +61,25 @@ angular.module('application.przedmiot', [])
 			$scope.moduly = [{nazwa: "Obowiązkowy - TI"}, {nazwa:"Obowiązkowy-IT"},{nazwa:"Wybieralny - IO"}];
 			$scope.cykle = [{nazwa: "2014/2015"}, {nazwa:"2015/2016"},{nazwa:"2016/2017"}];
 
+			
+			uiGridValidateService.setValidator('startWith',
+				    function(argument) {
+				      return function(newValue, oldValue, rowEntity, colDef) {
+				        if (!newValue) {
+				          return true; // We should not test for existence here
+				        } else {
+				          return newValue.startsWith(argument);
+				        }
+				      };
+				    },
+				    function(argument) {
+				      return 'You can only insert names starting with: "' + argument + '"';
+				    }
+				  );
+			
 			$scope.gridOptions = {};
 			$scope.gridOptions.enableCellEditOnFocus = true;
+			
 			$scope.gridOptions = {
 				data : $scope.zajecia,
 				enableHorizontalScrollbar : 0,
@@ -75,13 +92,13 @@ angular.module('application.przedmiot', [])
 					editableCellTemplate : 'ui-grid/dropdownEditor',
 					editDropdownValueLabel : 'forma',
 					editDropdownOptionsArray : $scope.formyZajec,
-					validators: {required: true},
-					cellTemplate: 'ui-grid/cellTitleValidator'
+					validators: {required: true,startWith: 'M'},
+					cellTemplate: 'ui-grid/cellTitleValidator'	
 				}, {
 					field : 'liczba',
 					displayName : i18n.t("przedmiot.lGodzin"),
-					validators: {required: true},
-					cellTemplate: 'ui-grid/cellTitleValidator'
+					validators: {startWith: 'M'},
+					cellTemplate: '<div class="ui-grid-cell-contents" ng-class="{invalid:grid.validate.isInvalid(row.entity,col.colDef)}" tooltip-html-unsafe={{grid.validate.getFormattedErrors(row.entity,col.colDef)}} tooltip-enable="grid.validate.isInvalid(row.entity,col.colDef)" tooltip-append-to-body="true" tooltip-placement="top" title="TOOLTIP">{{COL_FIELD CUSTOM_FILTERS}}</div>'
 				}, {
 					field : 'ects',
 					displayName : i18n.t("przedmiot.ects"),
@@ -105,6 +122,17 @@ angular.module('application.przedmiot', [])
 				} ]
 
 			};
+						
+			$scope.gridOptions.onRegisterApi = function(gridApi){
+		         //set gridApi on scope
+		         $scope.gridApi = gridApi;
+		         gridApi.validate.on.validationFailed($scope,function(rowEntity, colDef, newValue, oldValue){
+		          /* $window.alert('rowEntity: '+ rowEntity + '\n' +
+		                         'colDef: ' + colDef + '\n' + 
+		                         'newValue: ' + newValue + '\n' +
+		                         'oldValue: ' + oldValue);*/
+		         });
+		       };
 
 			$scope.gridOptionsEK = {};
 			$scope.gridOptionsEK.enableCellEditOnFocus = true;
