@@ -34,4 +34,23 @@ var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','applica
 			  }		
 	}
 })
+.directive('autocomplete', function($timeout) {
+
+    return {
+        restrict : 'A',
+        scope:{
+        	src: '=autoSource'
+        },
+        require : 'ngModel',
+        link : function(scope, iElement, iAttrs) {
+            iElement.autocomplete({
+                source: scope.src,
+                select: function() {
+                    $timeout(function() {
+                      iElement.trigger('input');
+                    }, 0);
+                }
+            });
+    }
+    }});
 ;

@@ -45,5 +45,33 @@
 		"umiejetnosci":"skills",
 		"kompetencje_spoleczne":"other competencies"
 	},
-	"przypisaneMEK":"assigned Ministerial Study Effects"
+	"szukaj":"find",
+	"przypisaneMEK":"assigned Ministerial Study Effects",
+	"MEK":{
+		"obszar":{
+			"obszar":"Area",
+			"nauki_techniczne":"technical sciences",
+			"nauki_przyrodnicze":"natural sciences",
+			"nauki_humanistyczne":"Humanities",
+			"nauki_spoleczne":"social sciences",
+			"nauki_scisle":"science",
+			"nauki_medyczne":"medical sciences",
+			"nauki_rolnicze":"agricultural sciences",
+			"nauki_sztuki":"art sciences
+		},
+		"wyszukiwanie":"Ministerial Study Effects"
+	},
+	"PK":{
+		"PK":"Education Program",
+		"wydzial":"Department",
+		"kierunek":"Subject",
+		"stopien":"Level",
+		"specjalnosc":"Speciality",
+		"forma":{
+			"forma":"Form",
+			"stacjonarne":"stationary",
+			"niestacjonarna":"Unstationary"
+		}
+	}
+		
 }

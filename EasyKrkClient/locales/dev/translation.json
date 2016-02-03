@@ -44,8 +44,33 @@
 		"umiejetnosci":"umiejętności",
 		"kompetencje_spoleczne":"kompetencje społeczne"
 	},
-	"przypisaneMEK":"przypisane Ministerialne Efekty Kształcenia"
-	
-	
+	"szukaj":"szukaj",
+	"przypisaneMEK":"przypisane Ministerialne Efekty Kształcenia",
+	"MEK":{
+		"obszar":{
+			"obszar":"Obszar",
+			"nauki_techniczne":"nauki techniczne",
+			"nauki_przyrodnicze":"nauki przyrodnicze",
+			"nauki_humanistyczne":"nauki humanistyczne",
+			"nauki_spoleczne":"nauki społeczne",
+			"nauki_scisle":"nauki ścisłe",
+			"nauki_medyczne":"nauki medyczne",
+			"nauki_rolnicze":"nauki rolnicze",
+			"nauki_sztuki":"nauki o sztuce"
+		},
+		"wyszukiwanie":"Ministerialne Efekty Kształcenia"
+	},
+	"PK":{
+		"PK":"Program Kształcenia",
+		"wydzial":"Wydział",
+		"kierunek":"Kierunek",
+		"stopien":"Stopien",
+		"specjalnosc":"Specjalnosc",
+		"forma":{
+			"forma":"Forma",
+			"stacjonarne":"stacjonarna",
+			"niestacjonarne":"niestacjonarna"
+		}
+	}
 }
 
