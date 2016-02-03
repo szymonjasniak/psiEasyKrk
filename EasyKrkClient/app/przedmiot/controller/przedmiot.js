@@ -14,7 +14,7 @@ angular.module('application.przedmiot', [])
 			
 
 			$scope.prowadzacy = ["john", "bill", "charlie", "robert", "alban", "oscar", "marie", "celine", "brad", "drew", "rebecca", "michel", "francis", "jean", "paul", "pierre", "nicolas", "alfred", "gerard", "louis", "albert", "edouard", "benoit", "guillaume", "nicolas", "joseph"];
-
+			$scope.maxLiczbaSemestrow = 7;
 			
 			$scope.formyZajec = [ {
 				id : 1,
@@ -77,6 +77,51 @@ angular.module('application.przedmiot', [])
 				    }
 				  );
 			
+			uiGridValidateService.setValidator('lowerOrEqualThan',
+				    function(argument) {
+				      return function(newValue, oldValue, rowEntity, colDef) {
+				        if (!newValue) {
+				          return true; // We should not test for existence here
+				        } else {
+				          return newValue<=argument;
+				        }
+				      };
+				    },
+				    function(argument) {
+				      return 'You can only insert numbers low or equal than: "' + argument + '"';
+				    }
+				  );
+			
+			uiGridValidateService.setValidator('higherOrEqualThan',
+				    function(argument) {
+				      return function(newValue, oldValue, rowEntity, colDef) {
+				        if (!newValue) {
+				          return true; // We should not test for existence here
+				        } else {
+				          return newValue >= argument;
+				        }
+				      };
+				    },
+				    function(argument) {
+				      return 'You can only insert numbers high or equal than: "' + argument + '"';
+				    }
+				  );
+			
+			uiGridValidateService.setValidator('onlyOneForm',
+				    function(argument) {
+				      return function(newValue, oldValue, rowEntity, colDef) {
+				        if (!newValue) {
+				          return true; // We should not test for existence here
+				        } else {				        	
+				          return $.inArray(newValue, $scope.zajecia.forma) == -1;
+				        }
+				      };
+				    },
+				    function(argument) {
+				      return 'You can only insert undefined in table form: "' + argument + '"';
+				    }
+				  );
+			
 			$scope.gridOptions = {};
 			$scope.gridOptions.enableCellEditOnFocus = true;
 			
@@ -92,22 +137,17 @@ angular.module('application.przedmiot', [])
 					editableCellTemplate : 'ui-grid/dropdownEditor',
 					editDropdownValueLabel : 'forma',
 					editDropdownOptionsArray : $scope.formyZajec,
-					validators: {required: true,startWith: 'M'},
+					validators: {required: true, onlyOneForm:true},
 					cellTemplate: 'ui-grid/cellTitleValidator'	
 				}, {
 					field : 'liczba',
 					displayName : i18n.t("przedmiot.lGodzin"),
-					validators: {startWith: 'M'},
-					cellTemplate: '<div class="ui-grid-cell-contents" ng-class="{invalid:grid.validate.isInvalid(row.entity,col.colDef)}" tooltip-html-unsafe={{grid.validate.getFormattedErrors(row.entity,col.colDef)}} tooltip-enable="grid.validate.isInvalid(row.entity,col.colDef)" tooltip-append-to-body="true" tooltip-placement="top" title="TOOLTIP">{{COL_FIELD CUSTOM_FILTERS}}</div>'
+					validators: {required: true, higherOrEqualThan:1, lowerOrEqualThan:3},
+					cellTemplate: 'ui-grid/cellTooltipValidator'
 				}, {
 					field : 'ects',
 					displayName : i18n.t("przedmiot.ects"),
-					validators: {required: true},
-					cellTemplate: 'ui-grid/cellTitleValidator'
-				}, {
-					field : 'cnps',
-					displayName : i18n.t("przedmiot.cnps"),
-					validators: {required: true},
+					validators: {required: true, higherOrEqualThan:11, lowerOrEqualThan:33},
 					cellTemplate: 'ui-grid/cellTitleValidator'
 				}, {
 					field : 'zaliczenie',
@@ -117,7 +157,7 @@ angular.module('application.przedmiot', [])
 				}, {
 					field : 'semestr',
 					displayName : i18n.t("przedmiot.semestr"),
-					validators: {required: true},
+					validators: {required: true, higherOrEqualThan:1, lowerOrEqualThan:$scope.maxLiczbaSemestrow},
 					cellTemplate: 'ui-grid/cellTitleValidator'
 				} ]
 
@@ -163,7 +203,6 @@ angular.module('application.przedmiot', [])
 						"forma" : "",
 						"liczba" : "",
 						"ects" : "",
-						"cnps" : "",
 						"zaliczenie" : '',
 						"semestr" : ''
 					});
