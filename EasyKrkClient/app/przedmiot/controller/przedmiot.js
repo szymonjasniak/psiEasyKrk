@@ -34,6 +34,7 @@ angular.module('application.przedmiot', [])
 			} ];
 
 			$scope.zajecia = [ {
+				"id" : "1",
 				"forma" : '1',
 				"liczba" : '2',
 				"ects" : '3',
@@ -41,6 +42,7 @@ angular.module('application.przedmiot', [])
 				"zaliczenie" : 'E',
 				"semestr" : '1'
 			}, {
+				"id" : "2",
 				"forma" : '3',
 				"liczba" : '2',
 				"ects" : '4',
@@ -48,6 +50,7 @@ angular.module('application.przedmiot', [])
 				"zaliczenie" : 'Z',
 				"semestr" : '1'
 			}, {
+				"id" : "3",
 				"forma" : '2',
 				"liczba" : '2',
 				"ects" : '3',
@@ -143,9 +146,10 @@ angular.module('application.przedmiot', [])
 					field : 'liczba',
 					displayName : i18n.t("przedmiot.lGodzin"),
 					validators: {required: true, higherOrEqualThan:1, lowerOrEqualThan:3},
-					cellTemplate: 'ui-grid/cellTooltipValidator'
+					cellTemplate: 'app/przedmiot/template/cellTooltipValidator'
 				}, {
 					field : 'ects',
+					type: 'number',
 					displayName : i18n.t("przedmiot.ects"),
 					validators: {required: true, higherOrEqualThan:11, lowerOrEqualThan:33},
 					cellTemplate: 'ui-grid/cellTitleValidator'
@@ -156,6 +160,7 @@ angular.module('application.przedmiot', [])
 					cellTemplate: 'ui-grid/cellTitleValidator'
 				}, {
 					field : 'semestr',
+					type: 'number',
 					displayName : i18n.t("przedmiot.semestr"),
 					validators: {required: true, higherOrEqualThan:1, lowerOrEqualThan:$scope.maxLiczbaSemestrow},
 					cellTemplate: 'ui-grid/cellTitleValidator'
@@ -172,6 +177,12 @@ angular.module('application.przedmiot', [])
 		                         'newValue: ' + newValue + '\n' +
 		                         'oldValue: ' + oldValue);*/
 		         });
+		         gridApi.selection.on.rowSelectionChanged($scope, function(
+							rowEntity, colDef, newValue, oldValue) {
+						console.log('rowEntity: ' + rowEntity + '\n'
+								+ 'colDef: ' + colDef + '\n' + 'newValue: '
+								+ newValue + '\n' + 'oldValue: ' + oldValue);
+					});
 		       };
 
 			$scope.gridOptionsEK = {};
@@ -200,6 +211,7 @@ angular.module('application.przedmiot', [])
 
 				} else {
 					$scope.gridOptions.data.push({
+						"id" : "",
 						"forma" : "",
 						"liczba" : "",
 						"ects" : "",
@@ -217,6 +229,31 @@ angular.module('application.przedmiot', [])
 					"kategoria" : ""
 				});
 			};
+			
+			$scope.removeKurs = function() {
+				var selectedData=$scope.gridApi.selection.getSelectedRows();
+				_.forEach(selectedData,usun);
+				
+			};
+			
+			$scope.removeEK = function() {
+				var selectedData=$scope.gridApi.selection.getSelectedRows();
+				_.forEach(selectedData,usunEK);
+				
+			};
+			
+			var usun=function(row){
+				_.remove($scope.zajecia,{
+					id:row.id
+				});
+			}
+			
+			var usunEK=function(row){
+				_.remove($scope.ek,{
+					id:row.id
+				});
+			}
+			
 
 		}])
 .filter('mapFormy', function() {	
