@@ -1,5 +1,4 @@
-{
-	
+{	
 	"kierunkowe":"Course",
 	"macierz":"Matrix MEK-CEK",
 	"plan":"Study Plan",
@@ -30,7 +29,7 @@
 		"dlugaNazwa":"Too long",
 		"wymagane":"Required",
 		"kodPattern":"Invalid code",
-		"kodPattern":"Invalid number for education programm"
+		"programPattern":"Invalid number for education programm"
 		
 	},
 	"efekt":{

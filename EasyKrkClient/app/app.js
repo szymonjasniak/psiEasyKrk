@@ -3,11 +3,11 @@ var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','applica
 .config(function($routeProvider) {
 	$routeProvider
 	.when('/przedmiot/:id', {
-		templateUrl : 'app/przedmiot/przedmiot.html',
+		templateUrl : 'app/przedmiot/template/przedmiot.html',
 		controller  : 'PrzedmiotController'
 	})
 	.when('/listaPrzedmioty', {
-		templateUrl : 'app/przedmiot/listaPrzedmioty.html',
+		templateUrl : 'app/przedmiot/template/listaPrzedmiotow.html',
 		controller  : 'ListaPrzedmiotController'
 	})
 	.when('/kierunkowe',{
