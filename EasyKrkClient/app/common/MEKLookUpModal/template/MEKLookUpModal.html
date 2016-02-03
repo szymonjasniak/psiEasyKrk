@@ -1,0 +1,26 @@
+
+<div class="modal-header">
+	<h3 class="modal-title" translate text="MEK.wyszukiwanie"></h3>
+</div>
+<div class="modal-body">
+	<label for="MEKObszar" translate text="MEK.obszar.obszar" /> <select
+		class="form-control input" id="MEKObszar" type="text" name="MEKObszar"
+		ng-model="obszar">
+		<option ng-repeat="obs in obszary" vaule="{{obs}}" translate
+			text="{{obs}}"></option>
+	</select> <label for="opis" translate text="efekt.opis"></label> <input
+		class="form-control input" id="opis" type="text" name="opis"
+		ng-model="opis">
+	<div class="text-right">
+		<button class="btn btn-primary" style="margin-top: 4px;margin-bottom: 4px" type="button"
+			ng-click="szukajMEK()" translate text="szukaj"></button>
+	</div>
+	<div id="gridMEK" ui-grid="gridOptionsMEK" ui-grid-cellnav
+		ui-grid-selection class="myGrid" external-scopes="gridHandlers">
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

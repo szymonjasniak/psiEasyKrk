@@ -8,10 +8,10 @@
 
 					<label for="programKsztalcenia" translate text="program"></label> <input
 						class="form-control input" id="programKsztalcenia" type="text"
-						name="programKsztalcenia" ng-model="przedmiot.program"> <span
+						name="programKsztalcenia" ng-model="programKsztalcenia"> <span
 						class="input-group-btn" style="vertical-align: bottom">
 						<button class="btn  search-button" type="button"
-							ng-click="showSearch()" style="margin-left: 0px"></button>
+							ng-click="showProgramKsztalceniaLookUp()" style="margin-left: 0px"></button>
 					</span>
 				</div>
 
@@ -20,7 +20,8 @@
 					ng-model="cykl">
 					<option>2015/2016</option>
 					<option>2016/2017</option>
-				</select> <label for="kategoria" translate text="kategoria.kategoria" /> <select
+				</select> 
+				<label for="kategoria" translate text="kategoria.kategoria" /> <select
 					class="form-control input" id="kategoria" type="text"
 					name="kategoria" ng-model="kategoria">
 					<option ng-repeat="kat in kategorie" vaule="{{kat}}" translate
@@ -45,7 +46,7 @@
 				</div>
 				<div class="form-group col-xs-1">
 					<button type="button" id="addData"
-						class="btn btn-success save_button" ng-click="addData()">+</button>
+						class="btn btn-success save_button" ng-click="showMEKLookUp()">+</button>
 					<button type="button" id="addData"
 						class="btn btn-success save_button" ng-click="removeData()">-</button>
 				</div>

@@ -237,19 +237,4 @@ angular.module('application.przedmiot', [])
 	};
 	
 })
-.directive('autocomplete', function($timeout) {
 
-    return {
-        restrict : 'A',
-        require : 'ngModel',
-        link : function(scope, iElement, iAttrs) {
-            iElement.autocomplete({
-                source: scope.prowadzacy,
-                select: function() {
-                    $timeout(function() {
-                      iElement.trigger('input');
-                    }, 0);
-                }
-            });
-    }
-    }});
