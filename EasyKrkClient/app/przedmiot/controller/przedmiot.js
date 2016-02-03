@@ -1,6 +1,6 @@
 angular.module('application.przedmiot', [])
-.controller('PrzedmiotController', ['$scope', 'uiGridValidateService', function ($scope, uiGridValidateService) {
-
+.controller('PrzedmiotController', ['$scope','$window', 'uiGridValidateService', function ($scope, $window,uiGridValidateService) {	
+	
 			$scope.przedmiot = {
 				/*program : 'guest',
 				cykl : '2015/2016',
@@ -14,7 +14,7 @@ angular.module('application.przedmiot', [])
 			
 
 			$scope.prowadzacy = ["john", "bill", "charlie", "robert", "alban", "oscar", "marie", "celine", "brad", "drew", "rebecca", "michel", "francis", "jean", "paul", "pierre", "nicolas", "alfred", "gerard", "louis", "albert", "edouard", "benoit", "guillaume", "nicolas", "joseph"];
-
+			$scope.maxLiczbaSemestrow = 7;
 			
 			$scope.formyZajec = [ {
 				id : 1,
@@ -61,8 +61,70 @@ angular.module('application.przedmiot', [])
 			$scope.moduly = [{nazwa: "Obowiązkowy - TI"}, {nazwa:"Obowiązkowy-IT"},{nazwa:"Wybieralny - IO"}];
 			$scope.cykle = [{nazwa: "2014/2015"}, {nazwa:"2015/2016"},{nazwa:"2016/2017"}];
 
+			
+			uiGridValidateService.setValidator('startWith',
+				    function(argument) {
+				      return function(newValue, oldValue, rowEntity, colDef) {
+				        if (!newValue) {
+				          return true; // We should not test for existence here
+				        } else {
+				          return newValue.startsWith(argument);
+				        }
+				      };
+				    },
+				    function(argument) {
+				      return 'You can only insert names starting with: "' + argument + '"';
+				    }
+				  );
+			
+			uiGridValidateService.setValidator('lowerOrEqualThan',
+				    function(argument) {
+				      return function(newValue, oldValue, rowEntity, colDef) {
+				        if (!newValue) {
+				          return true; // We should not test for existence here
+				        } else {
+				          return newValue<=argument;
+				        }
+				      };
+				    },
+				    function(argument) {
+				      return 'You can only insert numbers low or equal than: "' + argument + '"';
+				    }
+				  );
+			
+			uiGridValidateService.setValidator('higherOrEqualThan',
+				    function(argument) {
+				      return function(newValue, oldValue, rowEntity, colDef) {
+				        if (!newValue) {
+				          return true; // We should not test for existence here
+				        } else {
+				          return newValue >= argument;
+				        }
+				      };
+				    },
+				    function(argument) {
+				      return 'You can only insert numbers high or equal than: "' + argument + '"';
+				    }
+				  );
+			
+			uiGridValidateService.setValidator('onlyOneForm',
+				    function(argument) {
+				      return function(newValue, oldValue, rowEntity, colDef) {
+				        if (!newValue) {
+				          return true; // We should not test for existence here
+				        } else {				        	
+				          return $.inArray(newValue, $scope.zajecia.forma) == -1;
+				        }
+				      };
+				    },
+				    function(argument) {
+				      return 'You can only insert undefined in table form: "' + argument + '"';
+				    }
+				  );
+			
 			$scope.gridOptions = {};
 			$scope.gridOptions.enableCellEditOnFocus = true;
+			
 			$scope.gridOptions = {
 				data : $scope.zajecia,
 				enableHorizontalScrollbar : 0,
@@ -75,22 +137,17 @@ angular.module('application.przedmiot', [])
 					editableCellTemplate : 'ui-grid/dropdownEditor',
 					editDropdownValueLabel : 'forma',
 					editDropdownOptionsArray : $scope.formyZajec,
-					validators: {required: true},
-					cellTemplate: 'ui-grid/cellTitleValidator'
+					validators: {required: true, onlyOneForm:true},
+					cellTemplate: 'ui-grid/cellTitleValidator'	
 				}, {
 					field : 'liczba',
 					displayName : i18n.t("przedmiot.lGodzin"),
-					validators: {required: true},
-					cellTemplate: 'ui-grid/cellTitleValidator'
+					validators: {required: true, higherOrEqualThan:1, lowerOrEqualThan:3},
+					cellTemplate: 'ui-grid/cellTooltipValidator'
 				}, {
 					field : 'ects',
 					displayName : i18n.t("przedmiot.ects"),
-					validators: {required: true},
-					cellTemplate: 'ui-grid/cellTitleValidator'
-				}, {
-					field : 'cnps',
-					displayName : i18n.t("przedmiot.cnps"),
-					validators: {required: true},
+					validators: {required: true, higherOrEqualThan:11, lowerOrEqualThan:33},
 					cellTemplate: 'ui-grid/cellTitleValidator'
 				}, {
 					field : 'zaliczenie',
@@ -100,11 +157,22 @@ angular.module('application.przedmiot', [])
 				}, {
 					field : 'semestr',
 					displayName : i18n.t("przedmiot.semestr"),
-					validators: {required: true},
+					validators: {required: true, higherOrEqualThan:1, lowerOrEqualThan:$scope.maxLiczbaSemestrow},
 					cellTemplate: 'ui-grid/cellTitleValidator'
 				} ]
 
 			};
+						
+			$scope.gridOptions.onRegisterApi = function(gridApi){
+		         //set gridApi on scope
+		         $scope.gridApi = gridApi;
+		         gridApi.validate.on.validationFailed($scope,function(rowEntity, colDef, newValue, oldValue){
+		          /* $window.alert('rowEntity: '+ rowEntity + '\n' +
+		                         'colDef: ' + colDef + '\n' + 
+		                         'newValue: ' + newValue + '\n' +
+		                         'oldValue: ' + oldValue);*/
+		         });
+		       };
 
 			$scope.gridOptionsEK = {};
 			$scope.gridOptionsEK.enableCellEditOnFocus = true;
@@ -135,7 +203,6 @@ angular.module('application.przedmiot', [])
 						"forma" : "",
 						"liczba" : "",
 						"ects" : "",
-						"cnps" : "",
 						"zaliczenie" : '',
 						"semestr" : ''
 					});
