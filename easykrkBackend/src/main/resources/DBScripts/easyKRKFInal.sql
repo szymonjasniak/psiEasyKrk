@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.4.4
 -- Dumped by pg_dump version 9.4.5
--- Started on 2016-02-04 00:56:52
+-- Started on 2016-02-04 12:57:43
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -16,8 +16,8 @@ SET client_min_messages = warning;
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2889 (class 0 OID 12923420)
--- Dependencies: 172
+-- TOC entry 2876 (class 0 OID 12949219)
+-- Dependencies: 173
 -- Data for Name: autor_karty; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -32,8 +32,8 @@ INSERT INTO autor_karty VALUES (8, 'Elżbieta', 'Potocka-Czartoryska', 'dr inż.
 
 
 --
--- TOC entry 2890 (class 0 OID 12923428)
--- Dependencies: 173
+-- TOC entry 2877 (class 0 OID 12949227)
+-- Dependencies: 174
 -- Data for Name: cykl; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -44,8 +44,8 @@ INSERT INTO cykl VALUES (4, '2016/2017', 1);
 
 
 --
--- TOC entry 2891 (class 0 OID 12923433)
--- Dependencies: 174
+-- TOC entry 2878 (class 0 OID 12949232)
+-- Dependencies: 175
 -- Data for Name: forma_prowadzenia_zajec; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -57,8 +57,8 @@ INSERT INTO forma_prowadzenia_zajec VALUES (4, true, 'Seminarium', 'S', 1);
 
 
 --
--- TOC entry 2892 (class 0 OID 12923441)
--- Dependencies: 175
+-- TOC entry 2879 (class 0 OID 12949240)
+-- Dependencies: 176
 -- Data for Name: forma_studiow; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -67,8 +67,8 @@ INSERT INTO forma_studiow VALUES (2, 'niestacjonarne', 1);
 
 
 --
--- TOC entry 2893 (class 0 OID 12923446)
--- Dependencies: 176
+-- TOC entry 2880 (class 0 OID 12949245)
+-- Dependencies: 177
 -- Data for Name: forma_zaliczenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -77,24 +77,15 @@ INSERT INTO forma_zaliczenia VALUES (2, 'zaliczenie', 1);
 
 
 --
--- TOC entry 2943 (class 0 OID 0)
--- Dependencies: 221
--- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: public; Owner: gfvqtnlwqrlqqw
---
-
-SELECT pg_catalog.setval('hibernate_sequence', 1, false);
-
-
---
--- TOC entry 2894 (class 0 OID 12923451)
--- Dependencies: 177
+-- TOC entry 2881 (class 0 OID 12949250)
+-- Dependencies: 178
 -- Data for Name: karta_przedmiotu; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2935 (class 0 OID 12923639)
+-- TOC entry 2921 (class 0 OID 12949434)
 -- Dependencies: 218
 -- Data for Name: wydzial; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -105,8 +96,8 @@ INSERT INTO wydzial VALUES (3, 'Wydział  Chemiczny', 'WCH', 'W03', 1);
 
 
 --
--- TOC entry 2900 (class 0 OID 12923484)
--- Dependencies: 183
+-- TOC entry 2887 (class 0 OID 12949284)
+-- Dependencies: 184
 -- Data for Name: kierunek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -118,16 +109,16 @@ INSERT INTO kierunek VALUES (5, 'Energetyka', 'EN', 1, 2);
 
 
 --
--- TOC entry 2913 (class 0 OID 12923549)
--- Dependencies: 196
+-- TOC entry 2900 (class 0 OID 12949347)
+-- Dependencies: 197
 -- Data for Name: plan_studiow; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2916 (class 0 OID 12923560)
--- Dependencies: 199
+-- TOC entry 2903 (class 0 OID 12949358)
+-- Dependencies: 200
 -- Data for Name: poziom_ksztalcenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -137,8 +128,8 @@ INSERT INTO poziom_ksztalcenia VALUES (3, 'stopień III', 1);
 
 
 --
--- TOC entry 2918 (class 0 OID 12923568)
--- Dependencies: 201
+-- TOC entry 2905 (class 0 OID 12949366)
+-- Dependencies: 202
 -- Data for Name: profil_ksztalcenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -147,31 +138,237 @@ INSERT INTO profil_ksztalcenia VALUES (2, 'profil praktyczny', 1);
 
 
 --
--- TOC entry 2920 (class 0 OID 12923576)
--- Dependencies: 203
--- Data for Name: program_ksztalcenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
---
-
-
-
---
--- TOC entry 2932 (class 0 OID 12923625)
+-- TOC entry 2918 (class 0 OID 12949420)
 -- Dependencies: 215
 -- Data for Name: specjalnosc; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
+INSERT INTO specjalnosc VALUES (1, 'Inżynieria Oprogramowania', 'IO', 1, 1);
+INSERT INTO specjalnosc VALUES (2, 'Inteligentne Systemy Informatyczne', 'ISI', 1, 1);
+INSERT INTO specjalnosc VALUES (3, 'Analityka środowiskowa i żywności', 'ASZ', 1, 4);
+INSERT INTO specjalnosc VALUES (4, 'Chemia związków organicznych i polimerów', 'CZO', 1, 4);
+INSERT INTO specjalnosc VALUES (5, 'Energetyka jądrowa', 'ENJ', 1, 5);
+INSERT INTO specjalnosc VALUES (6, 'Energetyka ze źródeł odnawialnych', 'EZO', 1, 5);
 
 
 --
--- TOC entry 2907 (class 0 OID 12923515)
--- Dependencies: 190
+-- TOC entry 2907 (class 0 OID 12949374)
+-- Dependencies: 204
+-- Data for Name: program_ksztalcenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
+--
+
+INSERT INTO program_ksztalcenia VALUES (4, 'PO-W08-INF- - -NZ-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 3, 2, 1, NULL, 2, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (5, 'PO-W08-INS- - -ST-Ii-WRO- - - - - -PWR1-DWU', 7, 1, 3, 1, 2, NULL, 1, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (6, 'PO-W08-ZZZ- - -NZ-IIM-WRO- - - - - -PWR1-DWU', 4, 1, 3, 2, 3, NULL, 2, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (7, 'PO-W08-ZZZ- - -NZ-II-WRO- - - - - -PWR1-DWU', 6, 1, 3, 2, 3, NULL, 1, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (14, 'PO-W08-INF- - -NZ-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 1, 2, 1, NULL, 2, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (15, 'PO-W08-INS- - -ST-Ii-WRO- - - - - -PWR1-DWU', 7, 1, 1, 1, 2, NULL, 1, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (23, 'PO-W08-INF- - -NZ-Ii-WRO- - - - - -PWR1-DWU', 7, 1, 2, 2, 1, NULL, 1, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (24, 'PO-W08-INF- - -NZ-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 2, 2, 1, NULL, 2, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (25, 'PO-W08-ZZZ- - -NZ-II-WRO- - - - - -PWR1-DWU', 6, 1, 2, 2, 3, NULL, 1, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (32, 'PO-W08-ZZZ- - -NZ-II-WRO- - - - - -PWR1-DWU', 6, 1, 4, 2, 3, NULL, 1, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (3, 'PO-W08-INF- - -NZ-Ii-WRO- - - - - -PWR1-DWU', 7, 1, 3, 2, 1, NULL, 1, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (16, 'PO-W08-ZZZ- - -NZ-IIM-WRO- - - - - -PWR1-DWU', 4, 1, 1, 2, 3, NULL, 2, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (17, 'PO-W08-ZZZ- - -NZ-II-WRO- - - - - -PWR1-DWU', 6, 1, 1, 2, 3, NULL, 1, 1, NULL);
+INSERT INTO program_ksztalcenia VALUES (1, 'PO-W08-INF-IO- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 3, 1, 1, NULL, 2, 1, 1);
+INSERT INTO program_ksztalcenia VALUES (8, 'PO-W03-CHE-ASZ- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 3, 1, 4, NULL, 2, 1, 3);
+INSERT INTO program_ksztalcenia VALUES (9, 'PO-W03-CHE-CZO- -ST-II-WRO- - - - - -PWR1-DWU', 7, 1, 3, 1, 4, NULL, 1, 1, 4);
+INSERT INTO program_ksztalcenia VALUES (12, 'PO-W08-INF-IO- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 1, 1, 1, NULL, 2, 1, 1);
+INSERT INTO program_ksztalcenia VALUES (13, 'PO-W08-INF-ISI- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 1, 1, 1, NULL, 2, 1, 2);
+INSERT INTO program_ksztalcenia VALUES (18, 'PO-W03-CHE-CZO- -ST-II-WRO- - - - - -PWR1-DWU', 7, 1, 2, 1, 4, NULL, 1, 1, 4);
+INSERT INTO program_ksztalcenia VALUES (19, 'PO-W09-ENG-ENJ- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 2, 1, 5, NULL, 2, 1, 5);
+INSERT INTO program_ksztalcenia VALUES (20, 'PO-W09-ENG-EZO- -NZ-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 2, 2, 5, NULL, 2, 1, 6);
+INSERT INTO program_ksztalcenia VALUES (21, 'PO-W08-INF-IO- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 2, 1, 1, NULL, 2, 1, 1);
+INSERT INTO program_ksztalcenia VALUES (22, 'PO-W08-INF-ISI- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 2, 1, 1, NULL, 2, 1, 2);
+INSERT INTO program_ksztalcenia VALUES (26, 'PO-W03-CHE-ASZ- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 2, 1, 4, NULL, 2, 1, 3);
+INSERT INTO program_ksztalcenia VALUES (27, 'PO-W03-CHE-CZO- -ST-II-WRO- - - - - -PWR1-DWU', 7, 1, 2, 1, 4, NULL, 1, 1, 4);
+INSERT INTO program_ksztalcenia VALUES (28, 'PO-W09-ENG-ENJ- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 2, 1, 5, NULL, 2, 1, 5);
+INSERT INTO program_ksztalcenia VALUES (29, 'PO-W09-ENG-EZO- -NZ-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 2, 2, 5, NULL, 2, 1, 6);
+INSERT INTO program_ksztalcenia VALUES (30, 'PO-W08-INF-IO- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 4, 1, 1, NULL, 2, 1, 1);
+INSERT INTO program_ksztalcenia VALUES (31, 'PO-W08-INF-ISI- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 4, 1, 1, NULL, 2, 1, 2);
+INSERT INTO program_ksztalcenia VALUES (33, 'PO-W03-CHE-ASZ- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 4, 1, 4, NULL, 2, 1, 3);
+INSERT INTO program_ksztalcenia VALUES (34, 'PO-W03-CHE-CZO- -ST-II-WRO- - - - - -PWR1-DWU', 7, 1, 4, 1, 4, NULL, 1, 1, 4);
+INSERT INTO program_ksztalcenia VALUES (35, 'PO-W09-ENG-ENJ- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 4, 1, 5, NULL, 2, 1, 5);
+INSERT INTO program_ksztalcenia VALUES (36, 'PO-W09-ENG-EZO- -NZ-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 4, 2, 5, NULL, 2, 1, 6);
+INSERT INTO program_ksztalcenia VALUES (2, 'PO-W08-INF-ISI- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 3, 1, 1, NULL, 2, 1, 2);
+INSERT INTO program_ksztalcenia VALUES (10, 'PO-W09-ENG-ENJ- -ST-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 3, 1, 5, NULL, 2, 1, 5);
+INSERT INTO program_ksztalcenia VALUES (11, 'PO-W09-ENG-EZO- -NZ-IIM-WRO- - - - - -PWR1-DWU', 3, 1, 3, 2, 5, NULL, 2, 1, 6);
+
+
+--
+-- TOC entry 2894 (class 0 OID 12949316)
+-- Dependencies: 191
 -- Data for Name: modul_ksztalcenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
+INSERT INTO modul_ksztalcenia VALUES (1, true, 'obowiązkowy', 1, NULL, 3);
+INSERT INTO modul_ksztalcenia VALUES (2, true, 'kształcenia ogólnego', 1, 1, 3);
+INSERT INTO modul_ksztalcenia VALUES (3, false, 'Przedmioty humanistyczno-menedżerskie', 1, 2, 3);
+INSERT INTO modul_ksztalcenia VALUES (4, false, 'Języki obce', 1, 2, 3);
+INSERT INTO modul_ksztalcenia VALUES (5, false, 'Zajęcia sportowe', 1, 2, 3);
+INSERT INTO modul_ksztalcenia VALUES (6, false, 'Technologie informacyjne', 1, 2, 3);
+INSERT INTO modul_ksztalcenia VALUES (7, true, 'z zakresu nauk podstawowych', 1, 1, 3);
+INSERT INTO modul_ksztalcenia VALUES (8, false, 'Matematyka', 1, 7, 3);
+INSERT INTO modul_ksztalcenia VALUES (9, false, 'Fizyka', 1, 7, 3);
+INSERT INTO modul_ksztalcenia VALUES (10, false, 'Elektronika i miernictwo', 1, 7, 3);
+INSERT INTO modul_ksztalcenia VALUES (11, true, 'Kierunkowe', 1, 1, 3);
+INSERT INTO modul_ksztalcenia VALUES (12, false, 'obowiązkowe', 1, 11, 3);
+INSERT INTO modul_ksztalcenia VALUES (13, true, 'Wybieralny', 1, NULL, 3);
+INSERT INTO modul_ksztalcenia VALUES (14, true, 'kształcenia ogólnego', 1, 13, 3);
+INSERT INTO modul_ksztalcenia VALUES (15, false, 'Przedmioty humanistyczno-menedżerskie', 1, 14, 3);
+INSERT INTO modul_ksztalcenia VALUES (16, false, 'Języki obce', 1, 14, 3);
+INSERT INTO modul_ksztalcenia VALUES (17, false, 'Zajęcia sportowe', 1, 14, 3);
+INSERT INTO modul_ksztalcenia VALUES (18, true, 'z zakresu nauk podstawowych', 1, 13, 3);
+INSERT INTO modul_ksztalcenia VALUES (19, false, 'Matematyka', 1, 18, 3);
+INSERT INTO modul_ksztalcenia VALUES (20, false, 'Fizyka', 1, 18, 3);
+INSERT INTO modul_ksztalcenia VALUES (21, false, 'Chemia', 1, 18, 3);
+INSERT INTO modul_ksztalcenia VALUES (22, true, 'kierunkowe', 1, 13, 3);
+INSERT INTO modul_ksztalcenia VALUES (23, false, 'M_1: Programowanie aplikacji internetowych (', 1, 22, 3);
+INSERT INTO modul_ksztalcenia VALUES (24, false, 'M_2:Multimedia', 1, 22, 3);
+INSERT INTO modul_ksztalcenia VALUES (25, false, 'M_3: Projektowanie baz danych', 1, 22, 3);
+INSERT INTO modul_ksztalcenia VALUES (26, false, 'M_4: Zarządzanie projektami informatycznymi', 1, 22, 3);
+INSERT INTO modul_ksztalcenia VALUES (27, false, 'M_5: Sieci i systemy komputerowe', 1, 22, 3);
+INSERT INTO modul_ksztalcenia VALUES (28, false, 'M_6:Technologie i narzędzia programowania', 1, 22, 3);
+INSERT INTO modul_ksztalcenia VALUES (29, false, 'M_10: Trendy rozwojowe w informatyce', 1, 22, 3);
+INSERT INTO modul_ksztalcenia VALUES (30, false, 'wybieralne', 1, 22, 3);
+INSERT INTO modul_ksztalcenia VALUES (31, true, 'obowiązkowy', 1, NULL, 23);
+INSERT INTO modul_ksztalcenia VALUES (32, true, 'kształcenia ogólnego', 1, 31, 23);
+INSERT INTO modul_ksztalcenia VALUES (33, false, 'Przedmioty humanistyczno-menedżerskie', 1, 32, 23);
+INSERT INTO modul_ksztalcenia VALUES (34, false, 'Języki obce', 1, 32, 23);
+INSERT INTO modul_ksztalcenia VALUES (35, false, 'Zajęcia sportowe', 1, 32, 23);
+INSERT INTO modul_ksztalcenia VALUES (36, false, 'Technologie informacyjne', 1, 32, 23);
+INSERT INTO modul_ksztalcenia VALUES (37, true, 'z zakresu nauk podstawowych', 1, 31, 23);
+INSERT INTO modul_ksztalcenia VALUES (38, false, 'Matematyka', 1, 37, 23);
+INSERT INTO modul_ksztalcenia VALUES (39, false, 'Fizyka', 1, 37, 23);
+INSERT INTO modul_ksztalcenia VALUES (40, false, 'Elektronika i miernictwo', 1, 37, 23);
+INSERT INTO modul_ksztalcenia VALUES (41, true, 'Kierunkowe', 1, 31, 23);
+INSERT INTO modul_ksztalcenia VALUES (42, false, 'obowiązkowe', 1, 41, 23);
+INSERT INTO modul_ksztalcenia VALUES (43, true, 'Wybieralny', 1, NULL, 23);
+INSERT INTO modul_ksztalcenia VALUES (44, true, 'kształcenia ogólnego', 1, 43, 23);
+INSERT INTO modul_ksztalcenia VALUES (45, false, 'Przedmioty humanistyczno-menedżerskie', 1, 44, 23);
+INSERT INTO modul_ksztalcenia VALUES (46, false, 'Języki obce', 1, 44, 23);
+INSERT INTO modul_ksztalcenia VALUES (47, false, 'Zajęcia sportowe', 1, 44, 23);
+INSERT INTO modul_ksztalcenia VALUES (48, true, 'z zakresu nauk podstawowych', 1, 43, 23);
+INSERT INTO modul_ksztalcenia VALUES (49, false, 'Matematyka', 1, 48, 23);
+INSERT INTO modul_ksztalcenia VALUES (50, false, 'Fizyka', 1, 48, 23);
+INSERT INTO modul_ksztalcenia VALUES (51, false, 'Chemia', 1, 48, 23);
+INSERT INTO modul_ksztalcenia VALUES (52, true, 'kierunkowe', 1, 43, 23);
+INSERT INTO modul_ksztalcenia VALUES (53, false, 'M_1: Programowanie aplikacji internetowych (', 1, 52, 23);
+INSERT INTO modul_ksztalcenia VALUES (54, false, 'M_2:Multimedia', 1, 52, 23);
+INSERT INTO modul_ksztalcenia VALUES (55, false, 'M_3: Projektowanie baz danych', 1, 52, 23);
+INSERT INTO modul_ksztalcenia VALUES (56, false, 'M_4: Zarządzanie projektami informatycznymi', 1, 52, 23);
+INSERT INTO modul_ksztalcenia VALUES (57, false, 'M_5: Sieci i systemy komputerowe', 1, 52, 23);
+INSERT INTO modul_ksztalcenia VALUES (58, false, 'M_6:Technologie i narzędzia programowania', 1, 52, 23);
+INSERT INTO modul_ksztalcenia VALUES (59, false, 'M_10: Trendy rozwojowe w informatyce', 1, 52, 23);
+INSERT INTO modul_ksztalcenia VALUES (60, false, 'wybieralne', 1, 52, 23);
+INSERT INTO modul_ksztalcenia VALUES (61, true, 'obowiązkowy', 1, NULL, 30);
+INSERT INTO modul_ksztalcenia VALUES (62, true, 'kształcenia ogólnego', 1, 61, 30);
+INSERT INTO modul_ksztalcenia VALUES (63, true, 'z zakresu nauk podstawowych', 1, 62, 30);
+INSERT INTO modul_ksztalcenia VALUES (64, false, 'Matematyka', 1, 63, 30);
+INSERT INTO modul_ksztalcenia VALUES (67, true, 'Kierunkowe', 1, 61, 30);
+INSERT INTO modul_ksztalcenia VALUES (68, false, 'obowiązkowe', 1, 67, 30);
+INSERT INTO modul_ksztalcenia VALUES (69, true, 'Wybieralny', 1, NULL, 30);
+INSERT INTO modul_ksztalcenia VALUES (70, true, 'kształcenia ogólnego', 1, 69, 30);
+INSERT INTO modul_ksztalcenia VALUES (72, false, 'Języki obce', 1, 70, 30);
+INSERT INTO modul_ksztalcenia VALUES (74, true, 'specjalnościowe obowiązkowe', 1, 69, 30);
+INSERT INTO modul_ksztalcenia VALUES (75, false, 'przedmiot wybieralny I', 1, 69, 30);
+INSERT INTO modul_ksztalcenia VALUES (76, false, 'przedmiot wybieralny II', 1, 69, 30);
+INSERT INTO modul_ksztalcenia VALUES (77, false, 'praktyk', 1, 69, 30);
+INSERT INTO modul_ksztalcenia VALUES (78, false, 'praca dyplomowa', 1, 69, 30);
+INSERT INTO modul_ksztalcenia VALUES (79, true, 'obowiązkowy', 1, NULL, 12);
+INSERT INTO modul_ksztalcenia VALUES (80, true, 'kształcenia ogólnego', 1, 79, 12);
+INSERT INTO modul_ksztalcenia VALUES (81, true, 'z zakresu nauk podstawowych', 1, 80, 12);
+INSERT INTO modul_ksztalcenia VALUES (82, false, 'Matematyka', 1, 81, 12);
+INSERT INTO modul_ksztalcenia VALUES (83, true, 'Kierunkowe', 1, 79, 12);
+INSERT INTO modul_ksztalcenia VALUES (84, false, 'obowiązkowe', 1, 83, 12);
+INSERT INTO modul_ksztalcenia VALUES (85, true, 'Wybieralny', 1, NULL, 12);
+INSERT INTO modul_ksztalcenia VALUES (86, true, 'kształcenia ogólnego', 1, 85, 12);
+INSERT INTO modul_ksztalcenia VALUES (87, false, 'Języki obce', 1, 86, 12);
+INSERT INTO modul_ksztalcenia VALUES (88, true, 'specjalnościowe obowiązkowe', 1, 85, 12);
+INSERT INTO modul_ksztalcenia VALUES (89, false, 'przedmiot wybieralny I', 1, 85, 12);
+INSERT INTO modul_ksztalcenia VALUES (90, false, 'przedmiot wybieralny II', 1, 85, 12);
+INSERT INTO modul_ksztalcenia VALUES (91, false, 'praktyk', 1, 85, 12);
+INSERT INTO modul_ksztalcenia VALUES (92, false, 'praca dyplomowa', 1, 85, 12);
+INSERT INTO modul_ksztalcenia VALUES (93, true, 'obowiązkowy', 1, NULL, 1);
+INSERT INTO modul_ksztalcenia VALUES (94, true, 'kształcenia ogólnego', 1, 93, 1);
+INSERT INTO modul_ksztalcenia VALUES (95, true, 'z zakresu nauk podstawowych', 1, 94, 1);
+INSERT INTO modul_ksztalcenia VALUES (96, false, 'Matematyka', 1, 95, 1);
+INSERT INTO modul_ksztalcenia VALUES (97, true, 'Kierunkowe', 1, 93, 1);
+INSERT INTO modul_ksztalcenia VALUES (98, false, 'obowiązkowe', 1, 97, 1);
+INSERT INTO modul_ksztalcenia VALUES (99, true, 'Wybieralny', 1, NULL, 1);
+INSERT INTO modul_ksztalcenia VALUES (100, true, 'kształcenia ogólnego', 1, 99, 1);
+INSERT INTO modul_ksztalcenia VALUES (101, false, 'Języki obce', 1, 100, 1);
+INSERT INTO modul_ksztalcenia VALUES (102, true, 'specjalnościowe obowiązkowe', 1, 99, 1);
+INSERT INTO modul_ksztalcenia VALUES (103, false, 'przedmiot wybieralny I', 1, 99, 1);
+INSERT INTO modul_ksztalcenia VALUES (104, false, 'przedmiot wybieralny II', 1, 99, 1);
+INSERT INTO modul_ksztalcenia VALUES (105, false, 'praktyk', 1, 99, 1);
+INSERT INTO modul_ksztalcenia VALUES (106, false, 'praca dyplomowa', 1, 99, 1);
+INSERT INTO modul_ksztalcenia VALUES (107, true, 'obowiązkowy', 1, NULL, 21);
+INSERT INTO modul_ksztalcenia VALUES (108, true, 'kształcenia ogólnego', 1, 107, 21);
+INSERT INTO modul_ksztalcenia VALUES (109, true, 'z zakresu nauk podstawowych', 1, 108, 21);
+INSERT INTO modul_ksztalcenia VALUES (110, false, 'Matematyka', 1, 109, 21);
+INSERT INTO modul_ksztalcenia VALUES (111, true, 'Kierunkowe', 1, 107, 21);
+INSERT INTO modul_ksztalcenia VALUES (112, false, 'obowiązkowe', 1, 111, 21);
+INSERT INTO modul_ksztalcenia VALUES (113, true, 'Wybieralny', 1, NULL, 21);
+INSERT INTO modul_ksztalcenia VALUES (114, true, 'kształcenia ogólnego', 1, 113, 21);
+INSERT INTO modul_ksztalcenia VALUES (115, false, 'Języki obce', 1, 114, 21);
+INSERT INTO modul_ksztalcenia VALUES (116, true, 'specjalnościowe obowiązkowe', 1, 113, 21);
+INSERT INTO modul_ksztalcenia VALUES (117, false, 'przedmiot wybieralny I', 1, 113, 21);
+INSERT INTO modul_ksztalcenia VALUES (118, false, 'przedmiot wybieralny II', 1, 113, 21);
+INSERT INTO modul_ksztalcenia VALUES (119, false, 'praktyk', 1, 113, 21);
+INSERT INTO modul_ksztalcenia VALUES (120, false, 'praca dyplomowa', 1, 113, 21);
+INSERT INTO modul_ksztalcenia VALUES (121, true, 'obowiązkowy', 1, NULL, 22);
+INSERT INTO modul_ksztalcenia VALUES (122, true, 'kształcenia ogólnego', 1, 121, 22);
+INSERT INTO modul_ksztalcenia VALUES (123, true, 'z zakresu nauk podstawowych', 1, 122, 22);
+INSERT INTO modul_ksztalcenia VALUES (124, false, 'Matematyka', 1, 123, 22);
+INSERT INTO modul_ksztalcenia VALUES (125, true, 'Kierunkowe', 1, 121, 22);
+INSERT INTO modul_ksztalcenia VALUES (126, false, 'obowiązkowe', 1, 125, 22);
+INSERT INTO modul_ksztalcenia VALUES (127, true, 'Wybieralny', 1, NULL, 22);
+INSERT INTO modul_ksztalcenia VALUES (128, true, 'kształcenia ogólnego', 1, 127, 22);
+INSERT INTO modul_ksztalcenia VALUES (129, false, 'Języki obce', 1, 128, 22);
+INSERT INTO modul_ksztalcenia VALUES (130, true, 'specjalnościowe obowiązkowe', 1, 127, 22);
+INSERT INTO modul_ksztalcenia VALUES (131, false, 'praktyk', 1, 127, 22);
+INSERT INTO modul_ksztalcenia VALUES (132, false, 'praca dyplomowa', 1, 127, 22);
+INSERT INTO modul_ksztalcenia VALUES (133, true, 'obowiązkowy', 1, NULL, 2);
+INSERT INTO modul_ksztalcenia VALUES (134, true, 'kształcenia ogólnego', 1, 133, 2);
+INSERT INTO modul_ksztalcenia VALUES (135, true, 'z zakresu nauk podstawowych', 1, 134, 2);
+INSERT INTO modul_ksztalcenia VALUES (136, false, 'Matematyka', 1, 135, 2);
+INSERT INTO modul_ksztalcenia VALUES (137, true, 'Kierunkowe', 1, 133, 2);
+INSERT INTO modul_ksztalcenia VALUES (138, false, 'obowiązkowe', 1, 137, 2);
+INSERT INTO modul_ksztalcenia VALUES (139, true, 'Wybieralny', 1, NULL, 2);
+INSERT INTO modul_ksztalcenia VALUES (140, true, 'kształcenia ogólnego', 1, 139, 2);
+INSERT INTO modul_ksztalcenia VALUES (141, false, 'Języki obce', 1, 140, 2);
+INSERT INTO modul_ksztalcenia VALUES (142, true, 'specjalnościowe obowiązkowe', 1, 139, 2);
+INSERT INTO modul_ksztalcenia VALUES (143, false, 'praktyk', 1, 139, 2);
+INSERT INTO modul_ksztalcenia VALUES (144, false, 'praca dyplomowa', 1, 139, 2);
+INSERT INTO modul_ksztalcenia VALUES (145, true, 'obowiązkowy', 1, NULL, 13);
+INSERT INTO modul_ksztalcenia VALUES (146, true, 'kształcenia ogólnego', 1, 145, 13);
+INSERT INTO modul_ksztalcenia VALUES (147, true, 'z zakresu nauk podstawowych', 1, 146, 13);
+INSERT INTO modul_ksztalcenia VALUES (148, false, 'Matematyka', 1, 147, 13);
+INSERT INTO modul_ksztalcenia VALUES (149, true, 'Kierunkowe', 1, 145, 13);
+INSERT INTO modul_ksztalcenia VALUES (150, false, 'obowiązkowe', 1, 149, 13);
+INSERT INTO modul_ksztalcenia VALUES (151, true, 'Wybieralny', 1, NULL, 13);
+INSERT INTO modul_ksztalcenia VALUES (152, true, 'kształcenia ogólnego', 1, 151, 13);
+INSERT INTO modul_ksztalcenia VALUES (153, false, 'Języki obce', 1, 152, 13);
+INSERT INTO modul_ksztalcenia VALUES (154, true, 'specjalnościowe obowiązkowe', 1, 151, 13);
+INSERT INTO modul_ksztalcenia VALUES (155, false, 'praktyk', 1, 151, 13);
+INSERT INTO modul_ksztalcenia VALUES (156, false, 'praca dyplomowa', 1, 151, 13);
+INSERT INTO modul_ksztalcenia VALUES (157, true, 'obowiązkowy', 1, NULL, 31);
+INSERT INTO modul_ksztalcenia VALUES (158, true, 'kształcenia ogólnego', 1, 157, 31);
+INSERT INTO modul_ksztalcenia VALUES (159, true, 'z zakresu nauk podstawowych', 1, 158, 31);
+INSERT INTO modul_ksztalcenia VALUES (160, false, 'Matematyka', 1, 159, 31);
+INSERT INTO modul_ksztalcenia VALUES (161, true, 'Kierunkowe', 1, 157, 31);
+INSERT INTO modul_ksztalcenia VALUES (162, false, 'obowiązkowe', 1, 161, 31);
+INSERT INTO modul_ksztalcenia VALUES (163, true, 'Wybieralny', 1, NULL, 31);
+INSERT INTO modul_ksztalcenia VALUES (164, true, 'kształcenia ogólnego', 1, 163, 31);
+INSERT INTO modul_ksztalcenia VALUES (165, false, 'Języki obce', 1, 164, 31);
+INSERT INTO modul_ksztalcenia VALUES (166, true, 'specjalnościowe obowiązkowe', 1, 163, 31);
+INSERT INTO modul_ksztalcenia VALUES (167, false, 'praktyk', 1, 163, 31);
+INSERT INTO modul_ksztalcenia VALUES (168, false, 'praca dyplomowa', 1, 163, 31);
 
 
 --
--- TOC entry 2925 (class 0 OID 12923594)
+-- TOC entry 2911 (class 0 OID 12949389)
 -- Dependencies: 208
 -- Data for Name: przedmiot; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -179,16 +376,16 @@ INSERT INTO profil_ksztalcenia VALUES (2, 'profil praktyczny', 1);
 
 
 --
--- TOC entry 2895 (class 0 OID 12923456)
--- Dependencies: 178
+-- TOC entry 2882 (class 0 OID 12949255)
+-- Dependencies: 179
 -- Data for Name: karta_przedmiotu_przedmioty; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2896 (class 0 OID 12923459)
--- Dependencies: 179
+-- TOC entry 2883 (class 0 OID 12949259)
+-- Dependencies: 180
 -- Data for Name: kategoriaek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -198,8 +395,8 @@ INSERT INTO kategoriaek VALUES (2, 'umiejętności', 1);
 
 
 --
--- TOC entry 2897 (class 0 OID 12923464)
--- Dependencies: 180
+-- TOC entry 2884 (class 0 OID 12949264)
+-- Dependencies: 181
 -- Data for Name: kek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -242,8 +439,8 @@ dzia', 1, 3, NULL, NULL);
 
 
 --
--- TOC entry 2908 (class 0 OID 12923524)
--- Dependencies: 191
+-- TOC entry 2895 (class 0 OID 12949322)
+-- Dependencies: 192
 -- Data for Name: obszar_ksztalcenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -258,8 +455,8 @@ INSERT INTO obszar_ksztalcenia VALUES (8, 'nauki_artystyczne', 1);
 
 
 --
--- TOC entry 2905 (class 0 OID 12923501)
--- Dependencies: 188
+-- TOC entry 2892 (class 0 OID 12949302)
+-- Dependencies: 189
 -- Data for Name: mek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
@@ -332,6 +529,7 @@ INSERT INTO mek VALUES ('H1P_W09', 'ma podstawową wiedzę o bezpieczeństwie i 
 INSERT INTO mek VALUES ('H1P_W10', 'zna i rozumie podstawowe pojęcia i zasady z zakresu ochrony własności przemysłowej i prawa autorskiego', 1, 1, 3, 1, 2);
 INSERT INTO mek VALUES ('H2A_K01', 'rozumie potrzebę uczenia się przez całe życie, potrafi inspirować i organizować proces uczenia się innych osób', 1, 3, 3, 2, 1);
 INSERT INTO mek VALUES ('H2A_K02', 'potrafi współdziałać i pracować w grupie, przyjmując w niej różne role', 1, 3, 3, 2, 1);
+INSERT INTO mek VALUES ('M1_U07', 'potrafi identyfikować błędy i zaniedbania w praktyce', 1, 2, 6, 1, 1);
 INSERT INTO mek VALUES ('H2A_K03', 'potrafi odpowiednio określić priorytety służące realizacji określonego przez siebie lub innych zadania', 1, 3, 3, 2, 1);
 INSERT INTO mek VALUES ('H2A_K04', 'prawidłowo identyfikuje i rozstrzyga dylematy związane z wykonywaniem zawodu', 1, 3, 3, 2, 1);
 INSERT INTO mek VALUES ('H2A_K05', 'aktywnie uczestniczy w działaniach na rzecz zachowania dziedzictwa kulturowego regionu, kraju, Europy', 1, 3, 3, 2, 1);
@@ -395,7 +593,6 @@ INSERT INTO mek VALUES ('M1_U03', 'potrafi komunikować się z jednostką oraz g
 INSERT INTO mek VALUES ('M1_U04', 'potrafi identyfikować problemy pacjenta, klienta oraz grupy społecznej', 1, 2, 6, 1, 1);
 INSERT INTO mek VALUES ('M1_U05', 'potrafi podjąć działania diagnostyczne, profilaktyczne, pielęgnacyjne, terapeutyczne i edukacyjne odpowiadające potrzebom jednostki oraz grupy społecznej właściwe dla studiowanego kierunku studiów', 1, 2, 6, 1, 1);
 INSERT INTO mek VALUES ('M1_U06', 'potrafi korzystać z technik informacyjnych w celu pozyskiwania i przechowywania danych', 1, 2, 6, 1, 1);
-INSERT INTO mek VALUES ('M1_U07', 'potrafi identyfikować błędy i zaniedbania w praktyce', 1, 2, 6, 1, 1);
 INSERT INTO mek VALUES ('M1_U08', 'potrafi interpretować dane liczbowe związane z zawodem właściwym dla studiowanego kierunku studiów', 1, 2, 6, 1, 1);
 INSERT INTO mek VALUES ('M1_U09', 'potrafi prowadzić dokumentację dotyczącą jednostek, instytucji oraz podejmowanych działań', 1, 2, 6, 1, 1);
 INSERT INTO mek VALUES ('M1_U10', 'potrafi planować, projektować i realizować działania z zakresu dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, z uwzględnieniem obowiązujących norm oraz dostępnych warunków', 1, 2, 6, 1, 1);
@@ -432,6 +629,7 @@ INSERT INTO mek VALUES ('M2_U06', 'potrafi posługiwać się wyspecjalizowanymi 
 INSERT INTO mek VALUES ('M2_U07', 'potrafi identyfikować błędy i zaniedbania w praktyce', 1, 2, 6, 2, 1);
 INSERT INTO mek VALUES ('M2_U08', 'potrafi współdziałać w planowaniu i realizacji zadań badawczych w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów', 1, 2, 6, 2, 1);
 INSERT INTO mek VALUES ('M2_U10', 'posiada zaawansowane umiejętności kierowania i realizowania zajęć rekreacyjnych, zdrowotnych, sportowych lub estetyki zachowań ruchowych w pracy z różnymi grupami społecznymi', 1, 2, 6, 2, 1);
+INSERT INTO mek VALUES ('P1A_W02', 'w interpretacji zjawisk i procesów przyrodniczych opiera się na podstawach empirycznych, rozumiejąc w pełni znaczenie metod matematycznych i statystycznych', 1, 1, 2, 1, 1);
 INSERT INTO mek VALUES ('M2_U11', 'posiada specjalistyczne umiejętności ruchowe z zakresu wybranych form aktywności fizycznej (rekreacyjnych, zdrowotnych, sportowych i estetycznych) w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów', 1, 2, 6, 2, 1);
 INSERT INTO mek VALUES ('M2_U12', 'potrafi samodzielnie modyfikować i tworzyć różne formy aktywności fizycznej w zależności od warunków środowiskowych i klimatycznych', 1, 2, 6, 2, 1);
 INSERT INTO mek VALUES ('M2_U13', 'posiada umiejętność przygotowania pisemnego opracowania w zakresie dyscypliny naukowej, właściwej dla studiowanego kierunku studiów', 1, 2, 6, 2, 1);
@@ -469,7 +667,6 @@ INSERT INTO mek VALUES ('P1A_U10', 'posiada umiejętność wystąpień ustnych w
 INSERT INTO mek VALUES ('P1A_U11', 'uczy się samodzielnie w sposób ukierunkowany', 1, 2, 2, 1, 1);
 INSERT INTO mek VALUES ('P1A_U12', 'ma umiejętności językowe w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, zgodne z wymaganiami określonymi dla poziomu B2 Europejskiego Systemu Opisu Kształcenia Językowego', 1, 2, 2, 1, 1);
 INSERT INTO mek VALUES ('P1A_W01', 'rozumie podstawowe zjawiska i procesy przyrodnicze', 1, 1, 2, 1, 1);
-INSERT INTO mek VALUES ('P1A_W02', 'w interpretacji zjawisk i procesów przyrodniczych opiera się na podstawach empirycznych, rozumiejąc w pełni znaczenie metod matematycznych i statystycznych', 1, 1, 2, 1, 1);
 INSERT INTO mek VALUES ('P1A_W03', 'ma wiedzę z zakresu matematyki, fizyki i chemii niezbędną dla zrozumienia podstawowych zjawisk i procesów przyrodniczych', 1, 1, 2, 1, 1);
 INSERT INTO mek VALUES ('P1A_W04', 'ma wiedzę w zakresie najważniejszych problemów z zakresu dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów oraz zna ich powiązania z innymi dyscyplinami przyrodniczymi', 1, 1, 2, 1, 1);
 INSERT INTO mek VALUES ('P1A_W05', 'ma wiedzę w zakresie podstawowych kategorii pojęciowych i terminologii przyrodniczej oraz ma znajomość rozwoju dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów i stosowanych w nich metod badawczych', 1, 1, 2, 1, 1);
@@ -611,6 +808,7 @@ INSERT INTO mek VALUES ('R1P_K08', 'potrafi myśleć i działać w sposób przed
 INSERT INTO mek VALUES ('R1P_U01', 'posiada umiejętność wyszukiwania, zrozumienia, analizy i wykorzystywania potrzebnych informacji pochodzących z różnych źródeł i w różnych formach właściwych dla studiowanego kierunku studiów', 1, 2, 7, 1, 2);
 INSERT INTO mek VALUES ('R1P_U02', 'posiada umiejętność precyzyjnego porozumiewania się z różnymi podmiotami w formie werbalnej, pisemnej i graficznej', 1, 2, 7, 1, 2);
 INSERT INTO mek VALUES ('R1P_U03', 'stosuje podstawowe technologie informatyczne w zakresie pozyskiwania i przetwarzania informacji z zakresu produkcji rolniczej i leśnej', 1, 2, 7, 1, 2);
+INSERT INTO mek VALUES ('S1A_U08', 'posiada umiejętność rozumienia i analizowania zjawisk społecznych', 1, 2, 4, 1, 1);
 INSERT INTO mek VALUES ('R1P_U04', 'wykonuje pod kierunkiem opiekuna naukowego proste zadanie inżynierskie lub projektowe dotyczące szeroko rozumianego rolnictwa, prawidłowo interpretuje rezultaty i wyciąga wnioski', 1, 2, 7, 1, 2);
 INSERT INTO mek VALUES ('R1P_U05', 'dokonuje identyfikacji i standardowej analizy zjawisk wpływających na produkcję, jakość żywności, zdrowie zwierząt i ludzi, stan środowiska naturalnego i zasobów naturalnych oraz wykazuje znajomość zastosowania typowych technik i ich optymalizacji dostosowanych do studiowanego kierunku studiów', 1, 2, 7, 1, 2);
 INSERT INTO mek VALUES ('R1P_U06', 'posiada zdolność podejmowania standardowych działań, z wykorzystaniem odpowiednich metod, technik, technologii, narzędzi i materiałów, rozwiązujących problemy w zakresie produkcji żywności, zdrowia zwierząt, stanu środowiska naturalnego i zasobów naturalnych oraz technicznych zadań inżynierskich, zgodnych ze studiowanym kierunkiem studiów', 1, 2, 7, 1, 2);
@@ -627,6 +825,7 @@ INSERT INTO mek VALUES ('R1P_W03', 'ma ogólną wiedzę na temat biosfery, chemi
 INSERT INTO mek VALUES ('R1P_W04', 'ma ogólną wiedzę o funkcjonowaniu organizmów żywych na różnych poziomach złożoności, przyrodzie nieożywionej oraz o technicznych zadaniach inżynierskich dostosowanych do studiowanego kierunku studiów', 1, 1, 7, 1, 2);
 INSERT INTO mek VALUES ('R1P_W05', 'wykazuje znajomość podstawowych metod, technik, technologii, narzędzi, materiałów i ich praktycznych zastosowań pozwalających wykorzystać i kształtować potencjał przyrody w celu poprawy jakości życia człowieka', 1, 1, 7, 1, 2);
 INSERT INTO mek VALUES ('R1P_W06', 'ma wiedzę o roli i znaczeniu środowiska przyrodniczego i zrównoważonego użytkowania różnorodności biologicznej oraz o jego zagrożeniach', 1, 1, 7, 1, 2);
+INSERT INTO mek VALUES ('S1A_U07', 'analizuje proponowane rozwiązania konkretnych problemów i proponuje w tym zakresie odpowiednie rozstrzygnięcia', 1, 2, 4, 1, 1);
 INSERT INTO mek VALUES ('R1P_W08', 'ma podstawową wiedzę w zakresie utrzymania urządzeń, obiektów i systemów technicznych i technologii typowych dla obszarów rolniczych, leśnych i przetwórstwa rolno-spożywcze-go dostosowaną do studiowanego kierunku studiów', 1, 1, 7, 1, 2);
 INSERT INTO mek VALUES ('R1P_W10', 'zna i rozumie podstawowe pojęcia i zasady z zakresu ochrony własności przemysłowej i prawa autorskiego; potrafi korzystać z zasobów informacji patentowej', 1, 1, 7, 1, 2);
 INSERT INTO mek VALUES ('R1P_W11', 'zna i potrafi stosować uwarunkowania ekonomiczno-prawne tworzenia i rozwoju form indywidualnej przedsiębiorczości w zakresie świadczenia usług z zakresu dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów', 1, 1, 7, 1, 2);
@@ -701,8 +900,7 @@ INSERT INTO mek VALUES ('S1A_U03', 'potrafi właściwie analizować przyczyny i 
 INSERT INTO mek VALUES ('S1A_U04', 'potrafi prognozować procesy i zjawiska społeczne (kulturowe, polityczne, prawne, ekonomiczne) z wykorzystaniem standardowych metod i narzędzi w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów', 1, 2, 4, 1, 1);
 INSERT INTO mek VALUES ('S1A_U05', 'prawidłowo posługuje się systemami normatywnymi oraz wybranymi normami i regułami (prawnymi, zawodowymi, moralnymi) w celu rozwiązania konkretnego zadania z zakresu dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów', 1, 2, 4, 1, 1);
 INSERT INTO mek VALUES ('S1A_U06', 'wykorzystuje zdobytą wiedzę do rozstrzygania dylematów pojawiających się w pracy zawodowej', 1, 2, 4, 1, 1);
-INSERT INTO mek VALUES ('S1A_U07', 'analizuje proponowane rozwiązania konkretnych problemów i proponuje w tym zakresie odpowiednie rozstrzygnięcia', 1, 2, 4, 1, 1);
-INSERT INTO mek VALUES ('S1A_U08', 'posiada umiejętność rozumienia i analizowania zjawisk społecznych', 1, 2, 4, 1, 1);
+INSERT INTO mek VALUES ('T2A_W02', 'ma szczegółową wiedzę w zakresie kierunków studiów powiązanych ze studiowanym kierunkiem studiów', 1, 1, 1, 2, 1);
 INSERT INTO mek VALUES ('S1A_U09', 'posiada umiejętność przygotowania typowych prac pisemnych w języku polskim i języku obcym, uznawanym za podstawowy dla dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, dotyczących zagadnień szczegółowych, z wykorzystaniem podstawowych ujęć teoretycznych, a także różnych źródeł', 1, 2, 4, 1, 1);
 INSERT INTO mek VALUES ('S1A_U10', 'posiada umiejętność przygotowania wystąpień ustnych, w języku polskim i języku obcym, w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, dotyczących zagadnień szczegółowych, z wykorzystaniem podstawowych ujęć teoretycznych, a także różnych źródeł', 1, 2, 4, 1, 1);
 INSERT INTO mek VALUES ('S1A_U11', 'ma umiejętności językowe w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, zgodne z wymaganiami określonymi dla poziomu B2 Europejskiego Systemu Opisu Kształcenia Językowego', 1, 2, 4, 1, 1);
@@ -733,6 +931,7 @@ INSERT INTO mek VALUES ('S1P_U06', 'posiada umiejętność wykorzystania zdobyte
 INSERT INTO mek VALUES ('S1P_U07', 'posiada umiejętność analizy proponowanego rozwiązania konkretnych problemów i proponuje odpowiednie rozstrzygnięcia w tym zakresie, posiada umiejętność wdrażania proponowanych rozwiązań', 1, 2, 4, 1, 2);
 INSERT INTO mek VALUES ('S1P_U08', 'posiada umiejętność rozumienia i analizowania zjawisk społecznych', 1, 2, 4, 1, 2);
 INSERT INTO mek VALUES ('S1P_U09', 'posiada umiejętność przygotowania typowych prac pisemnych w języku polskim i języku obcym, uznawanym za podstawowy dla dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, dotyczących zagadnień szczegółowych, z wykorzystaniem podstawowych ujęć teoretycznych, a także różnych źródeł', 1, 2, 4, 1, 2);
+INSERT INTO mek VALUES ('S2A_W02', 'ma rozszerzoną wiedzę o różnych rodzajach struktur i instytucji społecznych oraz pogłębioną w odniesieniu do wybranych struktur i instytucji społecznych', 1, 1, 4, 2, 1);
 INSERT INTO mek VALUES ('S1P_U10', 'posiada umiejętność przygotowania wystąpień ustnych, w języku polskim i języku obcym, w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, dotyczących zagadnień szczegółowych, z wykorzystaniem podstawowych ujęć teoretycznych, a także różnych źródeł', 1, 2, 4, 1, 2);
 INSERT INTO mek VALUES ('S1P_U11', 'ma umiejętności językowe w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, zgodne z wymaganiami określonymi dla poziomu B2 Europejskiego Systemu Opisu Kształcenia Językowego', 1, 2, 4, 1, 2);
 INSERT INTO mek VALUES ('S1P_W01', 'ma podstawową wiedzę o charakterze nauk społecznych, ich miejscu w systemie nauk i relacjach do innych nauk', 1, 1, 4, 1, 2);
@@ -765,7 +964,6 @@ INSERT INTO mek VALUES ('S2A_U09', 'posiada pogłębioną umiejętność przygot
 INSERT INTO mek VALUES ('S2A_U10', 'posiada pogłębioną umiejętność przygotowania wystąpień ustnych, w języku polskim i języku obcym, w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów lub w obszarze leżącym na pograniczu różnych dyscyplin naukowych', 1, 2, 4, 2, 1);
 INSERT INTO mek VALUES ('S2A_U11', 'ma umiejętności językowe w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, zgodne z wymaganiami określonymi dla poziomu B2+ Europejskiego Systemu Opisu Kształcenia Językowego', 1, 2, 4, 2, 1);
 INSERT INTO mek VALUES ('S2A_W01', 'ma rozszerzoną wiedzę o charakterze nauk społecznych, ich miejscu w systemie nauk i relacjach do innych nauk', 1, 1, 4, 2, 1);
-INSERT INTO mek VALUES ('S2A_W02', 'ma rozszerzoną wiedzę o różnych rodzajach struktur i instytucji społecznych oraz pogłębioną w odniesieniu do wybranych struktur i instytucji społecznych', 1, 1, 4, 2, 1);
 INSERT INTO mek VALUES ('S2A_W03', 'ma pogłębioną wiedzę o relacjach między strukturami i instytucjami społecznymi w odniesieniu do wybranych struktur i instytucji społecznych i kategorii więzi społecznych lub wybranych kręgów kulturowych', 1, 1, 4, 2, 1);
 INSERT INTO mek VALUES ('S2A_W04', 'ma wiedzę o różnych rodzajach więzi społecznych i występujących między nimi prawidłowościach oraz wiedzę pogłębioną w odniesieniu do wybranych kategorii więzi społecznych', 1, 1, 4, 2, 1);
 INSERT INTO mek VALUES ('S2A_W05', 'ma rozszerzoną wiedzę o człowieku jako twórcy kultury, pogłębioną w odniesieniu do wybranych obszarów aktywności człowieka', 1, 1, 4, 2, 1);
@@ -796,6 +994,7 @@ INSERT INTO mek VALUES ('S2P_U10', 'posiada pogłębioną umiejętność przygot
 INSERT INTO mek VALUES ('S2P_U11', 'ma umiejętności językowe w zakresie dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów, zgodne z wymaganiami określonymi dla poziomu B2+ Europejskiego Systemu Opisu Kształcenia Językowego', 1, 2, 4, 2, 2);
 INSERT INTO mek VALUES ('S2P_W01', 'ma rozszerzoną wiedzę o charakterze nauk społecznych, ich miejscu w systemie nauk i relacjach do innych nauk', 1, 1, 4, 2, 2);
 INSERT INTO mek VALUES ('S2P_W02', 'ma rozszerzoną wiedzę o typowych rodzajach struktur i instytucji społecznych oraz wiedzę pogłębioną w odniesieniu do wybranych struktur i instytucji społecznych lub ich elementów oraz konkretnych rodzajów organizacji', 1, 1, 4, 2, 2);
+INSERT INTO mek VALUES ('T2A_W03', 'ma uporządkowaną, podbudowaną teoretycznie wiedzę ogólną obejmującą kluczowe zagadnienia z zakresu studiowanego kierunku studiów', 1, 1, 1, 2, 1);
 INSERT INTO mek VALUES ('S2P_W03', 'ma pogłębioną wiedzę o relacjach między strukturami i instytucjami społecznymi i ich elementami w odniesieniu do wybranych struktur i instytucji społecznych i kategorii więzi społecznych, względnie do wybranych kręgów kulturowych', 1, 1, 4, 2, 2);
 INSERT INTO mek VALUES ('S2P_W04', 'ma rozszerzoną wiedzę o różnych rodzajach więzi społecznych oraz wiedzę pogłębioną w odniesieniu do wybranych kategorii więzi społecznych i rządzących nimi prawidłowości', 1, 1, 4, 2, 2);
 INSERT INTO mek VALUES ('S2P_W05', 'ma rozszerzoną wiedzę o człowieku jako twórcy kultury, pogłębioną w odniesieniu do wybranych obszarów aktywności człowieka', 1, 1, 4, 2, 2);
@@ -860,6 +1059,7 @@ INSERT INTO mek VALUES ('T1P_U11', 'ma umiejętności niezbędne do pracy w śro
 INSERT INTO mek VALUES ('T1P_U12', 'potrafi dokonać wstępnej analizy ekonomicznej podejmowanych działań inżynierskich', 1, 2, 1, 1, 2);
 INSERT INTO mek VALUES ('T1P_U13', 'potrafi dokonać krytycznej analizy sposobu funkcjonowania i ocenić - zwłaszcza w powiązaniu ze studiowanym kierunkiem studiów - istniejące rozwiązania techniczne, w szczególności urządzenia, obiekty, systemy, procesy, usługi', 1, 2, 1, 1, 2);
 INSERT INTO mek VALUES ('T1P_U14', 'potrafi dokonać identyfikacji i sformułować specyfikację prostych zadań inżynierskich o charakterze praktycznym, charakterystycznych dla studiowanego kierunku studiów', 1, 2, 1, 1, 2);
+INSERT INTO mek VALUES ('T2A_W04', 'ma podbudowaną teoretycznie szczegółową wiedzę związaną z wybranymi zagadnieniami z zakresu studiowanego kierunku studiów', 1, 1, 1, 2, 1);
 INSERT INTO mek VALUES ('T1P_U15', 'potrafi ocenić przydatność rutynowych metod i narzędzi służą-cych do rozwiązania prostego zadania inżynierskiego o charakterze praktycznym, charakterystycznego dla studiowanego kierunku studiów oraz wybrać i zastosować właściwą metodę (procedurę) i narzędzia', 1, 2, 1, 1, 2);
 INSERT INTO mek VALUES ('T1P_U16', 'potrafi - zgodnie z zadaną specyfikacją - zaprojektować oraz zrealizować proste urządzenie, obiekt, system lub proces, typowe dla studiowanego kierunku studiów, używając właści-wych metod, technik i narzędzi', 1, 2, 1, 1, 2);
 INSERT INTO mek VALUES ('T1P_W01', 'ma wiedzę z zakresu matematyki, fizyki, chemii i innych obszarów właściwych dla studiowanego kierunku studiów niezbędną do formułowania i rozwiązywania typowych, prostych zadań z zakresu studiowanego kierunku studiów', 1, 1, 1, 1, 2);
@@ -894,9 +1094,6 @@ INSERT INTO mek VALUES ('T2A_U15', 'potrafi dokonać krytycznej analizy sposobu 
 INSERT INTO mek VALUES ('T2A_U16', 'potrafi zaproponować ulepszenia (usprawnienia) istniejących rozwiązań technicznych', 1, 2, 1, 2, 1);
 INSERT INTO mek VALUES ('T2A_U17', 'potrafi dokonać identyfikacji i sformułować specyfikację złożonych zadań inżynierskich, charakterystycznych dla studiowanego kierunku studiów, w tym zadań nietypowych, uwzględniając ich aspekty pozatechniczne', 1, 2, 1, 2, 1);
 INSERT INTO mek VALUES ('T2A_W01', 'ma rozszerzoną i pogłębioną wiedzę z zakresu matematyki, fizyki, chemii i innych obszarów właściwych dla studiowanego kierunku studiów przydatną do formułowania i rozwiązywania złożonych zadań z zakresu studiowanego kierunku studiów', 1, 1, 1, 2, 1);
-INSERT INTO mek VALUES ('T2A_W02', 'ma szczegółową wiedzę w zakresie kierunków studiów powiązanych ze studiowanym kierunkiem studiów', 1, 1, 1, 2, 1);
-INSERT INTO mek VALUES ('T2A_W03', 'ma uporządkowaną, podbudowaną teoretycznie wiedzę ogólną obejmującą kluczowe zagadnienia z zakresu studiowanego kierunku studiów', 1, 1, 1, 2, 1);
-INSERT INTO mek VALUES ('T2A_W04', 'ma podbudowaną teoretycznie szczegółową wiedzę związaną z wybranymi zagadnieniami z zakresu studiowanego kierunku studiów', 1, 1, 1, 2, 1);
 INSERT INTO mek VALUES ('T2A_W05', 'ma wiedzę o trendach rozwojowych i najistotniejszych nowych osiągnięciach z zakresu dziedzin nauki i dyscyplin naukowych, właściwych dla studiowanego kierunku studiów i pokrewnych dyscyplin naukowych', 1, 1, 1, 2, 1);
 INSERT INTO mek VALUES ('T2A_W06', 'ma podstawową wiedzę o cyklu życia urządzeń, obiektów i systemów technicznych', 1, 1, 1, 2, 1);
 INSERT INTO mek VALUES ('T2A_W07', 'zna podstawowe metody, techniki, narzędzia i materiały stosowane przy rozwiązywaniu złożonych zadań inżynierskich z zakresu studiowanego kierunku studiów', 1, 1, 1, 2, 1);
@@ -1041,111 +1238,191 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2898 (class 0 OID 12923472)
--- Dependencies: 181
+-- TOC entry 2885 (class 0 OID 12949272)
+-- Dependencies: 182
 -- Data for Name: kek_mek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2911 (class 0 OID 12923535)
--- Dependencies: 194
+-- TOC entry 2898 (class 0 OID 12949333)
+-- Dependencies: 195
 -- Data for Name: pek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2899 (class 0 OID 12923478)
--- Dependencies: 182
+-- TOC entry 2886 (class 0 OID 12949278)
+-- Dependencies: 183
 -- Data for Name: kek_pek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2901 (class 0 OID 12923489)
--- Dependencies: 184
+-- TOC entry 2888 (class 0 OID 12949289)
+-- Dependencies: 185
 -- Data for Name: kierunek_moduly_ksztalcenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2902 (class 0 OID 12923492)
--- Dependencies: 185
+-- TOC entry 2889 (class 0 OID 12949292)
+-- Dependencies: 186
 -- Data for Name: kierunek_plany_studiow; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2903 (class 0 OID 12923495)
--- Dependencies: 186
+-- TOC entry 2890 (class 0 OID 12949295)
+-- Dependencies: 187
 -- Data for Name: kierunek_programy_ksztalcenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2904 (class 0 OID 12923498)
--- Dependencies: 187
+-- TOC entry 2891 (class 0 OID 12949298)
+-- Dependencies: 188
 -- Data for Name: kierunek_specjalnosci; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2906 (class 0 OID 12923509)
--- Dependencies: 189
+-- TOC entry 2893 (class 0 OID 12949310)
+-- Dependencies: 190
 -- Data for Name: mek_kek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2909 (class 0 OID 12923529)
--- Dependencies: 192
+-- TOC entry 2896 (class 0 OID 12949327)
+-- Dependencies: 193
 -- Data for Name: obszar_ksztalcenia_mek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2934 (class 0 OID 12923633)
+-- TOC entry 2920 (class 0 OID 12949428)
 -- Dependencies: 217
 -- Data for Name: udzial_procentowy; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
+INSERT INTO udzial_procentowy VALUES (22, 1, 1, 1, 4);
+INSERT INTO udzial_procentowy VALUES (23, 1, 1, 1, 14);
+INSERT INTO udzial_procentowy VALUES (24, 1, 1, 1, 24);
+INSERT INTO udzial_procentowy VALUES (25, 1, 1, 1, 3);
+INSERT INTO udzial_procentowy VALUES (26, 1, 1, 1, 23);
+INSERT INTO udzial_procentowy VALUES (35, 1, 0.800000012, 1, 5);
+INSERT INTO udzial_procentowy VALUES (36, 1, 0.100000001, 4, 5);
+INSERT INTO udzial_procentowy VALUES (37, 1, 0.100000001, 5, 5);
+INSERT INTO udzial_procentowy VALUES (38, 1, 0.800000012, 1, 15);
+INSERT INTO udzial_procentowy VALUES (39, 1, 0.100000001, 4, 15);
+INSERT INTO udzial_procentowy VALUES (40, 1, 0.100000001, 5, 15);
+INSERT INTO udzial_procentowy VALUES (41, 1, 0.5, 3, 6);
+INSERT INTO udzial_procentowy VALUES (42, 1, 0.5, 3, 16);
+INSERT INTO udzial_procentowy VALUES (43, 1, 0.5, 3, 7);
+INSERT INTO udzial_procentowy VALUES (44, 1, 0.5, 3, 17);
+INSERT INTO udzial_procentowy VALUES (45, 1, 0.5, 3, 25);
+INSERT INTO udzial_procentowy VALUES (46, 1, 0.5, 3, 32);
+INSERT INTO udzial_procentowy VALUES (47, 1, 0.5, 4, 6);
+INSERT INTO udzial_procentowy VALUES (48, 1, 0.5, 4, 16);
+INSERT INTO udzial_procentowy VALUES (49, 1, 0.5, 4, 7);
+INSERT INTO udzial_procentowy VALUES (50, 1, 0.5, 4, 17);
+INSERT INTO udzial_procentowy VALUES (51, 1, 0.5, 4, 25);
+INSERT INTO udzial_procentowy VALUES (52, 1, 0.5, 4, 32);
+INSERT INTO udzial_procentowy VALUES (1, 1, 0.699999988, 1, 8);
+INSERT INTO udzial_procentowy VALUES (2, 1, 0.200000003, 7, 8);
+INSERT INTO udzial_procentowy VALUES (3, 1, 0.100000001, 2, 8);
+INSERT INTO udzial_procentowy VALUES (4, 1, 0.699999988, 1, 26);
+INSERT INTO udzial_procentowy VALUES (5, 1, 0.200000003, 7, 26);
+INSERT INTO udzial_procentowy VALUES (6, 1, 0.100000001, 2, 26);
+INSERT INTO udzial_procentowy VALUES (7, 1, 0.699999988, 1, 33);
+INSERT INTO udzial_procentowy VALUES (8, 1, 0.200000003, 7, 33);
+INSERT INTO udzial_procentowy VALUES (9, 1, 0.100000001, 2, 33);
+INSERT INTO udzial_procentowy VALUES (10, 1, 0.699999988, 1, 9);
+INSERT INTO udzial_procentowy VALUES (11, 1, 0.150000006, 2, 9);
+INSERT INTO udzial_procentowy VALUES (12, 1, 0.150000006, 5, 9);
+INSERT INTO udzial_procentowy VALUES (13, 1, 0.699999988, 1, 18);
+INSERT INTO udzial_procentowy VALUES (14, 1, 0.150000006, 2, 18);
+INSERT INTO udzial_procentowy VALUES (15, 1, 0.150000006, 5, 18);
+INSERT INTO udzial_procentowy VALUES (16, 1, 0.699999988, 1, 27);
+INSERT INTO udzial_procentowy VALUES (17, 1, 0.150000006, 2, 27);
+INSERT INTO udzial_procentowy VALUES (18, 1, 0.150000006, 5, 27);
+INSERT INTO udzial_procentowy VALUES (19, 1, 0.699999988, 1, 34);
+INSERT INTO udzial_procentowy VALUES (20, 1, 0.150000006, 2, 34);
+INSERT INTO udzial_procentowy VALUES (21, 1, 0.150000006, 5, 34);
+INSERT INTO udzial_procentowy VALUES (27, 1, 1, 1, 1);
+INSERT INTO udzial_procentowy VALUES (28, 1, 1, 1, 12);
+INSERT INTO udzial_procentowy VALUES (29, 1, 1, 1, 21);
+INSERT INTO udzial_procentowy VALUES (30, 1, 1, 1, 30);
+INSERT INTO udzial_procentowy VALUES (31, 1, 1, 1, 2);
+INSERT INTO udzial_procentowy VALUES (32, 1, 1, 1, 13);
+INSERT INTO udzial_procentowy VALUES (33, 1, 1, 1, 22);
+INSERT INTO udzial_procentowy VALUES (34, 1, 1, 1, 31);
+INSERT INTO udzial_procentowy VALUES (53, 1, 0.699999988, 1, 11);
+INSERT INTO udzial_procentowy VALUES (54, 1, 0.100000001, 2, 11);
+INSERT INTO udzial_procentowy VALUES (55, 1, 0.100000001, 5, 11);
+INSERT INTO udzial_procentowy VALUES (56, 1, 0.100000001, 7, 11);
+INSERT INTO udzial_procentowy VALUES (57, 1, 0.699999988, 1, 20);
+INSERT INTO udzial_procentowy VALUES (58, 1, 0.100000001, 2, 20);
+INSERT INTO udzial_procentowy VALUES (59, 1, 0.100000001, 5, 20);
+INSERT INTO udzial_procentowy VALUES (60, 1, 0.100000001, 7, 20);
+INSERT INTO udzial_procentowy VALUES (61, 1, 0.699999988, 1, 29);
+INSERT INTO udzial_procentowy VALUES (62, 1, 0.100000001, 2, 29);
+INSERT INTO udzial_procentowy VALUES (63, 1, 0.100000001, 5, 29);
+INSERT INTO udzial_procentowy VALUES (64, 1, 0.100000001, 7, 29);
+INSERT INTO udzial_procentowy VALUES (65, 1, 0.699999988, 1, 36);
+INSERT INTO udzial_procentowy VALUES (66, 1, 0.100000001, 2, 36);
+INSERT INTO udzial_procentowy VALUES (67, 1, 0.100000001, 5, 36);
+INSERT INTO udzial_procentowy VALUES (68, 1, 0.100000001, 7, 36);
+INSERT INTO udzial_procentowy VALUES (69, 1, 0.800000012, 1, 10);
+INSERT INTO udzial_procentowy VALUES (70, 1, 0.800000012, 1, 19);
+INSERT INTO udzial_procentowy VALUES (71, 1, 0.800000012, 1, 28);
+INSERT INTO udzial_procentowy VALUES (72, 1, 0.800000012, 1, 35);
+INSERT INTO udzial_procentowy VALUES (73, 1, 0.100000001, 2, 10);
+INSERT INTO udzial_procentowy VALUES (74, 1, 0.100000001, 2, 19);
+INSERT INTO udzial_procentowy VALUES (75, 1, 0.100000001, 2, 28);
+INSERT INTO udzial_procentowy VALUES (76, 1, 0.100000001, 2, 35);
+INSERT INTO udzial_procentowy VALUES (77, 1, 0.100000001, 5, 10);
+INSERT INTO udzial_procentowy VALUES (78, 1, 0.100000001, 5, 19);
+INSERT INTO udzial_procentowy VALUES (79, 1, 0.100000001, 5, 28);
+INSERT INTO udzial_procentowy VALUES (80, 1, 0.100000001, 5, 35);
 
 
 --
--- TOC entry 2910 (class 0 OID 12923532)
--- Dependencies: 193
+-- TOC entry 2897 (class 0 OID 12949330)
+-- Dependencies: 194
 -- Data for Name: obszar_ksztalcenia_udzial_procentowy; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2912 (class 0 OID 12923543)
--- Dependencies: 195
+-- TOC entry 2899 (class 0 OID 12949341)
+-- Dependencies: 196
 -- Data for Name: pek_kek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2914 (class 0 OID 12923554)
--- Dependencies: 197
+-- TOC entry 2901 (class 0 OID 12949352)
+-- Dependencies: 198
 -- Data for Name: plan_studiow_przedmioty; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2931 (class 0 OID 12923618)
+-- TOC entry 2917 (class 0 OID 12949413)
 -- Dependencies: 214
 -- Data for Name: semestr; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1153,39 +1430,39 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2915 (class 0 OID 12923557)
--- Dependencies: 198
+-- TOC entry 2902 (class 0 OID 12949355)
+-- Dependencies: 199
 -- Data for Name: plan_studiow_semestr; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2917 (class 0 OID 12923565)
--- Dependencies: 200
+-- TOC entry 2904 (class 0 OID 12949363)
+-- Dependencies: 201
 -- Data for Name: poziom_ksztalcenia_mek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2919 (class 0 OID 12923573)
--- Dependencies: 202
+-- TOC entry 2906 (class 0 OID 12949371)
+-- Dependencies: 203
 -- Data for Name: profil_ksztalcenia_mek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2921 (class 0 OID 12923582)
--- Dependencies: 204
+-- TOC entry 2875 (class 0 OID 12923582)
+-- Dependencies: 172
 -- Data for Name: program_ksztalcenia_formy_studiow; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
 --
--- TOC entry 2922 (class 0 OID 12923585)
+-- TOC entry 2908 (class 0 OID 12949380)
 -- Dependencies: 205
 -- Data for Name: program_ksztalcenia_kek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1193,7 +1470,7 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2923 (class 0 OID 12923588)
+-- TOC entry 2909 (class 0 OID 12949383)
 -- Dependencies: 206
 -- Data for Name: program_ksztalcenia_moduly_ksztalcenia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1201,7 +1478,7 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2924 (class 0 OID 12923591)
+-- TOC entry 2910 (class 0 OID 12949386)
 -- Dependencies: 207
 -- Data for Name: program_ksztalcenia_udzialy_procentowe; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1209,7 +1486,7 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2926 (class 0 OID 12923603)
+-- TOC entry 2912 (class 0 OID 12949398)
 -- Dependencies: 209
 -- Data for Name: przedmiot_forma_prowadzenia_zajec; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1217,7 +1494,7 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2927 (class 0 OID 12923606)
+-- TOC entry 2913 (class 0 OID 12949401)
 -- Dependencies: 210
 -- Data for Name: przedmiot_kek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1225,7 +1502,7 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2928 (class 0 OID 12923609)
+-- TOC entry 2914 (class 0 OID 12949404)
 -- Dependencies: 211
 -- Data for Name: przedmiot_pek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1233,7 +1510,7 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2929 (class 0 OID 12923612)
+-- TOC entry 2915 (class 0 OID 12949407)
 -- Dependencies: 212
 -- Data for Name: przedmiot_plany_studiow; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1241,7 +1518,7 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2937 (class 0 OID 12923647)
+-- TOC entry 2923 (class 0 OID 12949442)
 -- Dependencies: 220
 -- Data for Name: zajecia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1249,7 +1526,7 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2930 (class 0 OID 12923615)
+-- TOC entry 2916 (class 0 OID 12949410)
 -- Dependencies: 213
 -- Data for Name: przedmiot_zajecia; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1257,7 +1534,7 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2933 (class 0 OID 12923630)
+-- TOC entry 2919 (class 0 OID 12949425)
 -- Dependencies: 216
 -- Data for Name: specjalnosc_kek; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
@@ -1265,14 +1542,14 @@ INSERT INTO mek VALUES ('X2P_W10', 'zna ogólne zasady tworzenia i rozwoju form 
 
 
 --
--- TOC entry 2936 (class 0 OID 12923644)
+-- TOC entry 2922 (class 0 OID 12949439)
 -- Dependencies: 219
 -- Data for Name: wydzial_kierunki; Type: TABLE DATA; Schema: public; Owner: gfvqtnlwqrlqqw
 --
 
 
 
--- Completed on 2016-02-04 00:57:55
+-- Completed on 2016-02-04 12:58:37
 
 --
 -- PostgreSQL database dump complete

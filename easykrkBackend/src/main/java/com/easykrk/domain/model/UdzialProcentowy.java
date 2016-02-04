@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Version;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -30,6 +31,7 @@ public class UdzialProcentowy {
 
 	@NotNull
 	@Min(0)
+	@Max(1)
 	private float wartosc;
 
 	@ManyToOne
