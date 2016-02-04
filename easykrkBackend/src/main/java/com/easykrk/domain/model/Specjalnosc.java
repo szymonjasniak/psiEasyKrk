@@ -36,12 +36,12 @@ public class Specjalnosc {
 	@Length(max = 255)
 	private String nazwa;
 
-	@NotBlank
+	@NotBlank  
 	@Length(max = 10)
 	private String skrot;
 
-	@OneToOne
-	private ProgramKsztalcenia programKsztalcenia;
+	/*@ManyToOne 
+	private ProgramKsztalcenia programKsztalcenia;*/
 
 	@OneToMany
 	private List<Kek> kek;

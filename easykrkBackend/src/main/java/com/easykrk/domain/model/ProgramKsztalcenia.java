@@ -3,6 +3,8 @@ package com.easykrk.domain.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -26,10 +28,11 @@ import lombok.NoArgsConstructor;
 @Entity
 public class ProgramKsztalcenia {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@NotNull
-	@Length(max=50)
+	@Length(max=70)
 	private String kod;
 
 	@Version
@@ -42,8 +45,8 @@ public class ProgramKsztalcenia {
 	@ManyToOne
 	private Cykl cykl;
 
-	@ManyToMany
-	private List<FormaStudiow> formyStudiow;
+	@ManyToOne
+	private FormaStudiow formaStudiow;
 
 	@ManyToMany
 	private List<ModulKsztalcenia> modulyKsztalcenia;
