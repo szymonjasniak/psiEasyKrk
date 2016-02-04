@@ -12,6 +12,8 @@ import javax.persistence.Version;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,7 +26,11 @@ import lombok.NoArgsConstructor;
 @Entity
 public class ProgramKsztalcenia {
 	@Id
-	private String id;
+	private Long id;
+	
+	@NotNull
+	@Length(max=50)
+	private String kod;
 
 	@Version
 	private Long version;

@@ -1,32 +1,31 @@
 package com.easykrk.domain.model;
+
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
-public abstract class EfektKsztalcenia {
+@Entity
+public class KategoriaEK {
 
 	@Id
-	private String id;
-	
+	private Long id;
+
 	@Version
-    private Long version;
-	
-	@ManyToOne
-	private KategoriaEK kategoria;
-	
+	private Long version;
+
 	@NotBlank
-    @Length(max = 400)
-	private String opis;
+	@Length(max = 20)
+	private String nazwa;
 }

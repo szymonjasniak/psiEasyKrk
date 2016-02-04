@@ -57,7 +57,7 @@ public class Przedmiot {
     @ManyToMany
     private List<FormaProwadzeniaZajec> formaProwadzeniaZajec;
 
-    @OneToMany
+    @ManyToMany
     private List<Pek> pek;
 
     @ManyToMany
@@ -66,7 +66,7 @@ public class Przedmiot {
     @OneToOne
     private KartaPrzedmiotu kartaPrzedmiotu;
 
-    @OneToMany
+    @ManyToMany
     private List<Kek> kek;
 
     @ManyToOne
