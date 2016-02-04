@@ -73,6 +73,9 @@ public class Przedmiot {
     private ModulKsztalcenia modulKsztalcenia;
 
     @OneToMany
-    private List<Zajecia> zajecia;
+    private List<Kurs> kursy;
+    
+    @OneToOne
+    private GrupaKursow grupaKursow;
 
 }
