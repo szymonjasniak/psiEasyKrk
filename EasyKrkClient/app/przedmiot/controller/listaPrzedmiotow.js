@@ -24,6 +24,7 @@ angular.module('application.listaPrzedmioty', [])
 								enableHorizontalScrollbar : 0,
 								enableVerticalScrollbar : 2,
 								enableRowSelection : false,
+								enableSelectAll:false,
 								multiSelect : false,
 								columnDefs : [
 										{

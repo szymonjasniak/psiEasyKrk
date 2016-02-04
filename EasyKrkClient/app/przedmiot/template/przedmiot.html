@@ -98,7 +98,7 @@
 				<div class="form-group"
 					ng-class="{ 'has-error': myForm.opiekun.$invalid && myForm.opiekun.$dirty}">
 					<label for="opiekun" translate text="przedmiot.opiekun"></label> <input
-						autocomplete class="form-control input" id="opiekun" type="text"
+						autocomplete auto-source="prowadzacy" class="form-control input" id="opiekun" type="text"
 						name="opiekun" ng-model="przedmiot.opiekun" ng-required="true">
 					<div role="alert">
 						<span class="error"
