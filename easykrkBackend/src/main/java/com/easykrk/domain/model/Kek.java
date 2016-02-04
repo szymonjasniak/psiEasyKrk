@@ -23,8 +23,8 @@ public class Kek extends EfektKsztalcenia {
     @ManyToOne
     private Specjalnosc specjalnosc;
 
-    @ManyToOne
-    private Przedmiot przedmiot;
+   /* @ManyToMany
+    private List<Przedmiot> przedmiot;*/
 
     @ManyToMany
     private List<Pek> pek;
