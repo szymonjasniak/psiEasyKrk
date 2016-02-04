@@ -2,6 +2,7 @@ package com.easykrk.domain.model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
@@ -18,13 +19,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class GrupaKursow extends Zajecia {
     @NotBlank
     @Length(max = 255)
     private String kodGrupyKursow;
 
-    @Version
-    private Long version;
 
     @OneToOne
     private Kurs kursGlowny;

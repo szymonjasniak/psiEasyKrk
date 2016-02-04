@@ -9,6 +9,31 @@ angular.module('application.przedmiot', [])
 				kod : "kod",
 				modul : "modul",
 				opiekun : ""*/
+					zajecia: [ {
+						"id" : "1",
+						"forma" : '1',
+						"liczba" : '2',
+						"ects" : '3',
+						"cnps" : '2',
+						"zaliczenie" : 'E',
+						"semestr" : '1'
+					}, {
+						"id" : "2",
+						"forma" : '3',
+						"liczba" : '2',
+						"ects" : '4',
+						"cnps" : '3',
+						"zaliczenie" : 'Z',
+						"semestr" : '1'
+					}, {
+						"id" : "3",
+						"forma" : '2',
+						"liczba" : '2',
+						"ects" : '3',
+						"cnps" : '2',
+						"zaliczenie" : 'Z',
+						"semestr" : '1'
+					} ]
 			};
 			
 			
