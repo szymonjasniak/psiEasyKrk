@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,40 +38,52 @@ public class ProgramKsztalcenia {
 	private String kod;
 
 	@Version
+	@JsonIgnore
 	private Long version;
 
 	@NotNull
 	@Min(0)
+	@JsonIgnore
 	private int liczbaSemestrow;
 
 	@ManyToOne
+	@JsonIgnore
 	private Cykl cykl;
 
 	@ManyToOne
+	@JsonIgnore
 	private FormaStudiow formaStudiow;
 
 	@ManyToMany
+	@JsonIgnore
 	private List<ModulKsztalcenia> modulyKsztalcenia;
 
 	@OneToMany
+	@JsonIgnore
 	private List<UdzialProcentowy> udzialyProcentowe;
 
 	@OneToOne
+	@JsonIgnore
 	private Specjalnosc specjalnosc;
 
 	@OneToOne
+	@JsonIgnore
 	private Kierunek kierunek;
 
 	@OneToOne
+	@JsonIgnore
 	private PlanStudiow planStudiow;
 
 	@ManyToOne
+	@JsonIgnore
 	private ProfilKsztalcenia profilKsztalcenia;
 
 	@ManyToOne
+	@JsonIgnore
 	private PoziomKsztalcenia poziomKsztalcenia;
 
 	@OneToMany
+	@JsonIgnore
 	private List<Kek> kek;
 
 }
