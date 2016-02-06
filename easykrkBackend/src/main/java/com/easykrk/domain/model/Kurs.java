@@ -35,6 +35,7 @@ public class Kurs extends Zajecia {
     // private GrupaKursow grupaKursow;
     // private boolean czyGlowny;
 
-    @OneToOne
-    private Semestr semestr;
+    @NotNull
+    @Min(0)
+    private Integer semestr;
 }
