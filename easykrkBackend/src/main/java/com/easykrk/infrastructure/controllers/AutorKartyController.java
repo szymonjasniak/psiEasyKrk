@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.easykrk.domain.model.dto.AutorKartyDTO;
+import com.easykrk.infrastructure.common.utils.Converter;
 import com.easykrk.infrastructure.repository.AutorKartyRepository;
 
 @RestController
