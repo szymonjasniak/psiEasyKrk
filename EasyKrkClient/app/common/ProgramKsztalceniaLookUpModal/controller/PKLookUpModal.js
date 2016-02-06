@@ -1,17 +1,57 @@
 var app=angular.module("application.KEK");
-app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance", function ($scope, $uibModalInstance, items){
+app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServiceFactory", function ($scope, $uibModalInstance,PKLookUpServiceFactory, items){
 	$scope.params=items;
 	 $scope.item=[];
 	 $scope.found=[];
-	 $scope.PKi=[{ID:'PO-W08-INF-IO--ST-IIM-WRO------PWR1_DWU'},
-	             {ID:'PO-W08-INF-PSI--ST-IIM-WRO------PWR1_DWU'},
-	             {ID:'PO-W08-INF-ISI--ST-IIM-WRO------PWR1_DWU'}];
+	 $scope.PKi=[{kod:'PO-W08-INF-IO--ST-IIM-WRO------PWR1_DWU'},
+	             {kod:'PO-W08-INF-PSI--ST-IIM-WRO------PWR1_DWU'},
+	             {kod:'PO-W08-INF-ISI--ST-IIM-WRO------PWR1_DWU'}];
 	 $scope.formy=["PK.forma.stacjonarne","PK.forma.niestacjonarne"];
 	 
-	 $scope.PK={};
-	 $scope.PK.stopien="I";
+	 $scope.PK={specjalnosc:"",stopien:"I",wydzial:"",kierunek:"",forma:"",cykl:""};
+	 PKLookUpServiceFactory.getCyklGet().then(function(response){
+		 $scope.cykle=response.data.map(function(item){
+			 return item.nazwa;
+		 })
+	 });
+	 
+	 
+	 $scope.getWydzial=function(){
+		 
+		 //if kierunek , find by kierunek
+		 return PKLookUpServiceFactory.getWydzialGet().then(function (response){
+			
+			 return response.data.map(function(item){
+				 return item.nazwa;
+			 })
+		 })
+	 };	 
+	$scope.getKierunek=function(){
+			 
+		//if wydzial, findbywydzial
+			 return PKLookUpServiceFactory.getKierunekGet().then(function (response){
+				
+				 return response.data.map(function(item){
+					 return item.nazwa;
+				 })
+			 })
+		 };	
+	 $scope.getSpecjalnosc=function(){
+		 //if kierunek find by kierunek
+		 return PKLookUpServiceFactory.getSpecjalnoscGet().then(function (response){
+			
+			 return response.data.map(function(item){
+				 return item.nazwa;
+			 })
+		 })
+	 };
+	  
+	
+	 
+	 
 	$scope.ok=function(){
 		 $scope.item=$scope.gridApi.selection.getSelectedRows()[0];
+		 $scope.item.fromModal=true;
 		$uibModalInstance.close($scope.item);
 	};
 	
@@ -19,7 +59,11 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance", function ($sco
 		$uibModalInstance.dismiss('cancel');
 	};
 	$scope.szukajPK=function(){
-		$scope.gridOptionsPK.data=$scope.PKi;
+		PKLookUpServiceFactory.getPKByGet($scope.PK.wydzial,$scope.PK.specjalnosc,$scope.PK.kierunek
+				,$scope.PK.stopien,$scope.PK.forma,$scope.PK.cykl).then(function(response){
+					$scope.gridOptionsPK.data=response.data;
+		})
+		
 	};
 	
 	function rowTemplate() {
@@ -30,7 +74,9 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance", function ($sco
 	
 	$scope.rowDblClick = function( row) {
 		   // alert(JSON.stringify(row.entity)); 
-		$uibModalInstance.close(row.entity); 
+		$scope.item=row.entity;
+		$scope.item.fromModal=true;
+		$uibModalInstance.close($scope.item); 
 		};
 	
 	$scope.gridOptionsPK = {
@@ -41,8 +87,8 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance", function ($sco
 			enableSelectAll:false,
 			multiSelect : false,
 			columnDefs : [ {
-				field : 'ID',
-				displayName : "ID",
+				field : 'kod',
+				displayName : "kod",
 				width : "*"
 			}],
 			onRegisterApi : function(gridApi) {
