@@ -1,4 +1,4 @@
-var app = angular.module("application.KEK", ['ngAnimate', 'ui.bootstrap'])
+var app = angular.module("application.KEK", ['ngAnimate', 'ui.bootstrap','ngResource'])
 
 app.controller("KEKController", [
 		"$scope","$uibModal",
@@ -8,7 +8,8 @@ app.controller("KEKController", [
 					"kategoria.kompetencje_spoleczne" ];
 			$scope.kategoria = null;
 			$scope.id = "";
-			$scope.programKsztalcenia=""
+			$scope.programKsztalcenia="",
+			$scope.fromModal=false;
 			$scope.MEKi = [ {
 				ID : "1",
 				opis : "lorem ipsum...",
@@ -88,7 +89,8 @@ app.controller("KEKController", [
 				});
 				
 				modalInstancePK.result.then(function(selectedPK){
-				 $scope.programKsztalcenia=selectedPK.ID;
+				 $scope.programKsztalcenia=selectedPK.kod
+				 $scope.fromModal=selectedPK.fromModal;
 				},function(){
 				console.log("MEKLookUp dismissed");
 			});
