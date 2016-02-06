@@ -8,7 +8,7 @@
 
 					<label for="programKsztalcenia" translate text="program"></label> <input
 						class="form-control input" id="programKsztalcenia" type="text"
-						name="programKsztalcenia" ng-model="programKsztalcenia" ng-readonly="fromModal"> <span
+						name="programKsztalcenia" ng-model="programKsztalcenia.kod" ng-readonly="fromModal"> <span
 						class="input-group-btn" style="vertical-align: bottom">
 						<button class="btn  search-button" type="button"
 							ng-click="showProgramKsztalceniaLookUp()" style="margin-left: 0px"></button>
@@ -17,16 +17,14 @@
 
 				<label for="cykl" translate text="przedmiot.cykl" /> <select
 					class="form-control input" id="cykl" type="text" name="cykl"
-					ng-model="cykl">
-					<option>2015/2016</option>
-					<option>2016/2017</option>
+					ng-model="cykl" ng-readonly="fromModal" ng-disabled="fromModal">
+					<option ng-repeat="c in cykle">{{c}}</option>
 				</select> 
 				<label for="kategoria" translate text="kategoria.kategoria" /> <select
 					class="form-control input" id="kategoria" type="text"
-					name="kategoria" ng-model="kategoria">
-					<option ng-repeat="kat in kategorie" vaule="{{kat}}" translate
-						text="{{kat}}"></option>
-
+					name="kategoria" ng-model="kategoria"
+					ng-options="translate(kat.nazwa) for kat in kategorie track by kat.id"
+					>
 				</select> <label for="kekID">ID</label> <input class="form-control input"
 					id="kekID" type="text" name="kekID" ng-model="id"
 					readonly="readonly">
@@ -54,7 +52,7 @@
 		</div>
 		<div class="text-right">
 			<button type="submit" class="btn btn-success btn-lg " translate
-				text="przedmiot.zatwierdz"></button>
+				text="przedmiot.zatwierdz" ng-disabled="inCorrect" ></button>
 			<button type="submit" class="btn btn-success btn-lg " translate
 				text="przedmiot.anuluj"></button>
 		</div>

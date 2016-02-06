@@ -42,7 +42,7 @@
 	"kategoria":{
 		"kategoria":"Category",
 		"wiedza":"knowledge",
-		"umiejetnosci":"skills",
+		"umiejętności":"skills",
 		"kompetencje_spoleczne":"other competencies"
 	},
 	"szukaj":"find",
@@ -73,5 +73,6 @@
 			"niestacjonarna":"Unstationary"
 		}
 	}
+	"brakResult":"No Results Found"
 		
 }

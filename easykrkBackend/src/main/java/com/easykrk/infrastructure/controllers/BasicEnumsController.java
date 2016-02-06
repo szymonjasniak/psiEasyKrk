@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.easykrk.domain.model.Cykl;
+import com.easykrk.domain.model.KategoriaEK;
 import com.easykrk.domain.model.Kierunek;
 import com.easykrk.domain.model.Specjalnosc;
 import com.easykrk.domain.model.Wydzial;
 import com.easykrk.infrastructure.repository.CyklRepository;
+import com.easykrk.infrastructure.repository.KategoriaRepository;
 import com.easykrk.infrastructure.repository.KierunekRepository;
 import com.easykrk.infrastructure.repository.SpecjalnoscRepository;
 import com.easykrk.infrastructure.repository.WydzialRepository;
@@ -30,6 +32,9 @@ public class BasicEnumsController {
 	
 	@Autowired
 	KierunekRepository kierunekRepository;
+	
+	@Autowired
+	KategoriaRepository kategoriaRepository;
 	
 	@RequestMapping(value="/wydzial")
 	@ResponseBody
@@ -55,6 +60,12 @@ public class BasicEnumsController {
 	@ResponseBody
 	public Iterable<Kierunek> getKierunki(){
 		return kierunekRepository.findAll();
+	}
+	
+	@RequestMapping(value="/kategoria")
+	@ResponseBody
+	public Iterable<KategoriaEK> getKategorie(){
+		return kategoriaRepository.findAll();
 	}
 	
 

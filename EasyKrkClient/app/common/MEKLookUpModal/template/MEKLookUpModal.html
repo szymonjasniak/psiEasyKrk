@@ -5,18 +5,18 @@
 <div class="modal-body">
 	<label for="MEKObszar" translate text="MEK.obszar.obszar" /> <select
 		class="form-control input" id="MEKObszar" type="text" name="MEKObszar"
-		ng-model="obszar">
-		<option ng-repeat="obs in obszary" vaule="{{obs}}" translate
-			text="{{obs}}"></option>
+		ng-model="obszar" ng-options="t(o.nazwa) for o in obszary track by o.id">
 	</select> <label for="opis" translate text="efekt.opis"></label> <input
 		class="form-control input" id="opis" type="text" name="opis"
-		ng-model="opis">
+		ng-model="params.opis">
 	<div class="text-right">
-		<button class="btn btn-primary" style="margin-top: 4px;margin-bottom: 4px" type="button"
+		<button class="btn btn-primary"
+			style="margin-top: 4px; margin-bottom: 4px" type="button"
 			ng-click="szukajMEK()" translate text="szukaj"></button>
 	</div>
 	<div id="gridMEK" ui-grid="gridOptionsMEK" ui-grid-cellnav
 		ui-grid-selection class="myGrid" external-scopes="gridHandlers">
+		<span us-spinner="{radius:40, width:10, length: 20}" spinner-on="busy"></span>
 	</div>
 </div>
 

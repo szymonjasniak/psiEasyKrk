@@ -29,9 +29,15 @@ var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','applica
 			  if(attrs.typeofelement){
 				  element.attr(attrs.typeofelement, i18n.t(attrs.text));
 			  }
-			  else{
-				  element.text(i18n.t(attrs.text));  
-			  }		
+			  else if(attrs.text){
+				  element.text(i18n.t(attrs.text));
+			  }	
+			  else if(attrs.label){
+				  element.text(i18n.t(attrs.label));
+			  }else{
+				  var t=element.text()
+				  element.text(i18n.t(t));
+			  }	
 	}
 })
 .directive('autocomplete', function($timeout) {

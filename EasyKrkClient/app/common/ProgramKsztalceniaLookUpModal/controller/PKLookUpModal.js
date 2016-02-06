@@ -1,18 +1,19 @@
 var app=angular.module("application.KEK");
-app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServiceFactory", function ($scope, $uibModalInstance,PKLookUpServiceFactory, items){
+app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServiceFactory", function ($scope, $uibModalInstance,PKLookUpServiceFactory,items){
 	$scope.params=items;
 	 $scope.item=[];
 	 $scope.found=[];
-	 $scope.PKi=[{kod:'PO-W08-INF-IO--ST-IIM-WRO------PWR1_DWU'},
-	             {kod:'PO-W08-INF-PSI--ST-IIM-WRO------PWR1_DWU'},
-	             {kod:'PO-W08-INF-ISI--ST-IIM-WRO------PWR1_DWU'}];
 	 $scope.formy=["PK.forma.stacjonarne","PK.forma.niestacjonarne"];
+	 $scope.cykle=[];
+	 $scope.busy=false;
+	 $scope.disabled=true;
+	 $scope.PK={specjalnosc:"",stopien:"2",wydzial:"",kierunek:"",forma:"",cykl:''};
 	 
-	 $scope.PK={specjalnosc:"",stopien:"I",wydzial:"",kierunek:"",forma:"",cykl:""};
 	 PKLookUpServiceFactory.getCyklGet().then(function(response){
 		 $scope.cykle=response.data.map(function(item){
 			 return item.nazwa;
 		 })
+		 $scope.PK.cykl=$scope.cykle[0];
 	 });
 	 
 	 
@@ -59,9 +60,12 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServic
 		$uibModalInstance.dismiss('cancel');
 	};
 	$scope.szukajPK=function(){
+		$scope.busy=true;
+		$scope.gridOptionsPK.data=$scope.found;
 		PKLookUpServiceFactory.getPKByGet($scope.PK.wydzial,$scope.PK.specjalnosc,$scope.PK.kierunek
 				,$scope.PK.stopien,$scope.PK.forma,$scope.PK.cykl).then(function(response){
 					$scope.gridOptionsPK.data=response.data;
+					$scope.busy=false;
 		})
 		
 	};
@@ -72,6 +76,13 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServic
 				+ '</div>';
 	}
 	
+	$scope.$watch('gridApi.selection.getSelectedRows()[0]',function(newVal,oldVal){
+		if(newVal !== null && newVal !== undefined){
+			$scope.disabled=false;
+		}else{
+			$scope.disabled=true;
+		}
+	})
 	$scope.rowDblClick = function( row) {
 		   // alert(JSON.stringify(row.entity)); 
 		$scope.item=row.entity;

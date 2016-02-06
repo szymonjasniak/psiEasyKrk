@@ -2,31 +2,37 @@
  * http://usejsdoc.org/
  */
 var app=angular.module("application.KEK");
-app.controller('MEKLookUpModalCtrl',["$scope","$uibModalInstance", function ($scope, $uibModalInstance, items){
-	$scope.params=items;
+app.controller('MEKLookUpModalCtrl',["$scope","$uibModalInstance","MEKLookUpServiceFactory","param", function ($scope, $uibModalInstance,MEKLookUpServiceFactory,param){
+	$scope.params=param;
+	$scope.params.opis=''
 	 $scope.item=[];
-	 $scope.obszary=["MEK.obszar.nauki_techniczne",
-	                 "MEK.obszar.nauki_przyrodnicze",
-	                 "MEK.obszar.nauki_rolnicze",
-	                 "MEK.obszar.nauki_medyczne",
-	                 "MEK.obszar.nauki_scisle",
-	                 "MEK.obszar.nauki_spoleczne",
-	                 "MEK.obszar.nauki_sztuki",
-	                 "MEK.obszar.nauki_humanistyczne",
-	                 ];
+	 $scope.busy=false;
+	 $scope.obszary=$scope.params.PK.obszaryKsztalcenia.map(function(item){
+		 return {id:item.id,nazwa:"MEK.obszar."+item.nazwa};
+	 });
+	 $scope.obszar=$scope.obszary[0];
 	$scope.ok=function(){
 		_.forEach($scope.gridApi.selection.getSelectedRows(),function(val){
-			$scope.item.push({"ID":val.ID,"obszar":val.obszar,"opis":val.opis});
+			var bla=i18n.t( "MEK.obszar."+val.obszarKsztalcenia.nazwa)
+			$scope.item.push({"ID":val.id,"obszar":bla,"opis":val.opis});
 		});
 		$uibModalInstance.close($scope.item);
 	};
-	
+	$scope.t=function(t){
+		return i18n.t(t);
+	}
 	$scope.cancel=function(){
 		$uibModalInstance.dismiss('cancel');
 	};
 	$scope.szukajMEK=function(){
-		$scope.gridOptionsMEK.data=$scope.MEKi;
+		$scope.busy=true;
+		MEKLookUpServiceFactory.getMEKByGet($scope.params.PK.id,$scope.params.kategoria.id,$scope.params.opis,$scope.obszar.id)
+		.then(function(response){
+			$scope.gridOptionsMEK.data=response.data;
+			$scope.busy=false;
+		})
 	}
+	
 	$scope.MEKi = [ {
 		ID : "12",
 		opis : "lorem ipsum...",
@@ -45,13 +51,16 @@ app.controller('MEKLookUpModalCtrl',["$scope","$uibModalInstance", function ($sc
 			enableSelectAll:true,
 			multiSelect : true,
 			columnDefs : [ {
-				field : 'ID',
+				field : 'id',
 				displayName : "ID",
 				width : "*"
 			}, {
 				field : 'opis',
 				displayName : i18n.t("efekt.opis"),
-				width : "70%"
+				width : "85%",
+				cellTooltip:function(row,col){
+					return row.entity.opis
+				}
 			}],
 			onRegisterApi : function(gridApi) {
 				// set gridApi on scope

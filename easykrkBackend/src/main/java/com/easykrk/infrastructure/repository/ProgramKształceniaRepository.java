@@ -13,7 +13,7 @@ import com.easykrk.domain.model.Specjalnosc;
 
 public interface ProgramKształceniaRepository extends CrudRepository<ProgramKsztalcenia, Long> {
 	
-	public Iterable<ProgramKsztalcenia> findDistinctByKierunekInAndPoziomKsztalceniaInAndFormaStudiowInAndCyklInAndSpecjalnoscIn(
-			Collection<Kierunek> kierunki,Collection<PoziomKsztalcenia> poziomKsztalcenia,Collection<FormaStudiow> formaStudiow,Collection<Cykl> cykl,Collection<Specjalnosc> specjalnosc);
+	public Iterable<ProgramKsztalcenia> findDistinctByKierunekInAndPoziomKsztalceniaAndFormaStudiowInAndCyklInAndSpecjalnoscIn(
+			Collection<Kierunek> kierunki,PoziomKsztalcenia poziomKsztalcenia,Collection<FormaStudiow> formaStudiow,Collection<Cykl> cykl,Collection<Specjalnosc> specjalnosc);
 
 }

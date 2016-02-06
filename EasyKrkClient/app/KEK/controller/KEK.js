@@ -1,24 +1,39 @@
-var app = angular.module("application.KEK", ['ngAnimate', 'ui.bootstrap','ngResource'])
+var app = angular.module("application.KEK", ['ngAnimate', 'ui.bootstrap','ngResource','angularSpinner'])
 
 app.controller("KEKController", [
-		"$scope","$uibModal",
-		function($scope,$uibModal) {
+		"$scope","$uibModal","KEKServiceFactory","PKLookUpServiceFactory",
+		function($scope,$uibModal,KEKServiceFactory,PKLookUpServiceFactory) {
 
-			$scope.kategorie = [ "kategoria.wiedza", "kategoria.umiejetnosci",
-					"kategoria.kompetencje_spoleczne" ];
-			$scope.kategoria = null;
+			
+			$scope.kategorie = [];
+			
+			KEKServiceFactory.getKategorieGet().then(function(response){
+				
+				$scope.kategorie=response.data.map(function(item){
+					var temp={};
+					temp.id=item.id;
+					temp.nazwa="kategoria."+item.nazwa;
+						return temp;
+				})
+				$scope.kategoria=$scope.kategorie[0];
+				
+			})
+			$scope.translate=function(t){
+				return i18n.t(t);
+			}
+			$scope.cykle=[];
+			PKLookUpServiceFactory.getCyklGet().then(function(response){
+				$scope.cykle=response.data.map(function(item){
+					return item.nazwa;
+				})
+				$scope.cykl=$scope.cykle[0];
+			})
 			$scope.id = "";
-			$scope.programKsztalcenia="",
+			$scope.programKsztalcenia={},
+			$scope.programKsztalcenia.kod="",
 			$scope.fromModal=false;
-			$scope.MEKi = [ {
-				ID : "1",
-				opis : "lorem ipsum...",
-				obszar : "techniczny"
-			}, {
-				ID : "2",
-				opis : "lorem ipsum...",
-				obszar : "techniczny"
-			} ];
+			$scope.inCorrect=true;
+			$scope.MEKi = [];
 			
 			$scope.gridOptionsMEK = {
 					data : $scope.MEKi,
@@ -33,7 +48,10 @@ app.controller("KEKController", [
 				}, {
 					field : 'opis',
 					displayName : i18n.t("efekt.opis"),
-					width : "70%"
+					width : "70%",
+					cellTooltip:function(row,col){
+						return row.entity.opis
+					}
 				}, {
 					field : 'obszar',
 					displayName : i18n.t("efekt.obszar"),
@@ -51,8 +69,12 @@ app.controller("KEKController", [
 					controller: 'MEKLookUpModalCtrl',
 					size:'lg',
 					resolve:{
-						items:function(){
-							return $scope.MEKLookUpParams;
+						param:function(){
+							var MEKLookUpParams={}
+							MEKLookUpParams.PK=$scope.programKsztalcenia;
+							MEKLookUpParams.cykl=$scope.cykl;
+							MEKLookUpParams.kategoria=$scope.kategoria;
+							return MEKLookUpParams;
 						}
 					}
 				});
@@ -89,11 +111,12 @@ app.controller("KEKController", [
 				});
 				
 				modalInstancePK.result.then(function(selectedPK){
-				 $scope.programKsztalcenia=selectedPK.kod
+				 $scope.programKsztalcenia=selectedPK
 				 $scope.fromModal=selectedPK.fromModal;
+				 $scope.cykl=selectedPK.cykl.nazwa;
 				},function(){
 				console.log("MEKLookUp dismissed");
 			});
 			};
-			
+			$scope.fromModal=true;
 		}]);

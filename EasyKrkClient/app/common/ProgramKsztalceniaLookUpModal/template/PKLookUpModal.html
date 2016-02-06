@@ -28,9 +28,11 @@
 			<label for="stopienRadio" translate text="PK.stopien"></label>
 			<div id="stopienRadios">
 				<label class="radio-inline"> <input type="radio"
-					name="optradio" ng-model="PK.stopien" value="I">I
+					name="optradio" ng-model="PK.stopien" value="1">I
 				</label> <label class="radio-inline"> <input type="radio"
-					name="optradio" ng-model="PK.stopien" value="II">II
+					name="optradio" ng-model="PK.stopien" value="2">II
+				</label> <label class="radio-inline"> <input type="radio"
+					name="optradio" ng-model="PK.stopien" value="3">III
 				</label>
 			</div>
 		</div>
@@ -56,8 +58,8 @@
 			
 			<label for="cykl" translate text="przedmiot.cykl" /> <select
 				class="form-control input" id="cykl" type="text" name="cykl"
-				ng-model="PK.cykl">
-				<option ng-repeat="c in cykle" value="{{c}}">{{c}}</option>
+				ng-model="PK.cykl"
+				ng-options="c for c in cykle track by c">
 			</select>
 		</div>
 
@@ -68,11 +70,12 @@
 				ng-click="szukajPK()" translate text="szukaj"></button>
 		</div>
 		<div id="gridMEK" ui-grid="gridOptionsPK" ui-grid-cellnav
-			ui-grid-selection class="myGrid" external-scopes="gridHandlers">
+			ui-grid-selection class="myGrid" external-scopes="gridHandlers" >
+			<span us-spinner="{radius:40, width:10, length: 20}" spinner-on="busy"></span>
 		</div>
 	</div>
 
 	<div class="modal-footer">
-		<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+		<button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="disabled">OK</button>
 		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 	</div>
