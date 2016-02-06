@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.easykrk.domain.model.FormaZaliczenia;
-import com.easykrk.domain.model.Kurs;
+import com.easykrk.domain.model.GrupaKursow;
 import com.easykrk.domain.model.Przedmiot;
 import com.easykrk.domain.model.dto.FormaProwadzeniaZajecDTO;
+import com.easykrk.infrastructure.common.utils.Converter;
 import com.easykrk.infrastructure.repository.FormaProwadzeniaZajecRepository;
 import com.easykrk.infrastructure.repository.FormaZaliczeniaRepository;
-import com.easykrk.infrastructure.repository.KursRepository;
+import com.easykrk.infrastructure.repository.GrupaKursowRepository;
 import com.easykrk.infrastructure.repository.ModulKsztalceniaRepository;
 import com.easykrk.infrastructure.repository.PrzedmiotRepository;
 import com.easykrk.service.business.PrzedmiotService;
@@ -45,7 +46,7 @@ public class PrzedmiotController {
 	private ModulKsztalceniaRepository modulKsztalceniaRepository;
 
 	@Autowired
-	private KursRepository kursRepository;
+	private GrupaKursowRepository gkursRepository;
 
 	@Autowired
 	private PrzedmiotService przedmiotService;
@@ -102,10 +103,10 @@ public class PrzedmiotController {
 	@RequestMapping(value = "/getAllKursy/{programKsztalceniaId}", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
-	public List<Kurs> getAllKursy(
+	public List<GrupaKursow> getAllKursy(
 			@PathVariable Long programKsztalceniaId)
 					throws Exception {
-		return kursRepository.findAll();
+		return gkursRepository.findAll();
 	}
 
 }

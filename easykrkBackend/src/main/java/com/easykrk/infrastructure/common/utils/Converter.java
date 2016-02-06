@@ -1,4 +1,4 @@
-package com.easykrk.infrastructure.controllers;
+package com.easykrk.infrastructure.common.utils;
 
 import java.util.ArrayList;
 import java.util.List;
