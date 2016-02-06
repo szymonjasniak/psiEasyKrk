@@ -1,4 +1,4 @@
-<div ng-controller="KEKController">
+<div >
 
 	<form name="KEKMainForm" class="form-horizontal" role="form">
 
@@ -8,7 +8,7 @@
 
 					<label for="programKsztalcenia" translate text="program"></label> <input
 						class="form-control input" id="programKsztalcenia" type="text"
-						name="programKsztalcenia" ng-model="programKsztalcenia"> <span
+						name="programKsztalcenia" ng-model="programKsztalcenia" ng-readonly="fromModal"> <span
 						class="input-group-btn" style="vertical-align: bottom">
 						<button class="btn  search-button" type="button"
 							ng-click="showProgramKsztalceniaLookUp()" style="margin-left: 0px"></button>

@@ -8,11 +8,22 @@
 
 			<label for="wydzial" translate text="PK.wydzial"></label> <input
 				class="form-control input" id="wydzial" type="text" name="wydzial"
-				ng-model="PK.wydzial"> 
+				ng-model="PK.wydzial" uib-typeahead="wydzial for wydzial in getWydzial()"
+				typeaead-loading="loadingWydzial" typeahead-no-results="noResultsWydzial">
+				<i ng-show="loadingWydzial" class="glyphicon glyphicon-refresh"></i>
+    			<div ng-show="noResultsWydzial">
+     				 <i class="glyphicon glyphicon-remove" translate text="brakResult"></i> 
+   				 </div> 
 			
 			<label for="kierunek" translate
 				text="PK.kierunek"></label> <input class="form-control input"
-				id="kierunek" type="text" name="kierunek" ng-model="PK.kierunek">
+				id="kierunek" type="text" name="kierunek" ng-model="PK.kierunek"
+				uib-typeahead="kierunek for kierunek in getKierunek()"
+				typeaead-loading="loadingKierunek" typeahead-no-results="noResultsKierunek">
+				<i ng-show="loadingKierunek" class="glyphicon glyphicon-refresh"></i>
+    			<div ng-show="noResultsKierunek">
+     				 <i class="glyphicon glyphicon-remove" translate text="brakResult"></i> 
+   				 </div>
 
 			<label for="stopienRadio" translate text="PK.stopien"></label>
 			<div id="stopienRadios">
@@ -27,7 +38,13 @@
 		<div class="form-group col-xs-6">
 			<label for="specjalnosc" translate text="PK.specjalnosc"></label> <input
 				class="form-control input" id="specjalnosc" type="text"
-				name="specjalnosc" ng-model="PK.specjalnosc"> 
+				name="specjalnosc" ng-model="PK.specjalnosc" 
+				uib-typeahead="specjalnosc for specjalnosc in getSpecjalnosc()"
+				typeaead-loading="loadingSpecjalnosc" typeahead-no-results="noResultsSpecjalnosc">
+			<i ng-show="loadingSpecjalnosc" class="glyphicon glyphicon-refresh"></i>
+    			<div ng-show="noResultsSpecjalnosc">
+     				 <i class="glyphicon glyphicon-remove" translate text="brakResult"></i> 
+   				 </div>
 			
 			<label
 				for=forma translate text="PK.forma.forma" /> <select
@@ -40,8 +57,7 @@
 			<label for="cykl" translate text="przedmiot.cykl" /> <select
 				class="form-control input" id="cykl" type="text" name="cykl"
 				ng-model="PK.cykl">
-				<option>2015/2016</option>
-				<option>2016/2017</option>
+				<option ng-repeat="c in cykle" value="{{c}}">{{c}}</option>
 			</select>
 		</div>
 

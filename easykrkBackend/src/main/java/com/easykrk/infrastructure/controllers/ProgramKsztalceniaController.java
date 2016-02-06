@@ -1,0 +1,71 @@
+package com.easykrk.infrastructure.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.easykrk.domain.model.Cykl;
+import com.easykrk.domain.model.FormaStudiow;
+import com.easykrk.domain.model.Kierunek;
+import com.easykrk.domain.model.PoziomKsztalcenia;
+import com.easykrk.domain.model.ProgramKsztalcenia;
+import com.easykrk.domain.model.Specjalnosc;
+import com.easykrk.domain.model.Wydzial;
+import com.easykrk.infrastructure.repository.CyklRepository;
+import com.easykrk.infrastructure.repository.FormaStudiowRepository;
+import com.easykrk.infrastructure.repository.KierunekRepository;
+import com.easykrk.infrastructure.repository.PoziomKsztalceniaRepository;
+import com.easykrk.infrastructure.repository.ProgramKształceniaRepository;
+import com.easykrk.infrastructure.repository.SpecjalnoscRepository;
+import com.easykrk.infrastructure.repository.WydzialRepository;
+
+@RestController
+@RequestMapping(value="/PK",produces=MediaType.APPLICATION_JSON_VALUE)
+public class ProgramKsztalceniaController {
+	
+	@Autowired
+	KierunekRepository kierunekRepository;
+	@Autowired
+	WydzialRepository wydzialRepository;
+	@Autowired
+	SpecjalnoscRepository specjalnoscRepository;
+	@Autowired
+	CyklRepository cyklRepository;
+	@Autowired
+	FormaStudiowRepository formaStudiowRepository;
+	@Autowired
+	PoziomKsztalceniaRepository poziomKsztalceniaRepository;
+	@Autowired
+	ProgramKształceniaRepository programKsztalceniaRepository;
+	
+	@RequestMapping(value="/getAll", method=RequestMethod.GET)
+	@ResponseBody
+	public Iterable<ProgramKsztalcenia> getProgramyKsztalcenia(
+			@RequestParam(value="kierunek", required=false, defaultValue="") String kierunek,
+			@RequestParam(value="wydzial", required=false, defaultValue="") String wydzial,
+			@RequestParam(value="specjalnosc", required=false, defaultValue="") String specjalnosc,
+			@RequestParam(value="stopien", required=false, defaultValue="") String stopien,
+			@RequestParam(value="forma", required=false, defaultValue="") String forma,
+			@RequestParam(value="cykl", required=false, defaultValue="") String cykl){
+		
+		List<Wydzial> wydzialy=wydzialRepository.findByNazwaContaining(wydzial);
+		List<Specjalnosc> specjalnosci=specjalnoscRepository.findByNazwaContaining(specjalnosc);
+		
+		List<Kierunek> kier=kierunekRepository.findByNazwaContaining(kierunek);
+		
+		List<Kierunek> kierunki=kierunekRepository.findByNazwaContainingAndWydzialIn(kierunek, wydzialy);
+		
+		List<Cykl> cykle=cyklRepository.findByNazwaContaining(cykl);
+		List<PoziomKsztalcenia> poziomy=poziomKsztalceniaRepository.findByNazwaContaining(stopien);
+		List<FormaStudiow> formy=formaStudiowRepository.findByNazwaContaining(forma);
+		
+		return programKsztalceniaRepository.findDistinctByKierunekInAndPoziomKsztalceniaInAndFormaStudiowInAndCyklInAndSpecjalnoscIn(kierunki, poziomy, formy, cykle,specjalnosci);
+	}
+
+}

@@ -14,6 +14,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.easykrk.domain.model.Kurs.KursBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,6 +33,7 @@ public class Kierunek {
 	private Long id;
 	
 	@Version
+	@JsonIgnore
     private Long version;
 	
 	@NotBlank
@@ -43,16 +45,21 @@ public class Kierunek {
 	private String skrot;
 	
 	@OneToMany
+	@JsonIgnore
 	private List<ModulKsztalcenia> modulyKsztalcenia;
 	@OneToMany
+	@JsonIgnore
 	private List<Specjalnosc> specjalnosci;
 	@OneToMany
+	@JsonIgnore
 	private List<ProgramKsztalcenia> programyKsztalcenia;
 	@OneToMany
+	@JsonIgnore
 	private List<PlanStudiow> planyStudiow;
 	
 	//private List<KartaPrzedmiotu> kartyPrzemdiotu;
 	@OneToOne
+	@JsonIgnore
 	private Wydzial wydzial;
 
 }
