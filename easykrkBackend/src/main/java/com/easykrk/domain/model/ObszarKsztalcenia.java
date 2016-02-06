@@ -13,6 +13,8 @@ import javax.persistence.Version;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,6 +32,7 @@ public class ObszarKsztalcenia {
 	private Long id;
 
 	@Version
+	@JsonIgnore
 	private Long version;
 
 	@NotBlank
@@ -38,8 +41,11 @@ public class ObszarKsztalcenia {
 
 	@OneToMany
 	@JoinTable
+	@JsonIgnore
 	private List<UdzialProcentowy> udzialProcentowy;
 
 	@OneToMany
+	@JsonIgnore
 	private List<Mek> mek;
+	
 }

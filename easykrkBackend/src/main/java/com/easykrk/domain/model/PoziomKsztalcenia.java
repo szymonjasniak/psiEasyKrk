@@ -12,6 +12,8 @@ import javax.persistence.Version;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,6 +30,7 @@ public class PoziomKsztalcenia {
     private Long id;
 
     @Version
+    @JsonIgnore
     private Long version;
 
     @NotBlank
@@ -37,6 +40,7 @@ public class PoziomKsztalcenia {
     // private List<ProgramKsztalcenia> programyKsztalcenia;
 
     @ManyToMany
+    @JsonIgnore
     private List<Mek> mek;
 
 }

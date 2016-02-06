@@ -41,11 +41,11 @@
 	"kategoria":{
 		"kategoria":"Kategoria",
 		"wiedza":"wiedza",
-		"umiejetnosci":"umiejętności",
-		"kompetencje_spoleczne":"kompetencje społeczne"
+		"umiejętności":"umiejętności",
+		"kompetencje_społeczn":"kompetencje społeczne"
 	},
 	"szukaj":"szukaj",
-	"przypisaneMEK":"przypisane Ministerialne Efekty Kształcenia",
+	"przypisaneMEK":"Przypisane Ministerialne Efekty Kształcenia",
 	"MEK":{
 		"obszar":{
 			"obszar":"Obszar",

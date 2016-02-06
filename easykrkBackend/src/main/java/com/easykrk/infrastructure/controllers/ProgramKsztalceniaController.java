@@ -17,6 +17,8 @@ import com.easykrk.domain.model.PoziomKsztalcenia;
 import com.easykrk.domain.model.ProgramKsztalcenia;
 import com.easykrk.domain.model.Specjalnosc;
 import com.easykrk.domain.model.Wydzial;
+import com.easykrk.domain.model.dto.ProgramKsztalceniaLookUpDTO;
+import com.easykrk.infrastructure.common.utils.Converter;
 import com.easykrk.infrastructure.repository.CyklRepository;
 import com.easykrk.infrastructure.repository.FormaStudiowRepository;
 import com.easykrk.infrastructure.repository.KierunekRepository;
@@ -43,10 +45,12 @@ public class ProgramKsztalceniaController {
 	PoziomKsztalceniaRepository poziomKsztalceniaRepository;
 	@Autowired
 	ProgramKształceniaRepository programKsztalceniaRepository;
+	@Autowired
+	Converter converter;
 	
 	@RequestMapping(value="/getAll", method=RequestMethod.GET)
 	@ResponseBody
-	public Iterable<ProgramKsztalcenia> getProgramyKsztalcenia(
+	public Iterable<ProgramKsztalceniaLookUpDTO> getProgramyKsztalcenia(
 			@RequestParam(value="kierunek", required=false, defaultValue="") String kierunek,
 			@RequestParam(value="wydzial", required=false, defaultValue="") String wydzial,
 			@RequestParam(value="specjalnosc", required=false, defaultValue="") String specjalnosc,
@@ -62,10 +66,18 @@ public class ProgramKsztalceniaController {
 		List<Kierunek> kierunki=kierunekRepository.findByNazwaContainingAndWydzialIn(kierunek, wydzialy);
 		
 		List<Cykl> cykle=cyklRepository.findByNazwaContaining(cykl);
-		List<PoziomKsztalcenia> poziomy=poziomKsztalceniaRepository.findByNazwaContaining(stopien);
+		Long stopienL;
+		PoziomKsztalcenia poziomy = new PoziomKsztalcenia();
+		try{
+			stopienL=Long.parseLong(stopien);
+			poziomy=poziomKsztalceniaRepository.findOne(stopienL);
+		}
+		catch(NumberFormatException e){
+		}
 		List<FormaStudiow> formy=formaStudiowRepository.findByNazwaContaining(forma);
 		
-		return programKsztalceniaRepository.findDistinctByKierunekInAndPoziomKsztalceniaInAndFormaStudiowInAndCyklInAndSpecjalnoscIn(kierunki, poziomy, formy, cykle,specjalnosci);
+		return converter.convertProgramKsztalceniaListToLookUp(
+				programKsztalceniaRepository.findDistinctByKierunekInAndPoziomKsztalceniaAndFormaStudiowInAndCyklInAndSpecjalnoscIn(kierunki, poziomy, formy, cykle,specjalnosci));
 	}
 
 }

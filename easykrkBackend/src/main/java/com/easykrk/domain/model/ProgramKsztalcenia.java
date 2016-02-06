@@ -47,7 +47,6 @@ public class ProgramKsztalcenia {
 	private int liczbaSemestrow;
 
 	@ManyToOne
-	@JsonIgnore
 	private Cykl cykl;
 
 	@ManyToOne
@@ -59,7 +58,6 @@ public class ProgramKsztalcenia {
 	private List<ModulKsztalcenia> modulyKsztalcenia;
 
 	@OneToMany
-	@JsonIgnore
 	private List<UdzialProcentowy> udzialyProcentowe;
 
 	@OneToOne
@@ -75,11 +73,9 @@ public class ProgramKsztalcenia {
 	private PlanStudiow planStudiow;
 
 	@ManyToOne
-	@JsonIgnore
 	private ProfilKsztalcenia profilKsztalcenia;
 
 	@ManyToOne
-	@JsonIgnore
 	private PoziomKsztalcenia poziomKsztalcenia;
 
 	@OneToMany
