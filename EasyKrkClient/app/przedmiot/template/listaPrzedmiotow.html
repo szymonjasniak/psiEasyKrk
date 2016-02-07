@@ -1,20 +1,38 @@
 <form name="myFormPrzedmiot" class="form-horizontal" role="form">
 	<div class="form-group col-xs-6">
-		<label for="programKsztalcenia" translate text="program"></label> <input
-			class="form-control input" id="programKsztalcenia" type="text"
-			name="programKsztalcenia" ng-model="przedmiot.program" required>
-		<div role="alert">
-			<span class="error"
-				ng-show="myFormPrzedmiot.programKsztalcenia.$error.required">Required!</span>
-		</div>
-		<label for="cykl" translate text="przedmiot.cykl" /> <select
-			class="form-control input" id="cykl" type="text" name="cykl"
-			ng-model="przedmiot.cykl" ng-minlength="3" ng-maxlength="10">
-			<option>2015/2016</option>
-			<option>2016/2017</option>
-		</select>
-		<br>
-		<button type="submit" class="btn btn-default" translate text="szukaj"></button>
+		<div class="form-group"
+				ng-class="{ 'has-error': myForm.programKsztalcenia.$invalid && myForm.programKsztalcenia.$dirty}">
+				<div class="input-group">
+				
+				<label for="programKsztalcenia" translate text="program"></label> <input
+					class="form-control input" id="programKsztalcenia" type="text"
+					name="programKsztalcenia" ng-model="program.kod"
+					ng-required="true" ng-readonly="fromModal">
+					 <span
+						class="input-group-btn" style="vertical-align: bottom">
+						<button class="btn  search-button" type="button"
+							ng-click="showProgramKsztalceniaLookUp()" style="margin-left: 0px"></button>
+					</span>
+				<div role="alert">
+					<span class="error"
+						ng-show="myForm.nazwaPolska.$dirty && myForm.programKsztalcenia.$error.required"
+						translate text="przedmiot.wymagane"></span> 
+				</div>
+				</div>
+			</div>
+			<div class="form-group"
+				ng-class="{ 'has-error': myForm.cykl.$invalid && myForm.cykl.$dirty}">
+				<label for="cykl" translate text="przedmiot.cykl" /> <input
+					class="form-control input" id="cykl" type="text" name="cykl"
+					ng-model="cykl" ng-required="true" ng-disabled="fromModal">
+				</input>
+				<div role="alert">
+					<span class="error"
+						ng-show="myForm.cykl.$dirty && myForm.cykl.$error.required"
+						translate text="przedmiot.wymagane"></span>
+				</div>
+			</div>
+		<button type="submit" class="btn btn-default" translate text="szukaj" ng-click="szukaj()"></button>
 	</div>
 
 	<div class="form-group col-xs-12">

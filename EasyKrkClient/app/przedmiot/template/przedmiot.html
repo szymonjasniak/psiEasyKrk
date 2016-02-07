@@ -3,24 +3,30 @@
 		<div class="form-group col-xs-6">
 			<div class="form-group"
 				ng-class="{ 'has-error': myForm.programKsztalcenia.$invalid && myForm.programKsztalcenia.$dirty}">
+				<div class="input-group">
+				
 				<label for="programKsztalcenia" translate text="program"></label> <input
 					class="form-control input" id="programKsztalcenia" type="text"
-					name="programKsztalcenia" ng-model="przedmiot.program"
-					ng-required="true" ng-pattern="">
+					name="programKsztalcenia" ng-model="przedmiot.program.kod"
+					ng-required="true" ng-readonly="fromModal">
+					 <span
+						class="input-group-btn" style="vertical-align: bottom">
+						<button class="btn  search-button" type="button"
+							ng-click="showProgramKsztalceniaLookUp()" style="margin-left: 0px"></button>
+					</span>
 				<div role="alert">
 					<span class="error"
 						ng-show="myForm.nazwaPolska.$dirty && myForm.programKsztalcenia.$error.required"
-						translate text="przedmiot.wymagane"></span> <span class="error"
-						ng-show="myForm.kod.$dirty && myForm.kod.$error.pattern" translate
-						text="przedmiot.programPattern"></span>
+						translate text="przedmiot.wymagane"></span> 
+				</div>
 				</div>
 			</div>
 			<div class="form-group"
 				ng-class="{ 'has-error': myForm.cykl.$invalid && myForm.cykl.$dirty}">
 				<label for="cykl" translate text="przedmiot.cykl" /> <select
 					class="form-control input" id="cykl" type="text" name="cykl"
-					ng-model="przedmiot.cykl" ng-required="true">
-					<option ng-repeat="cykl in cykle">{{cykl.nazwa}}</option>
+					ng-model="cykl" ng-required="true" ng-disabled="fromModal">
+					<option ng-repeat="c in cykle">{{c}}</option>
 				</select>
 				<div role="alert">
 					<span class="error"
@@ -86,7 +92,7 @@
 					ng-class="{ 'has-error': myForm.modul.$invalid && myForm.modul.$dirty}">
 					<label for="modul" translate text="przedmiot.modul"></label> <select
 						class="form-control input" id="modul" type="text" name="modul"
-						ng-model="przedmiot.modul" ng-required="true">
+						ng-model="przedmiot.modulKsztalcenia.nazwa" ng-required="true">
 						<option ng-repeat="modul in moduly">{{modul.nazwa}}</option>
 					</select>
 					<div role="alert">
@@ -98,8 +104,8 @@
 				<div class="form-group"
 					ng-class="{ 'has-error': myForm.opiekun.$invalid && myForm.opiekun.$dirty}">
 					<label for="opiekun" translate text="przedmiot.opiekun"></label> <input
-						autocomplete auto-source="prowadzacy" class="form-control input" id="opiekun" type="text"
-						name="opiekun" ng-model="przedmiot.opiekun" ng-required="true">
+						uib-typeahead="osoba for osoba in getOpiekunowie()" typeaead-loading="loadingOsoba" typeahead-no-results="noResultsOsoba"class="form-control input" id="opiekun" type="text"
+						name="opiekun" ng-model="przedmiot.opiekun.fullName" ng-required="true">
 					<div role="alert">
 						<span class="error"
 							ng-show="myForm.opiekun.$dirty && myForm.opiekun.$error.required"
@@ -118,7 +124,7 @@
 					<div ng-show="przedmiot.czyGrupa">
 						<label for="sel1" translate text="przedmiot.kursGlowny"></label> <select
 							class="form-control" id="sel1" ng-required="przedmiot.czyGrupa">
-							<option ng-repeat="kurs in zajecia">{{kurs.forma}}</option>
+							<option ng-repeat="kurs in przedmiot.zajecia" >{{kurs.forma}}</option>
 						</select>
 					</div>
 					<div role="alert">
@@ -154,16 +160,17 @@
 					</div>
 					<div class="form-group col-xs-1">
 						<button type="button" id="addData"
-							class="btn btn-success save_button" ng-click="dodajEK()">+</button>
+							class="btn btn-success save_button" ng-click="showKEKLookUp()">+</button>
 						<button type="button" id="addData"
 							class="btn btn-success save_button" ng-click="removeEK()">-</button>
 					</div>
-					<div class="form-group col-xs-12 pull-right">
-						<button type="submit" class="btn btn-success btn-lg btn-group"
-							translate text="przedmiot.zatwierdz"></button>
-					</div>
+					
 				</div>
 			</div>
 		</div>
+		<div class="form-group col-xs-12 pull-right">
+						<button type="submit" class="btn btn-success btn-lg btn-group"
+							translate text="przedmiot.zatwierdz" ng-click="save()"></button>
+					</div>
 	</form>
 </div>

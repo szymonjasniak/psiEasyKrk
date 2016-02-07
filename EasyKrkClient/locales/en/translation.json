@@ -46,6 +46,8 @@
 		"kompetencje_spoleczne":"other competencies"
 	},
 	"szukaj":"find",
+	"anuluj":"Cancel",
+	"ok":"OK",
 	"przypisaneMEK":"assigned Ministerial Study Effects",
 	"MEK":{
 		"obszar":{
@@ -72,7 +74,15 @@
 			"stacjonarne":"stationary",
 			"niestacjonarna":"Unstationary"
 		}
-	}
-	"brakResult":"No Results Found"
+	},
+	"brakResult":"No Results Found",
+	"to_many_forms":"Types of forms are duplicated",
+	"one_u_or_w_needed":"At least one effect from category knowledge or skills is needed",
+	"one_w_needed":"At least one effect from category knowledge is needed",
+	"invalid_kod":"Pattern for code is invalid. Valid pattern is AAA123456",
+	"duplicate_kod":"Subject with given code already exists for this cycle and education programm",
+	"non_unique_polish_name":"Subject with given polish name already exists for this cycle and education programm",
+	"non_unique_english_name":"Subject with given english name already exists for this cycle and education programm",
+	"subject_added":"Subject successfully added"
 		
 }

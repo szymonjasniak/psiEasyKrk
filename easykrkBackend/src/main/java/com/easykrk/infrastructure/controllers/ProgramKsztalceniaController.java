@@ -14,7 +14,6 @@ import com.easykrk.domain.model.Cykl;
 import com.easykrk.domain.model.FormaStudiow;
 import com.easykrk.domain.model.Kierunek;
 import com.easykrk.domain.model.PoziomKsztalcenia;
-import com.easykrk.domain.model.ProgramKsztalcenia;
 import com.easykrk.domain.model.Specjalnosc;
 import com.easykrk.domain.model.Wydzial;
 import com.easykrk.domain.model.dto.ProgramKsztalceniaLookUpDTO;
@@ -28,9 +27,9 @@ import com.easykrk.infrastructure.repository.SpecjalnoscRepository;
 import com.easykrk.infrastructure.repository.WydzialRepository;
 
 @RestController
-@RequestMapping(value="/PK",produces=MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/PK", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProgramKsztalceniaController {
-	
+
 	@Autowired
 	KierunekRepository kierunekRepository;
 	@Autowired
@@ -47,37 +46,61 @@ public class ProgramKsztalceniaController {
 	ProgramKształceniaRepository programKsztalceniaRepository;
 	@Autowired
 	Converter converter;
-	
-	@RequestMapping(value="/getAll", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	@ResponseBody
 	public Iterable<ProgramKsztalceniaLookUpDTO> getProgramyKsztalcenia(
-			@RequestParam(value="kierunek", required=false, defaultValue="") String kierunek,
-			@RequestParam(value="wydzial", required=false, defaultValue="") String wydzial,
-			@RequestParam(value="specjalnosc", required=false, defaultValue="") String specjalnosc,
-			@RequestParam(value="stopien", required=false, defaultValue="") String stopien,
-			@RequestParam(value="forma", required=false, defaultValue="") String forma,
-			@RequestParam(value="cykl", required=false, defaultValue="") String cykl){
-		
-		List<Wydzial> wydzialy=wydzialRepository.findByNazwaContaining(wydzial);
-		List<Specjalnosc> specjalnosci=specjalnoscRepository.findByNazwaContaining(specjalnosc);
-		
-		List<Kierunek> kier=kierunekRepository.findByNazwaContaining(kierunek);
-		
-		List<Kierunek> kierunki=kierunekRepository.findByNazwaContainingAndWydzialIn(kierunek, wydzialy);
-		
-		List<Cykl> cykle=cyklRepository.findByNazwaContaining(cykl);
+			@RequestParam(value = "kierunek", required = false, defaultValue = "") String kierunek,
+			@RequestParam(value = "wydzial", required = false, defaultValue = "") String wydzial,
+			@RequestParam(value = "specjalnosc", required = false, defaultValue = "") String specjalnosc,
+			@RequestParam(value = "stopien", required = false, defaultValue = "") String stopien,
+			@RequestParam(value = "forma", required = false, defaultValue = "") String forma,
+			@RequestParam(value = "cykl", required = false, defaultValue = "") String cykl) {
+
+		List<Wydzial> wydzialy = wydzialRepository
+				.findByNazwaContaining(wydzial);
+		List<Specjalnosc> specjalnosci = specjalnoscRepository
+				.findByNazwaContaining(specjalnosc);
+
+		List<Kierunek> kier = kierunekRepository
+				.findByNazwaContaining(kierunek);
+
+		List<Kierunek> kierunki = kierunekRepository
+				.findByNazwaContainingAndWydzialIn(kierunek,
+						wydzialy);
+
+		List<Cykl> cykle = cyklRepository
+				.findByNazwaContaining(cykl);
 		Long stopienL;
 		PoziomKsztalcenia poziomy = new PoziomKsztalcenia();
-		try{
-			stopienL=Long.parseLong(stopien);
-			poziomy=poziomKsztalceniaRepository.findOne(stopienL);
+		try {
+			stopienL = Long.parseLong(stopien);
+			poziomy = poziomKsztalceniaRepository
+					.findOne(stopienL);
+		} catch (NumberFormatException e) {
 		}
-		catch(NumberFormatException e){
+		List<FormaStudiow> formy = formaStudiowRepository
+				.findByNazwaContaining(forma);
+
+		return converter
+				.convertProgramKsztalceniaListToLookUp(
+						programKsztalceniaRepository
+								.findDistinctByKierunekInAndPoziomKsztalceniaAndFormaStudiowInAndCyklInAndSpecjalnoscIn(
+										kierunki, poziomy,
+										formy, cykle,
+										specjalnosci));
+	}
+
+	@RequestMapping(value = "/getLiczbaSemestrow", method = RequestMethod.GET)
+	@ResponseBody
+	public int getLiczbaSemestrow(
+			@RequestParam(value = "program", required = false, defaultValue = "0") Long program) {
+		if (program == 0) {
+			return 0;
+		} else {
+			return programKsztalceniaRepository
+					.findOne(program).getLiczbaSemestrow();
 		}
-		List<FormaStudiow> formy=formaStudiowRepository.findByNazwaContaining(forma);
-		
-		return converter.convertProgramKsztalceniaListToLookUp(
-				programKsztalceniaRepository.findDistinctByKierunekInAndPoziomKsztalceniaAndFormaStudiowInAndCyklInAndSpecjalnoscIn(kierunki, poziomy, formy, cykle,specjalnosci));
 	}
 
 }

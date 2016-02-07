@@ -6,17 +6,19 @@ angular.module('application.listaPrzedmioty', [])
 						'$log',
 						'$window',
 						'$location',
-						function($scope, $log, $window,$location) {
+						"$uibModal",
+						"PKLookUpServiceFactory",
+						'przedmiotService',
+						function($scope, $log, $window,$location,$uibModal,PKLookUpServiceFactory,przedmiotService) {
 
-							$scope.przedmioty = [ {
-								kod : "INZ00105",
-								nazwa : "Projektowanie systemów",
-								opiekun : "Jan Kowalski"
-							}, {
-								kod : "INZ02305",
-								nazwa : "Projektowanie interfejsu",
-								opiekun : "Kacperek Kowalski"
-							} ];
+							$scope.przedmioty = [];
+							
+							$scope.szukaj = function(){
+								przedmiotService.getAllPrzedmioty($scope.program.id).then(function(response) {
+									$scope.przedmioty = response.data;
+									$scope.gridOptionsPrzedmiot.data = response.data;
+									})								
+							};
 
 							$scope.gridOptionsPrzedmiot = {};
 							$scope.gridOptionsPrzedmiot = {
@@ -28,12 +30,12 @@ angular.module('application.listaPrzedmioty', [])
 								multiSelect : false,
 								columnDefs : [
 										{
-											field : 'kod',
+											field : 'kodPrzedmiotu',
 											displayName : i18n
 													.t("przedmiot.kod"),
 										},
 										{
-											field : 'nazwa',
+											field : 'nazwaPolska',
 											displayName : i18n
 													.t("przedmiot.nazwaPolska")
 										},
@@ -57,7 +59,9 @@ angular.module('application.listaPrzedmioty', [])
 							
 							$scope.rowDblClick = function( row) {
 							   // alert(JSON.stringify(row.entity)); 
-								$location.path('/przedmiot/' + row.entity.kod);  
+								przedmiotService.setSelectedProgram($scope.program);
+								przedmiotService.setSelectedPrzedmiot(row.entity);
+								$location.path('/przedmiot/' + row.entity.kodPrzedmiotu);  
 							};
 
 							$scope.gridOptionsPrzedmiot.onRegisterApi = function(
@@ -76,8 +80,33 @@ angular.module('application.listaPrzedmioty', [])
 										});
 							};
 
-							$scope.changeView = function(przedmiot) {
-								var earl = '/przedmiot/' + przedmiot;
-								$location.path(earl);
-							}
+							
+							
+							$scope.showProgramKsztalceniaLookUp = function() {
+								var modalInstancePK = $uibModal
+										.open({
+											animation : true,
+											templateUrl : '/app/common/ProgramKsztalceniaLookUpModal/template/PKLookUpModal.html',
+											controller : 'PKLookUpModalCtrl',
+											size : 'lg',
+											resolve : {
+												items : function() {
+													return $scope.PKLookUpParams;
+												}
+											}
+										});
+
+								modalInstancePK.result
+										.then(
+												function(selectedPK) {
+													$scope.program = selectedPK
+													$scope.fromModal = selectedPK.fromModal;
+													$scope.cykl = selectedPK.cykl.nazwa;
+												},
+												function() {
+													console
+															.log("ProgramLookUp dismissed");
+												});
+							};
+							$scope.fromModal = true;
 						} ]);

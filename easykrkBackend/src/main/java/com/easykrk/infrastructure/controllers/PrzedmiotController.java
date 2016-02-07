@@ -7,21 +7,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.easykrk.domain.model.FormaZaliczenia;
-import com.easykrk.domain.model.GrupaKursow;
 import com.easykrk.domain.model.Przedmiot;
 import com.easykrk.domain.model.dto.FormaProwadzeniaZajecDTO;
 import com.easykrk.infrastructure.common.utils.Converter;
 import com.easykrk.infrastructure.repository.FormaProwadzeniaZajecRepository;
 import com.easykrk.infrastructure.repository.FormaZaliczeniaRepository;
-import com.easykrk.infrastructure.repository.GrupaKursowRepository;
+import com.easykrk.infrastructure.repository.KursRepository;
 import com.easykrk.infrastructure.repository.ModulKsztalceniaRepository;
 import com.easykrk.infrastructure.repository.PrzedmiotRepository;
 import com.easykrk.service.business.PrzedmiotService;
@@ -46,7 +45,7 @@ public class PrzedmiotController {
 	private ModulKsztalceniaRepository modulKsztalceniaRepository;
 
 	@Autowired
-	private GrupaKursowRepository gkursRepository;
+	private KursRepository kursRepository;
 
 	@Autowired
 	private PrzedmiotService przedmiotService;
@@ -54,15 +53,15 @@ public class PrzedmiotController {
 	@Autowired
 	private Converter converter;
 
-	@RequestMapping(value = "/getAll/{programKsztalceniaId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllInProgram", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
-	public List<Przedmiot> getAll(
-			@PathVariable Long programKsztalceniaId)
+	public List<Przedmiot> getAllInProgram(
+			@RequestParam(value = "program", required = true, defaultValue = "") Long program)
 					throws Exception {
 		return przedmiotRepository
 				.findByModulKsztalceniaProgramKsztalceniaId(
-						programKsztalceniaId);
+						program);
 	}
 
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
@@ -92,21 +91,12 @@ public class PrzedmiotController {
 	@RequestMapping(value = "/save", method = RequestMethod.PUT)
 	@ResponseBody
 	@ExceptionHandler
-	public void save(@RequestBody Przedmiot przedmiot)
+	public String save(@RequestBody Przedmiot przedmiot)
 			throws Exception {
 		LOG.debug("Przedmiot with ID: "
 				+ przedmiot.getKodPrzedmiotu() + " saved");
 		przedmiotService.save(przedmiot);
-
-	}
-
-	@RequestMapping(value = "/getAllKursy/{programKsztalceniaId}", method = RequestMethod.GET)
-	@ResponseBody
-	@ExceptionHandler
-	public List<GrupaKursow> getAllKursy(
-			@PathVariable Long programKsztalceniaId)
-					throws Exception {
-		return gkursRepository.findAll();
+		return "subject_added";
 	}
 
 }

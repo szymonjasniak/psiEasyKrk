@@ -30,7 +30,7 @@ app.factory("PKLookUpServiceFactory",["$resource","$http", function($resource,$h
 		getKierunekGet:getKierunekGet,
 		getWydzialGet:getWydzialGet,
 		getPKByGet:getPKByGet
-	}
+	};
 	
 	
 }])

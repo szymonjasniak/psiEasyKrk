@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.easykrk.domain.model.Kek;
 import com.easykrk.domain.model.Kurs;
 import com.easykrk.domain.model.Przedmiot;
+import com.easykrk.infrastructure.repository.FormaProwadzeniaZajecRepository;
 import com.easykrk.infrastructure.repository.PrzedmiotRepository;
 
 @Component
@@ -20,6 +21,7 @@ public class PrzedmiotValidator {
 	private static final String ONE_W_OR_U_NEEDED = "one_u_or_w_needed";
 	private static final String ONE_W_NEEDED = "one_w_needed";
 	private static final String INVALID_KOD = "invalid_kod";
+	private static final String DUPLICATE_KOD = "duplicate_kod";
 	private static final String NON_UNIQUE_KOD = "non_unique_kod";
 	private static final String NON_UNIQUE_POLISH_NAME = "non_unique_polish_name";
 	private static final String NON_UNIQUE_ENGLISH_NAME = "non_unique_english_name";
@@ -58,7 +60,7 @@ public class PrzedmiotValidator {
 					NON_UNIQUE_ENGLISH_NAME);
 		}
 
-		if (nazwyAng.contains(p.getNazwaPolska())) {
+		if (nazwyPol.contains(p.getNazwaPolska())) {
 			throw new IllegalArgumentException(
 					NON_UNIQUE_POLISH_NAME);
 		}
@@ -76,12 +78,13 @@ public class PrzedmiotValidator {
 		}
 
 		if (kody.contains(p.getKodPrzedmiotu())) {
-			throw new IllegalArgumentException(INVALID_KOD);
+			throw new IllegalArgumentException(
+					DUPLICATE_KOD);
 		}
 	}
 
 	private static void validateKod(Przedmiot p) {
-		String regexString = "/^[A-Z]{3}[0-9]{6}$/";
+		String regexString = "^[A-Z]{3}[0-9]{6}$";
 		Pattern regex = Pattern.compile(regexString);
 		if (!regex.matcher(p.getKodPrzedmiotu())
 				.matches()) {
@@ -89,12 +92,19 @@ public class PrzedmiotValidator {
 		}
 	}
 
-	private static void validateKekIfWyklad(Przedmiot p) {
+	@Autowired
+	private FormaProwadzeniaZajecRepository formaProwadzeniaZajecRepository;
+
+	private void validateKekIfWyklad(Przedmiot p) {
 		List<Kurs> kursy = p.getKursy();
 		List<String> formaZaliczenia = new ArrayList<String>();
 		for (Kurs kurs : kursy) {
-			formaZaliczenia.add(kurs
-					.getFormaProwadzeniaZajec().getSkrot());
+			formaZaliczenia
+					.add(formaProwadzeniaZajecRepository
+							.findOne(
+									kurs.getFormaProwadzeniaZajec()
+											.getId())
+							.getSkrot());
 		}
 		if (formaZaliczenia.contains(WYKLAD)) {
 			Set<String> kategorieKek = new HashSet<String>();
@@ -109,12 +119,16 @@ public class PrzedmiotValidator {
 		}
 	}
 
-	private static void validateKekIfEctsP(Przedmiot p) {
+	private void validateKekIfEctsP(Przedmiot p) {
 		List<Kurs> kursy = p.getKursy();
 		List<String> formaZaliczenia = new ArrayList<String>();
 		for (Kurs kurs : kursy) {
-			formaZaliczenia.add(kurs
-					.getFormaProwadzeniaZajec().getSkrot());
+			formaZaliczenia
+					.add(formaProwadzeniaZajecRepository
+							.findOne(
+									kurs.getFormaProwadzeniaZajec()
+											.getId())
+							.getSkrot());
 		}
 		formaZaliczenia.remove(WYKLAD);
 		if (formaZaliczenia.size() > 0) {

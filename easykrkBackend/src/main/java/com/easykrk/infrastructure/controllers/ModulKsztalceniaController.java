@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,16 +25,28 @@ public class ModulKsztalceniaController {
 	@Autowired
 	ModulKsztalceniaConverter modulKsztalcenaiConverter;
 
-	@RequestMapping(value = "/getAll/{programKsztalceniaId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
 	public List<ModulKsztalceniaDTO> getAll(
-			@PathVariable Long programKsztalceniaId)
+			@RequestParam(value = "program", required = true, defaultValue = "") Long programKsztalceniaId)
 					throws Exception {
 		return modulKsztalcenaiConverter
 				.convertList(modulKsztalceniaRepositury
 						.findByProgramKsztalceniaIdAndCzyIstniejePodkategoriaIsFalse(
 								programKsztalceniaId));
+	}
+
+	@RequestMapping(value = "/get", method = RequestMethod.GET)
+	@ResponseBody
+	@ExceptionHandler
+	public ModulKsztalceniaDTO get(
+			@RequestParam(value = "id", required = true, defaultValue = "") Long id)
+					throws Exception {
+		return modulKsztalcenaiConverter
+				.convertModulKsztalceniaToDTO(
+						modulKsztalceniaRepositury
+								.findOne(id));
 	}
 
 }

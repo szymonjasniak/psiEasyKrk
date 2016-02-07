@@ -1,6 +1,8 @@
 package com.easykrk.domain.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -40,4 +42,28 @@ public class Kurs extends Zajecia {
     @NotNull
     @Min(0)
     private Integer semestr;
+    
+    @NotNull
+    @Min(0)
+    private int ects;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    private FormaZaliczenia formaZaliczenia;
+
+    @NotNull
+    @Min(0)
+    private int zzu;
+
+    @NotNull
+    @Min(0)
+    private int cnps;
+
+    @NotNull
+    @Min(0)
+    private int ects_p;
+
+    @NotNull
+    @Min(0)
+    private Double ects_bk;
 }

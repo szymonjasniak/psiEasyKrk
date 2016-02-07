@@ -45,6 +45,8 @@
 		"kompetencje_społeczn":"kompetencje społeczne"
 	},
 	"szukaj":"szukaj",
+	"anuluj":"anuluj",
+	"ok":"OK",
 	"przypisaneMEK":"Przypisane Ministerialne Efekty Kształcenia",
 	"MEK":{
 		"obszar":{
@@ -72,6 +74,14 @@
 			"niestacjonarne":"niestacjonarna"
 		}
 	},
-	"brakResult":"Nie Znaleziono Wyników"
+	"brakResult":"Nie Znaleziono Wyników",
+	"to_many_forms":"Formy prowadzenia zajęć duplikują się",
+	"one_u_or_w_needed":"Przynajmniej jeden efekt z zakresu wiedzy lub umiejętności jest wymagany",
+	"one_w_needed":"Przynajmniej jeden efekt z zakresu wiedzy jest wymagany",
+	"invalid_kod":"Niepoprawny kod przedmiot. Poprawny wzór to AAA123456",
+	"duplicate_kod":"Przedmiot o podanym kodzie istnieje już w ramach wybranego cyklu i programu kształcenia",
+	"non_unique_polish_name":"Przedmiot o podanej polskiej nazwie już istnieje w ramch wybranego cyklu i programu kształcenia",
+	"non_unique_english_name":"Przedmiot o podanej angielskiej nazwie już istnieje w ramch wybranego cyklu i programu kształcenia",
+	"subject_added":"Przedmiot poprawnie dodano do bazy"
 }
 

@@ -29,30 +29,6 @@ public abstract class Zajecia {
     @Version
     private Long version;
 
-    @NotNull
-    @Min(0)
-    private int ects;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    private FormaZaliczenia formaZaliczenia;
-
-    @NotNull
-    @Min(0)
-    private int zzu;
-
-    @NotNull
-    @Min(0)
-    private int cnps;
-
-    @NotNull
-    @Min(0)
-    private int ects_p;
-
-    @NotNull
-    @Min(0)
-    private int ects_bk;
-
     @ManyToOne
     private Cykl cykl;
 
