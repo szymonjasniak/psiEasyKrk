@@ -41,13 +41,12 @@ public class MEKController {
 	
 	@RequestMapping(value="/getAll/{programKsztalceniaId}/{kategoriaId}")
 	@ResponseBody
-	@ExceptionHandler
 	public Iterable<Mek> getMek(
 			@PathVariable Long programKsztalceniaId,
 			@PathVariable Long kategoriaId,
-			@RequestParam(value = "opis", required = false, defaultValue = "") String opis,
-			@RequestParam(value = "obszar", required = false, defaultValue = "") Long obszar)
-			throws Exception {
+			@RequestParam(value = "opis", required = true, defaultValue = "") String opis,
+			@RequestParam(value = "obszar", required = true, defaultValue = "") Long obszar)
+			{
 
 		ProgramKsztalceniaLookUpDTO pk = converter
 				.convertProgramKsztalceniaToLookUp(programKsztalceniaRepository

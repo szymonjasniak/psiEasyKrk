@@ -10,7 +10,7 @@ import com.easykrk.domain.model.ObszarKsztalcenia;
 import com.easykrk.domain.model.PoziomKsztalcenia;
 import com.easykrk.domain.model.ProfilKsztalcenia;
 
-public interface MEKRepository extends CrudRepository<Mek, Long> {
+public interface MEKRepository extends CrudRepository<Mek, String> {
 
 	public Iterable<Mek> findDistinctByProfilKsztalceniaAndPoziomKsztalceniaAndObszarKsztalceniaInAndOpisContainingAndKategoria(
 			ProfilKsztalcenia profilKsztalcenia,
