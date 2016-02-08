@@ -55,7 +55,6 @@ public class KEKController {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public KEKOut saveKEK(@RequestBody KEKIn in) throws IllegalKEKInputException,TooManyKEKGenerated{
-			throws IllegalKEKInputException {
 
 		KEKOut out = KEKService.createKEK(in);
 		return out;
@@ -74,7 +73,6 @@ public class KEKController {
 
 	@RequestMapping(value = "/getAll/{programKsztalceniaId}/{kategoriaId}")
 	@ResponseBody
-	@ExceptionHandler
 	public Iterable<Kek> getKek(
 			@PathVariable Long programKsztalceniaId,
 			@PathVariable Long kategoriaId,
