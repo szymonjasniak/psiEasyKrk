@@ -5,6 +5,7 @@
 <div class="modal-body">
 	<label for="MEKObszar" translate text="MEK.obszar.obszar" /> <select
 		class="form-control input" id="MEKObszar" type="text" name="MEKObszar"
+		ng-readonly="gotObszar" ng-disabled="gotObszar"
 		ng-model="obszar" ng-options="t(o.nazwa) for o in obszary track by o.id">
 	</select> <label for="opis" translate text="efekt.opis"></label> <input
 		class="form-control input" id="opis" type="text" name="opis"

@@ -13,6 +13,8 @@
 	<link rel="stylesheet" type="text/css" href="style/jquery-ui.min.css"></link>
 <link rel="stylesheet" type="text/css" href="app/przedmiot/template/grid.css"></link>
 <link rel="stylesheet" type="text/css" href="app/KEK/template/KEK.css"></link>
+<link type="text/css" href="style/angular-growl.css" rel="stylesheet">
+<link type="text/css" href="app/common/message/message.css" rel="stylesheet">
 <!-- AngularJS -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
@@ -31,6 +33,8 @@
 <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
 <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
 <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+<!-- growl messaging -->
+<script type="text/javascript" src="script/angular-growl.js"></script>
 <!-- language -->
 <script type="text/javascript" src="script/i18next-1.11.0.min.js"></script>
 <!-- Others -->
@@ -56,6 +60,7 @@
 <script type="text/javascript" src="app/common/ProgramKsztalceniaLookUpModal/service/PKLookUpModalService.js"></script>
 <script type="text/javascript" src="app/common/ProgramKsztalceniaLookUpModal/controller/PKLookUpModal.js"></script>
 <script type="text/javascript" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.2.js"></script>
+<script type="text/javascript" src="app/common/message/messageService.js"></script>
 <script type="text/javascript" src="app/app.js"></script>
 </head>
 <body>
@@ -100,6 +105,8 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+	
+	<div growl></div>
 
 	<div class="container">
 

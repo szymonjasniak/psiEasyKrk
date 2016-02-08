@@ -38,8 +38,8 @@ public class KEKValidator {
 	
 	public void validateKEK(KEKIn in) throws IllegalKEKInputException{
 		
-		if (in.getProgramKsztalceniaId() == null || in.getMEKIds() == null
-				|| in.getMEKIds().size() == 0 || in.getCykl() == null
+		if (in.getProgramKsztalceniaId() == null || in.getMekIds() == null
+				|| in.getMekIds().size() == 0 || in.getCykl() == null
 				|| in.getCykl().equals("")
 				|| in.getObszarKsztalceniaId() == null
 				|| in.getKategoriaId() == null || in.getOpis() == null) {
@@ -53,7 +53,7 @@ public class KEKValidator {
 		if(PK==null){
 			throw new IllegalKEKInputException(PK_NOT_FOUND);
 		}
-		List<String> MEKIds=in.getMEKIds();
+		List<String> MEKIds=in.getMekIds().stream().map(i->i.getId()).collect(Collectors.toList());
 		List<Mek> meks = (List<Mek>) mekRepository.findAll(MEKIds);
 		
 		if(meks ==null || meks.size()==0){
@@ -71,22 +71,10 @@ public class KEKValidator {
 		}
 		
 		ProgramKsztalceniaLookUpDTO PKDto=converter.convertProgramKsztalceniaToLookUp(PK);
-		List<Long> i=PKDto.getObszaryKsztalcenia().stream().map(o->o.getId()).collect(Collectors.toList());
-		
-		for (Mek m : meks) {
-			if (!i.contains(m.getId())
-					|| !m.getPoziomKsztalcenia().getId()
-							.equals(PKDto.getPoziomKsztalcenia().getId())
-					|| !m.getProfilKsztalcenia().getId()
-							.equals(PKDto.getProfilKsztalcenia().getId())) {
-				throw new IllegalKEKInputException(ILLEGAL_MEKS_ASSIGNED);
-			}
-		}
-	
-		
+		List<Long> pkObszary=PKDto.getObszaryKsztalcenia().stream().map(o->o.getId()).collect(Collectors.toList());
 		Long KEKObszar=null;
 		
-		for(Long o:i){
+		for(Long o:pkObszary){
 			if(o.equals(in.getObszarKsztalceniaId())){
 				KEKObszar=in.getObszarKsztalceniaId();
 				break;
@@ -94,6 +82,17 @@ public class KEKValidator {
 		}
 		if(KEKObszar==null){
 			throw new IllegalKEKInputException(NO_OBSZAR_ASSIGNED);
+		}
+		
+		
+		for (Mek m : meks) {
+			if (!pkObszary.contains(m.getObszarKsztalcenia().getId())
+					|| !m.getPoziomKsztalcenia().getId()
+							.equals(PKDto.getPoziomKsztalcenia().getId())
+					|| !m.getProfilKsztalcenia().getId()
+							.equals(PKDto.getProfilKsztalcenia().getId())) {
+				throw new IllegalKEKInputException(ILLEGAL_MEKS_ASSIGNED);
+			}
 		}
 	}
 		

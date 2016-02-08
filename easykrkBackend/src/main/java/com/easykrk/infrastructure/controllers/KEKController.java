@@ -25,6 +25,7 @@ import com.easykrk.infrastructure.repository.KategoriaRepository;
 import com.easykrk.infrastructure.repository.ProgramKształceniaRepository;
 import com.easykrk.service.business.KEKService;
 import com.easykrk.service.business.exceptions.IllegalKEKInputException;
+import com.easykrk.service.business.exceptions.TooManyKEKGenerated;
 
 @RestController
 @RequestMapping(value = "/KEK", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -53,14 +54,14 @@ public class KEKController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public KEKOut saveKEK(@RequestBody KEKIn in)
+	public KEKOut saveKEK(@RequestBody KEKIn in) throws IllegalKEKInputException,TooManyKEKGenerated{
 			throws IllegalKEKInputException {
 
 		KEKOut out = KEKService.createKEK(in);
 		return out;
 	}
 
-	@ExceptionHandler(IllegalKEKInputException.class)
+	@ExceptionHandler({IllegalKEKInputException.class,TooManyKEKGenerated.class})
 	public ResponseErrornousEntity<KEKOut> rulesForIllegalKEKInput(
 			HttpServletRequest req, Exception e) {
 
