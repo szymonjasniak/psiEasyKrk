@@ -15,4 +15,7 @@ public interface KEKRepository
 			String opis, KategoriaEK kategoriaEk,
 			ProgramKsztalcenia pk);
 
+	public List<String> findByIdStartingWith(
+			String partialString);
+
 }
