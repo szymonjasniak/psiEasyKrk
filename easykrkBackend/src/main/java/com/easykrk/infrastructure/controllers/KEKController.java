@@ -54,16 +54,13 @@ public class KEKController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public KEKOut saveKEK(@RequestBody KEKIn in)
-			throws IllegalKEKInputException,
-			TooManyKEKGenerated {
+	public KEKOut saveKEK(@RequestBody KEKIn in) throws IllegalKEKInputException,TooManyKEKGenerated{
 
 		KEKOut out = KEKService.createKEK(in);
 		return out;
 	}
 
-	@ExceptionHandler({ IllegalKEKInputException.class,
-			TooManyKEKGenerated.class })
+	@ExceptionHandler({IllegalKEKInputException.class,TooManyKEKGenerated.class})
 	public ResponseErrornousEntity<KEKOut> rulesForIllegalKEKInput(
 			HttpServletRequest req, Exception e) {
 

@@ -85,7 +85,7 @@
 	"duplicate_kod":"Przedmiot o podanym kodzie istnieje już w ramach wybranego cyklu i programu kształcenia",
 	"non_unique_polish_name":"Przedmiot o podanej polskiej nazwie już istnieje w ramch wybranego cyklu i programu kształcenia",
 	"non_unique_english_name":"Przedmiot o podanej angielskiej nazwie już istnieje w ramch wybranego cyklu i programu kształcenia",
-	"subject_added":"Przedmiot poprawnie dodano do bazy"
+	"subject_added":"Przedmiot poprawnie dodano do bazy",
 	"errConnectionFailed":"Nie można nawiązać połączenia z serwerem.",
 	"errServerError":"Podczas przetwarzania żądania wystąpił błąd.",
 	"errDefault":"Podczas przetwarzania żądania wystąpił nieoczekiwany błąd.",
