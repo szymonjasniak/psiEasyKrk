@@ -7,10 +7,11 @@ app.controller('MEKLookUpModalCtrl',["$scope","$uibModalInstance","MEKLookUpServ
 	$scope.params.opis=''
 	 $scope.item=[];
 	 $scope.busy=false;
+	 $scope.gotObszar=true;
 	 $scope.obszary=$scope.params.PK.obszaryKsztalcenia.map(function(item){
 		 return {id:item.id,nazwa:"MEK.obszar."+item.nazwa};
 	 });
-	 $scope.obszar=$scope.obszary[0];
+	 $scope.obszar=$scope.params.obszar;
 	$scope.ok=function(){
 		_.forEach($scope.gridApi.selection.getSelectedRows(),function(val){
 			var bla=i18n.t( "MEK.obszar."+val.obszarKsztalcenia.nazwa)
@@ -53,11 +54,11 @@ app.controller('MEKLookUpModalCtrl',["$scope","$uibModalInstance","MEKLookUpServ
 			columnDefs : [ {
 				field : 'id',
 				displayName : "ID",
-				width : "*"
+				width : "20%"
 			}, {
 				field : 'opis',
 				displayName : i18n.t("efekt.opis"),
-				width : "85%",
+				width : "*",
 				cellTooltip:function(row,col){
 					return row.entity.opis
 				}

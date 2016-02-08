@@ -73,6 +73,16 @@
 			"niestacjonarna":"Unstationary"
 		}
 	}
-	"brakResult":"No Results Found"
+	"brakResult":"No Results Found",
+	"errConnectionFailed":"Connection to the server failed.",
+	"errServerError":"Server side error occurred while processing the request.",
+	"errDefault":"An unknown error occurred. Please contact your administrator.",
+	"null_input":"Insufficient input sent",
+	"pk_not_found":"Education Program not found",
+	"illegal_opis_assigned":"Illegal description sent (min. 20 chars, max. 100 chars)",
+	"illegal_meks_assigned":"Assigned improper Ministerial Study Effects ",
+	"no_obszar_assigned":"Assigned none Study Area",
+	"no_meks_assigned":"Assigned none Ministerial Study Effects",
+	"KEK_assigned_OK":"Succesfully added new  Course Educational Effect with generated id:"
 		
 }

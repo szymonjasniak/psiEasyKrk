@@ -72,6 +72,17 @@
 			"niestacjonarne":"niestacjonarna"
 		}
 	},
-	"brakResult":"Nie Znaleziono Wyników"
+	"brakResult":"Nie Znaleziono Wyników",
+	"errConnectionFailed":"Nie można nawiązać połączenia z serwerem.",
+	"errServerError":"Podczas przetwarzania żądania wystąpił błąd.",
+	"errDefault":"Podczas przetwarzania żądania wystąpił nieoczekiwany błąd.",
+	"null_input":"Wprowadzono za mało danych",
+	"pk_not_found":"Nie znaleziono programu kształcenia",
+	"illegal_opis_assigned":"Dostarczono opis nie spełniających wymagań (min. 20 znaków, max. 100 znaków)",
+	"illegal_meks_assigned":"Przypisano niewłaściwe Ministerialne Efekty Kształcenia",
+	"no_obszar_assigned":"Nie przypisano obszaru kształcenia",
+	"no_meks_assigned":"Nie przypisano Ministerialnych Efektów Kształcenia",
+	"KEK_assigned_OK":"Poprawnie dodano nowy Kierunkowy Efekt Kształcenia z wygenerowanym id:"
+	
 }
 

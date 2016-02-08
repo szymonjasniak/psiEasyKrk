@@ -1,5 +1,6 @@
 var app=angular.module("application.KEK");
-app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServiceFactory", function ($scope, $uibModalInstance,PKLookUpServiceFactory,items){
+app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServiceFactory","items","messageService",
+                                    function ($scope, $uibModalInstance,PKLookUpServiceFactory,items,messageService){
 	$scope.params=items;
 	 $scope.item=[];
 	 $scope.found=[];
@@ -13,8 +14,8 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServic
 		 $scope.cykle=response.data.map(function(item){
 			 return item.nazwa;
 		 })
-		 $scope.PK.cykl=$scope.cykle[0];
-	 });
+		 $scope.PK.cykl=$scope.cykle[0];}
+		 , messageService.genericErrorHandler);
 	 
 	 
 	 $scope.getWydzial=function(){
@@ -25,7 +26,7 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServic
 			 return response.data.map(function(item){
 				 return item.nazwa;
 			 })
-		 })
+		 },messageService.genericErrorHandler)
 	 };	 
 	$scope.getKierunek=function(){
 			 
@@ -34,7 +35,7 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServic
 				
 				 return response.data.map(function(item){
 					 return item.nazwa;
-				 })
+				 },messageService.genericErrorHandler)
 			 })
 		 };	
 	 $scope.getSpecjalnosc=function(){
@@ -43,7 +44,7 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServic
 			
 			 return response.data.map(function(item){
 				 return item.nazwa;
-			 })
+			 },messageService.genericErrorHandler)
 		 })
 	 };
 	  
@@ -66,7 +67,7 @@ app.controller('PKLookUpModalCtrl',["$scope","$uibModalInstance","PKLookUpServic
 				,$scope.PK.stopien,$scope.PK.forma,$scope.PK.cykl).then(function(response){
 					$scope.gridOptionsPK.data=response.data;
 					$scope.busy=false;
-		})
+		},messageService.genericErrorHandler)
 		
 	};
 	

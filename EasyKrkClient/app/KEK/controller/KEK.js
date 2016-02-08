@@ -1,8 +1,8 @@
 var app = angular.module("application.KEK", ['ngAnimate', 'ui.bootstrap','ngResource','angularSpinner'])
 
 app.controller("KEKController", [
-		"$scope","$uibModal","KEKServiceFactory","PKLookUpServiceFactory",
-		function($scope,$uibModal,KEKServiceFactory,PKLookUpServiceFactory) {
+		"$scope","$uibModal","KEKServiceFactory","PKLookUpServiceFactory","messageService",'$window','$location',
+		function($scope,$uibModal,KEKServiceFactory,PKLookUpServiceFactory,messageService,$window,$location) {
 
 			
 			$scope.kategorie = [];
@@ -17,7 +17,7 @@ app.controller("KEKController", [
 				})
 				$scope.kategoria=$scope.kategorie[0];
 				
-			})
+			},messageService.genericErrorHandler)
 			$scope.translate=function(t){
 				return i18n.t(t);
 			}
@@ -32,8 +32,14 @@ app.controller("KEKController", [
 			$scope.programKsztalcenia={},
 			$scope.programKsztalcenia.kod="",
 			$scope.fromModal=false;
+			$scope.pkFromModal=true;
 			$scope.inCorrect=true;
+			$scope.finished=false;
+			$scope.opis='';
 			$scope.MEKi = [];
+			$scope.obszary=[];
+			$scope.obszar={};
+			$scope.obszar.nazwa='';
 			
 			$scope.gridOptionsMEK = {
 					data : $scope.MEKi,
@@ -44,18 +50,18 @@ app.controller("KEKController", [
 					columnDefs : [ {
 					field : 'ID',
 					displayName : "ID",
-					width : "*"
+					width : "15%"
 				}, {
 					field : 'opis',
 					displayName : i18n.t("efekt.opis"),
-					width : "70%",
+					width : "*",
 					cellTooltip:function(row,col){
 						return row.entity.opis
 					}
 				}, {
 					field : 'obszar',
 					displayName : i18n.t("efekt.obszar"),
-					width : "20%"
+					width : "15%"
 				} ],
 				onRegisterApi : function(gridApi) {
 					// set gridApi on scope
@@ -74,6 +80,7 @@ app.controller("KEKController", [
 							MEKLookUpParams.PK=$scope.programKsztalcenia;
 							MEKLookUpParams.cykl=$scope.cykl;
 							MEKLookUpParams.kategoria=$scope.kategoria;
+							MEKLookUpParams.obszar=$scope.obszar;
 							return MEKLookUpParams;
 						}
 					}
@@ -109,14 +116,82 @@ app.controller("KEKController", [
 						}
 					}
 				});
-				
 				modalInstancePK.result.then(function(selectedPK){
 				 $scope.programKsztalcenia=selectedPK
 				 $scope.fromModal=selectedPK.fromModal;
 				 $scope.cykl=selectedPK.cykl.nazwa;
+				 $scope.obszary=selectedPK.obszaryKsztalcenia.map(function(item){
+					 return {id:item.id,nazwa:"MEK.obszar."+item.nazwa};
+				 });
+				 $scope.obszar=$scope.obszary[0];
+				 //truncate meki
+				 $scope.MEKi=[];
+				 $scope.gridOptionsMEK.data=[];
 				},function(){
 				console.log("MEKLookUp dismissed");
 			});
 			};
 			$scope.fromModal=true;
+			
+			$scope.addKEK=function(){
+				
+				KEKServiceFactory.addKEK($scope.programKsztalcenia.id, $scope.cykl, $scope.MEKi, $scope.kategoria.id, $scope.opis, $scope.obszar.id)
+				.then(function(value) {
+					if(value.data.t === null || value.data.t === undefined ){
+						//good
+						$scope.id=value.data.id;
+						messageService.logSuccess(i18n.t("KEK_assigned_OK") +" "+$scope.id);
+						$scope.finished=true;
+						
+				}else{
+					//bad
+					console.log(value.data.t.message);
+					messageService.logError(i18n.t(value.data.t.message));
+					
+				}
+				
+					
+				}, messageService.genericErrorHandler)
+			}
+			
+			//inner translation
+			$scope.t=function(t){
+				return i18n.t(t);
+			}
+			//watching sent params, to unDisable ok
+			$scope.$watch("programKsztalcenia.kod",function(newVal,oldVal){
+				
+				$scope.inCorrect= checkCorrectnes(newVal, $scope.cykl, $scope.kategoria.nazwa, $scope.opis, $scope.MEKi.length);
+			})
+			$scope.$watch("cykl",function(newVal,oldVal){
+				$scope.inCorrect= checkCorrectnes($scope.programKsztalcenia.kod, newVal, $scope.kategoria.nazwa, $scope.opis, $scope.MEKi.length);
+			})
+			$scope.$watch("kategoria.nazwa",function(newVal,oldVal){
+				$scope.inCorrect= checkCorrectnes($scope.programKsztalcenia.kod, $scope.cykl, newVal, $scope.opis, $scope.MEKi.length);
+			})
+			$scope.$watch("opis",function(newVal,oldVal){
+				$scope.inCorrect= checkCorrectnes($scope.programKsztalcenia.kod, $scope.cykl, $scope.kategoria.nazwa, newVal, $scope.MEKi.length);
+			})
+			$scope.$watch("MEKi.length",function(newVal,oldVal){
+				$scope.inCorrect= checkCorrectnes($scope.programKsztalcenia.kod, $scope.cykl, $scope.kategoria.nazwa, $scope.opis, newVal);
+				$scope.pkFromModal=  checkCorrectnessObszar($scope.obszary, newVal);
+			})
+			$scope.$watch("obszar",function(newVal,oldVal){
+				$scope.pkFromModal=  checkCorrectnessObszar(newVal, $scope.MEKi.length);
+			})
+			
+			
+			var checkCorrectnes=function(pkKod,cykl,katNazwa,opis,meksL){
+				
+				return (pkKod === '' || cykl === '' || katNazwa === '' || !(opis.length>20 && opis.length<100) || meksL === 0);
+			}
+			var checkCorrectnessObszar=function(lO,lM){
+				
+				return !(lO.nazwa !=='' && lM===0);
+			}
+			
+			$scope.cancelKEK=function(){
+				$location.path("/");
+			}
+			
 		}]);

@@ -1,0 +1,21 @@
+/* 
+	Overrides bootstrap CSS
+*/
+.alert {
+	border-radius: 0px;
+	background-color: white;
+    border-color: rgb(15, 65, 85);
+    border-width: 2px;
+}
+.alert-danger {
+    color: #a94442;
+}
+.alert-info {
+    color: #31708f;
+}
+.alert-success {
+    color: #3c763d;
+}
+.alert-warning {
+    color: #8a6d3b;
+}
