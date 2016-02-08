@@ -52,6 +52,7 @@ public class KursService {
 	}
 
 	private Kurs prepareKurs(Kurs k, String kodPrzedmiotu) {
+
 		k.setFormaProwadzeniaZajec(
 				formaProwadzeniaZajecRepository.findOne(
 						k.getFormaProwadzeniaZajec()
@@ -63,6 +64,7 @@ public class KursService {
 						k.getProgramKsztalcenia().getId()));
 		k.setFormaZaliczenia(formaZaliczeniaRepository
 				.findOne(k.getFormaZaliczenia().getId()));
+
 		k.setCnps(30 * k.getEcts());
 		k.setZzu(k.getLiczbaGodzinWTygodniu() * 15);
 		k.setEcts_bk(0.6 * k.getEcts());

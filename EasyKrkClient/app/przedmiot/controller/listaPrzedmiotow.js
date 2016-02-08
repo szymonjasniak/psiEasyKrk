@@ -20,6 +20,7 @@ angular.module('application.listaPrzedmioty', [])
 									})								
 							};
 
+
 							$scope.gridOptionsPrzedmiot = {};
 							$scope.gridOptionsPrzedmiot = {
 								data : $scope.przedmioty,
@@ -30,12 +31,16 @@ angular.module('application.listaPrzedmioty', [])
 								multiSelect : false,
 								columnDefs : [
 										{
+
 											field : 'kodPrzedmiotu',
+
 											displayName : i18n
 													.t("przedmiot.kod"),
 										},
 										{
+
 											field : 'nazwaPolska',
+
 											displayName : i18n
 													.t("przedmiot.nazwaPolska")
 										},
@@ -59,6 +64,7 @@ angular.module('application.listaPrzedmioty', [])
 							
 							$scope.rowDblClick = function( row) {
 							   // alert(JSON.stringify(row.entity)); 
+
 								przedmiotService.setSelectedProgram($scope.program);
 								przedmiotService.setSelectedPrzedmiot(row.entity);
 								$location.path('/przedmiot/' + row.entity.kodPrzedmiotu);  
@@ -79,6 +85,7 @@ angular.module('application.listaPrzedmioty', [])
 													+ oldValue);
 										});
 							};
+
 
 							
 							
@@ -109,4 +116,5 @@ angular.module('application.listaPrzedmioty', [])
 												});
 							};
 							$scope.fromModal = true;
+
 						} ]);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.easykrk.domain.model.Kek;
 import com.easykrk.domain.model.Kurs;
 import com.easykrk.domain.model.Przedmiot;
-import com.easykrk.infrastructure.repository.KekRepository;
+import com.easykrk.infrastructure.repository.KEKRepository;
 import com.easykrk.infrastructure.repository.KursRepository;
 import com.easykrk.infrastructure.repository.ModulKsztalceniaRepository;
 import com.easykrk.infrastructure.repository.PrzedmiotRepository;
@@ -26,7 +26,7 @@ public class PrzedmiotService {
 	private KursRepository kursRepository;
 
 	@Autowired
-	private KekRepository kekRepository;
+	private KEKRepository kekRepository;
 
 	@Autowired
 	private PrzedmiotValidator przedmiotValidator;
@@ -38,10 +38,12 @@ public class PrzedmiotService {
 	private GrupaKursowService grupaKursowService;
 
 	public void save(Przedmiot przedmiot) {
+
 		// Modul
 		przedmiot.setModulKsztalcenia(
 				modulKsztalceniaRepository.findOne(przedmiot
 						.getModulKsztalcenia().getId()));
+
 		// kek
 		przedmiot.setKek(prepareKek(przedmiot.getKek()));
 		// Validation code
@@ -76,5 +78,4 @@ public class PrzedmiotService {
 		return kek;
 
 	}
-
 }

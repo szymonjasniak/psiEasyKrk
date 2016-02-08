@@ -78,12 +78,15 @@ public class PrzedmiotValidator {
 		}
 
 		if (kody.contains(p.getKodPrzedmiotu())) {
+
 			throw new IllegalArgumentException(
 					DUPLICATE_KOD);
+
 		}
 	}
 
 	private static void validateKod(Przedmiot p) {
+
 		String regexString = "^[A-Z]{3}[0-9]{6}$";
 		Pattern regex = Pattern.compile(regexString);
 		if (!regex.matcher(p.getKodPrzedmiotu())
@@ -105,6 +108,7 @@ public class PrzedmiotValidator {
 									kurs.getFormaProwadzeniaZajec()
 											.getId())
 							.getSkrot());
+
 		}
 		if (formaZaliczenia.contains(WYKLAD)) {
 			Set<String> kategorieKek = new HashSet<String>();
@@ -129,6 +133,7 @@ public class PrzedmiotValidator {
 									kurs.getFormaProwadzeniaZajec()
 											.getId())
 							.getSkrot());
+
 		}
 		formaZaliczenia.remove(WYKLAD);
 		if (formaZaliczenia.size() > 0) {

@@ -20,6 +20,7 @@ import com.easykrk.domain.model.dto.FormaProwadzeniaZajecDTO;
 import com.easykrk.infrastructure.common.utils.Converter;
 import com.easykrk.infrastructure.repository.FormaProwadzeniaZajecRepository;
 import com.easykrk.infrastructure.repository.FormaZaliczeniaRepository;
+import com.easykrk.infrastructure.repository.GrupaKursowRepository;
 import com.easykrk.infrastructure.repository.KursRepository;
 import com.easykrk.infrastructure.repository.ModulKsztalceniaRepository;
 import com.easykrk.infrastructure.repository.PrzedmiotRepository;
@@ -46,6 +47,9 @@ public class PrzedmiotController {
 
 	@Autowired
 	private KursRepository kursRepository;
+
+	@Autowired
+	private GrupaKursowRepository gkursRepository;
 
 	@Autowired
 	private PrzedmiotService przedmiotService;
@@ -96,7 +100,9 @@ public class PrzedmiotController {
 		LOG.debug("Przedmiot with ID: "
 				+ przedmiot.getKodPrzedmiotu() + " saved");
 		przedmiotService.save(przedmiot);
+
 		return "subject_added";
+
 	}
 
 }

@@ -1,3 +1,4 @@
+
 angular
 		.module('application.przedmiot',
 				[ 'ngAnimate', 'ui.bootstrap', 'ngResource', 'angularSpinner' ])

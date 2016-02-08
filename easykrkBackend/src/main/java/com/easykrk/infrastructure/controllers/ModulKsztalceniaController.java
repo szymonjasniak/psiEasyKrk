@@ -30,6 +30,7 @@ public class ModulKsztalceniaController {
 	@ExceptionHandler
 	public List<ModulKsztalceniaDTO> getAll(
 			@RequestParam(value = "program", required = true, defaultValue = "") Long programKsztalceniaId)
+
 					throws Exception {
 		return modulKsztalcenaiConverter
 				.convertList(modulKsztalceniaRepositury

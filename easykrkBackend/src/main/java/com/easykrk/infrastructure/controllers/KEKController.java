@@ -88,7 +88,6 @@ public class KEKController {
 		return kekRepository
 				.findDistinctByOpisContainingAndKategoriaAndProgramKsztalcenia(
 						opis, kategoriaEk, pk);
-
 	}
 
 }

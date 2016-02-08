@@ -27,6 +27,7 @@ import com.easykrk.infrastructure.repository.SpecjalnoscRepository;
 import com.easykrk.infrastructure.repository.WydzialRepository;
 
 @RestController
+
 @RequestMapping(value = "/PK", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProgramKsztalceniaController {
 
@@ -101,6 +102,7 @@ public class ProgramKsztalceniaController {
 			return programKsztalceniaRepository
 					.findOne(program).getLiczbaSemestrow();
 		}
+
 	}
 
 }
