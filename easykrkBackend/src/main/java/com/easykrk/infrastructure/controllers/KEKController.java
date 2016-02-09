@@ -32,65 +32,57 @@ import com.easykrk.service.business.exceptions.TooManyKEKGenerated;
 @RequestMapping(value = "/KEK", produces = MediaType.APPLICATION_JSON_VALUE)
 public class KEKController {
 
-	@Autowired
-	KategoriaRepository kategoriaRepo;
+    @Autowired
+    KategoriaRepository kategoriaRepo;
 
-	@Autowired
-	ProgramKształceniaRepository programKsztalceniaRepository;
+    @Autowired
+    ProgramKształceniaRepository programKsztalceniaRepository;
 
-	@Autowired
-	KEKRepository kekRepository;
+    @Autowired
+    KEKRepository kekRepository;
 
-	@Autowired
-	KategoriaRepository kategoriaRepository;
+    @Autowired
+    KategoriaRepository kategoriaRepository;
 
-	@Autowired
-	KEKService KEKService;
+    @Autowired
+    KEKService KEKService;
 
-	@RequestMapping(value = "/kategoria", method = RequestMethod.GET)
-	@ResponseBody
+    @RequestMapping(value = "/kategoria", method = RequestMethod.GET)
+    @ResponseBody
 	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
-	public Iterable<KategoriaEK> getAllKategoria() {
-		return kategoriaRepo.findAll();
-	}
+    public Iterable<KategoriaEK> getAllKategoria() {
+	return kategoriaRepo.findAll();
+    }
 
-	@RequestMapping(method = RequestMethod.POST)
-	@ResponseBody
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
 	@PreAuthorize("hasAuthority('ROLE_DOMAIN_ADMIN')")
-	public KEKOut saveKEK(@RequestBody KEKIn in) throws IllegalKEKInputException,TooManyKEKGenerated{
+    public KEKOut saveKEK(@RequestBody KEKIn in) throws IllegalKEKInputException, TooManyKEKGenerated {
+	KEKOut out = KEKService.createKEK(in);
+	return out;
+    }
 
-		KEKOut out = KEKService.createKEK(in);
-		return out;
+    @ExceptionHandler({ IllegalKEKInputException.class, TooManyKEKGenerated.class })
+    public ResponseErrornousEntity<KEKOut> rulesForIllegalKEKInput(HttpServletRequest req, Exception e) {
+	KEKOut out = new KEKOut();
+	out.setMessage(e.getMessage());
+	return new ResponseErrornousEntity<KEKOut>(out, req.getRequestURI(), HttpStatus.PRECONDITION_FAILED);
+    }
+
+    @RequestMapping(value = "/getAll/{programKsztalceniaId}")
+    @ResponseBody
+    @PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
+    public Iterable<Kek> getKek(@PathVariable Long programKsztalceniaId,
+	    @RequestParam(value = "opis", required = false, defaultValue = "") String opis,
+	    @RequestParam(value = "kategoria", required = false) Long kategoriaId) throws Exception {
+
+	ProgramKsztalcenia pk = programKsztalceniaRepository.findOne(programKsztalceniaId);
+	if (kategoriaId == null) {
+	    return kekRepository.findDistinctByOpisContainingAndProgramKsztalcenia(opis, pk);
+	} else {
+	    KategoriaEK kategoriaEk = kategoriaRepository.findOne(kategoriaId);
+	    return kekRepository.findDistinctByOpisContainingAndKategoriaAndProgramKsztalcenia(opis, kategoriaEk, pk);
 	}
-
-	@ExceptionHandler({IllegalKEKInputException.class,TooManyKEKGenerated.class})
-	public ResponseErrornousEntity<KEKOut> rulesForIllegalKEKInput(
-			HttpServletRequest req, Exception e) {
-
-		KEKOut out = new KEKOut();
-		out.setMessage(e.getMessage());
-		return new ResponseErrornousEntity<KEKOut>(out,
-				req.getRequestURI(),
-				HttpStatus.PRECONDITION_FAILED);
-	}
-
-	@RequestMapping(value = "/getAll/{programKsztalceniaId}/{kategoriaId}")
-	@ResponseBody
-	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
-	public Iterable<Kek> getKek(
-			@PathVariable Long programKsztalceniaId,
-			@PathVariable Long kategoriaId,
-			@RequestParam(value = "opis", required = false, defaultValue = "") String opis)
-					throws Exception {
-
-		ProgramKsztalcenia pk = programKsztalceniaRepository
-				.findOne(programKsztalceniaId);
-		KategoriaEK kategoriaEk = kategoriaRepository
-				.findOne(kategoriaId);
-
-		return kekRepository
-				.findDistinctByOpisContainingAndKategoriaAndProgramKsztalcenia(
-						opis, kategoriaEk, pk);
-	}
+    }
 
 }

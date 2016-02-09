@@ -1,5 +1,5 @@
 <div ng-controller="PrzedmiotController">
-	<form name="myForm" class="form-horizontal" role="form">
+	<form name="myForm" class="form-horizontal" role="form" ng-disabled ="true">
 		<div class="form-group col-xs-6">
 			<div class="form-group"
 				ng-class="{ 'has-error': myForm.programKsztalcenia.$invalid && myForm.programKsztalcenia.$dirty}">
@@ -13,7 +13,7 @@
 					 <span
 						class="input-group-btn" style="vertical-align: bottom">
 						<button class="btn  search-button" type="button"
-							ng-click="showProgramKsztalceniaLookUp()" style="margin-left: 0px"></button>
+							ng-click="showProgramKsztalceniaLookUp()" style="margin-left: 0px" ng-disabled="fromSelect"></button>
 					</span>
 				<div role="alert">
 					<span class="error"
@@ -47,7 +47,7 @@
 					<label for="nazwaPolska" translate text="przedmiot.nazwaPolska"></label>
 					<input class="form-control input" id="nazwaPolska" type="text"
 						name="nazwaPolska" ng-model="przedmiot.nazwaPolska"
-						ng-minlength="3" ng-maxlength="50" ng-required="true">
+						ng-minlength="3" ng-maxlength="50" ng-required="true" ng-disabled="fromSelect">
 					<div role="alert">
 						<span class="error"
 							ng-show="myForm.nazwaPolska.$dirty && myForm.nazwaPolska.$error.required"
@@ -65,7 +65,7 @@
 						text="przedmiot.nazwaAngielska"></label> <input
 						class="form-control input" id="nazwaAngielska" type="text"
 						name="nazwaAngielska" ng-model="przedmiot.nazwaAngielska"
-						ng-minlength="3" ng-maxlength="50" ng-required="true">
+						ng-minlength="3" ng-maxlength="50" ng-required="true" ng-disabled="fromSelect">
 					<div role="alert">
 						<span class="error"
 							ng-show="myForm.nazwaAngielska.$dirty && myForm.nazwaAngielska.$error.required"
@@ -82,7 +82,7 @@
 					<label for="kod" translate text="przedmiot.kod"></label> <input
 						class="form-control input" id="kod" type="text" name="kod"
 						ng-model="przedmiot.kod" ng-required="true"
-						ng-pattern="/^[A-Z]{3}[0-9]{6}$/">
+						ng-pattern="/^[A-Z]{3}[0-9]{6}$/" ng-disabled="fromSelect">
 					<div role="alert">
 						<span class="error"
 							ng-show="myForm.kod.$dirty && myForm.kod.$error.required"
@@ -95,7 +95,7 @@
 					ng-class="{ 'has-error': myForm.modul.$invalid && myForm.modul.$dirty}">
 					<label for="modul" translate text="przedmiot.modul"></label> <select
 						class="form-control input" id="modul" type="text" name="modul"
-						ng-model="przedmiot.modulKsztalcenia.nazwa" ng-required="true">
+						ng-model="przedmiot.modulKsztalcenia.nazwa" ng-required="true" ng-disabled="fromSelect">
 						<option ng-repeat="modul in moduly">{{modul.nazwa}}</option>
 					</select>
 					<div role="alert">
@@ -109,7 +109,7 @@
 					<label for="opiekun" translate text="przedmiot.opiekun"></label> <input
 
 						uib-typeahead="osoba for osoba in getOpiekunowie()" typeaead-loading="loadingOsoba" typeahead-no-results="noResultsOsoba"class="form-control input" id="opiekun" type="text"
-						name="opiekun" ng-model="przedmiot.opiekun.fullName" ng-required="true">
+						name="opiekun" ng-model="przedmiot.opiekun.fullName" ng-required="true" ng-disabled="fromSelect">
 
 					<div role="alert">
 						<span class="error"
@@ -124,11 +124,11 @@
 					<div class="form-inline">
 						<label for="czyGrupa" translate text="przedmiot.czyGrupa"></label>
 						<input type="checkbox" class="form-control input" id="czyGrupa"
-							type="text" name="czyGrupa" ng-model="przedmiot.czyGrupa">
+							type="text" name="czyGrupa" ng-model="przedmiot.czyGrupa" ng-readonly="fromSelect">
 					</div>
 					<div ng-show="przedmiot.czyGrupa">
 						<label for="sel1" translate text="przedmiot.kursGlowny"></label> <select
-							class="form-control" id="sel1" ng-required="przedmiot.czyGrupa">
+							class="form-control" id="sel1" ng-required="przedmiot.czyGrupa" ng-model ="przedmiot.kursGlowny" ng-disabled="fromSelect">
 							<option ng-repeat="kurs in przedmiot.zajecia" >{{kurs.forma}}</option>
 						</select>
 					</div>
@@ -148,9 +148,9 @@
 						</div>
 						<div class="form-group col-xs-1">
 							<button type="button" id="addData"
-								class="btn btn-success save_button" ng-click="dodaj()">+</button>
+								class="btn btn-success save_button" ng-click="dodaj()" ng-disabled="fromSelect">+</button>
 								<button type="button" id="addData"
-							class="btn btn-success save_button" ng-click="removeKurs()">-</button>
+							class="btn btn-success save_button" ng-click="removeKurs()" ng-disabled="fromSelect">-</button>
 						</div>
 					</div>
 				</div>
@@ -161,22 +161,22 @@
 			<div id="block1">
 				<div class="form-inline">
 					<div class="form-group col-xs-11">
-						<div id="grid2" ui-grid="gridOptionsEK" ui-grid-edit ui-grid-cellNav ui-grid-validate  ui-grid-selection class="myGrid"></div>
+						<div id="grid2" ui-grid="gridOptionsEK" ui-grid-edit ui-grid-cellNav ui-grid-validate  ui-grid-selection class="myGrid" ng-readonly="fromSelect"></div>
 					</div>
 					<div class="form-group col-xs-1">
 						<button type="button" id="addData"
 
-							class="btn btn-success save_button" ng-click="showKEKLookUp()">+</button>
+							class="btn btn-success save_button" ng-click="showKEKLookUp()" ng-disabled="fromSelect">+</button>
 						<button type="button" id="addData"
-							class="btn btn-success save_button" ng-click="removeEK()">-</button>
+							class="btn btn-success save_button" ng-click="removeEK()" ng-disabled="fromSelect">-</button>
 					</div>
 					
 				</div>
 			</div>
 		</div>
 		<div class="form-group col-xs-12 pull-right">
-						<button type="submit" class="btn btn-success btn-lg btn-group"
-							translate text="przedmiot.zatwierdz" ng-click="save()"></button>
+						<button type="submit" class="btn btn-success btn-lg"
+							translate text="przedmiot.zatwierdzNowy" ng-click="save()" ng-show="!fromSelect" ng-disabled = "myForm.$invalid"></button>
 					</div>
 
 	</form>

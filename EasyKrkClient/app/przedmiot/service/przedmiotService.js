@@ -2,6 +2,8 @@ var app = angular.module("application.przedmiot").factory('przedmiotService',
 		["$resource","$http", function($resource,$http) {
 			
 			var selectedProgram = {}
+			var przedmioty = {}
+			var fromSelected = true;
 			var selectedPrzedmiot = {
 					id:null,
 					version:null,
@@ -20,6 +22,31 @@ var app = angular.module("application.przedmiot").factory('przedmiotService',
 				fullName:""
 			},
 			}
+			
+			var format = {
+					id:"",
+					version:"",
+				zajecia : [],
+				kek : [],
+				czyOgolnouczelniany:false,
+				formaProwadzeniaZajec:[],
+				pek:[],
+				planyStudiow:[],
+				kartaPrzedmiotu:{
+					autorKarty:{
+						tytul: "",
+						imie:"",
+						nazwisko:""
+					},
+				},
+				grupaKursow:[],
+				modulKsztalcenia :{
+					nazwa:""
+				},
+			opiekun:{
+				fullName:""
+			},
+			};
 
 			getModuly = function(program) {
 				return $http.get("/backend/modul/getAll/", {
@@ -74,9 +101,11 @@ var app = angular.module("application.przedmiot").factory('przedmiotService',
 			;
 			
 			savePrzedmiot = function(przedmiot) {
-				return $http.put("backend/przedmiot/save", przedmiot)
+				return $http.post("backend/przedmiot/save", przedmiot)
 			};
-			
+			getFormat = function() {
+				return format;
+			};
 
 			return {
 				getModuly:getModuly,
@@ -86,13 +115,30 @@ var app = angular.module("application.przedmiot").factory('przedmiotService',
 				getLiczbaSemestrow:getLiczbaSemestrow,
 				getAllPrzedmioty:getAllPrzedmioty,
 				savePrzedmiot:savePrzedmiot,
+				setPrzedmioty : function(value) {
+					przedmioty = value;					
+				},
+				getPrzedmioty : function() {
+					return przedmioty;
+				},
+				getFormat : function() {
+					return format;
+				},
+				setFormat : function(value) {
+					selectedPrzedmiot = value;
+				},
+				setFromSelected : function(value) {
+					fromSelected = value;					
+				},
+				getFromSelected : function() {
+					return fromSelected;
+				},
 				setSelectedProgram : function(value) {
 					selectedProgram = value;					
 				},
 				getSelectedProgram : function() {
 					return selectedProgram;
-				},setSelectedPrzedmiot : function(value) {
-					
+				},setSelectedPrzedmiot : function(value) {					
 					selectedPrzedmiot.grupaKursow = value.grupaKursow;
 					selectedPrzedmiot.id = value.id;						
 					selectedPrzedmiot.kod = value.kodPrzedmiotu;
@@ -127,8 +173,11 @@ var app = angular.module("application.przedmiot").factory('przedmiotService',
 							function(response) {
 								selectedPrzedmiot.modulKsztalcenia = {nazwa:response.data.nazwa }
 							});
-					/*selectedPrzedmiot.modulKsztalcenia = {nazwa:value. }
-					selectedPrzedmiot.opiekun = {fullName: value.opiekun.fullName}*/
+					selectedPrzedmiot.czyGrupa = value.grupaKursow !== null
+					if(value.grupaKursow !== null){
+					selectedPrzedmiot.kursGlowny = value.grupaKursow.kursGlowny.formaProwadzeniaZajec.id
+					}
+					selectedPrzedmiot.opiekun = {fullName: value.kartaPrzedmiotu.autorKarty.tytul +" "+ value.kartaPrzedmiotu.autorKarty.imie +" " +value.kartaPrzedmiotu.autorKarty.nazwisko}
 				},
 				getSelectedPrzedmiot : function() {
 					return selectedPrzedmiot;

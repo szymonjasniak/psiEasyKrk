@@ -1,4 +1,5 @@
-angular.module('application.listaPrzedmioty', [])
+angular
+		.module('application.listaPrzedmioty', [])
 		.controller(
 				'ListaPrzedmiotController',
 				[
@@ -9,38 +10,55 @@ angular.module('application.listaPrzedmioty', [])
 						"$uibModal",
 						"PKLookUpServiceFactory",
 						'przedmiotService',
-						function($scope, $log, $window,$location,$uibModal,PKLookUpServiceFactory,przedmiotService) {
+						function($scope, $log, $window, $location, $uibModal,
+								PKLookUpServiceFactory, przedmiotService) {
 
-							$scope.przedmioty = [];
-							
-							$scope.szukaj = function(){
-								przedmiotService.getAllPrzedmioty($scope.program.id).then(function(response) {
-									$scope.przedmioty = response.data;
-									$scope.gridOptionsPrzedmiot.data = response.data;
-									})								
+							$scope.przedmioty = przedmiotService.getPrzedmioty();
+							$scope.program = przedmiotService.getSelectedProgram();
+							$scope.cykl = przedmiotService.getSelectedProgram().cykl !== undefined ? przedmiotService
+									.getSelectedProgram().cykl.nazwa
+									: "";
+
+							$scope.szukaj = function() {
+								przedmiotService
+										.getAllPrzedmioty($scope.program.id)
+										.then(
+												function(response) {
+													for (var i = 0; i < response.data.length; i++) {
+														if (response.data[i].kartaPrzedmiotu !== null) {
+															var opiekun = response.data[i].kartaPrzedmiotu.autorKarty.tytul
+																	+ " "
+																	+ response.data[i].kartaPrzedmiotu.autorKarty.imie
+																	+ " "
+																	+ response.data[i].kartaPrzedmiotu.autorKarty.nazwisko;
+															response.data[i]['opiekun'] = opiekun;
+														}
+													}
+													$scope.przedmioty = response.data;
+													przedmiotService
+															.setPrzedmioty($scope.przedmioty);
+													$scope.gridOptionsPrzedmiot.data = $scope.przedmioty;
+												})
 							};
-
-
+							
 							$scope.gridOptionsPrzedmiot = {};
 							$scope.gridOptionsPrzedmiot = {
 								data : $scope.przedmioty,
 								enableHorizontalScrollbar : 0,
 								enableVerticalScrollbar : 2,
 								enableRowSelection : false,
-								enableSelectAll:false,
+								enableSelectAll : false,
 								multiSelect : false,
 								columnDefs : [
 										{
 
 											field : 'kodPrzedmiotu',
-
 											displayName : i18n
 													.t("przedmiot.kod"),
 										},
 										{
 
 											field : 'nazwaPolska',
-
 											displayName : i18n
 													.t("przedmiot.nazwaPolska")
 										},
@@ -61,13 +79,24 @@ angular.module('application.listaPrzedmioty', [])
 										+ '  <div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell></div>'
 										+ '</div>';
 							}
-							
-							$scope.rowDblClick = function( row) {
-							   // alert(JSON.stringify(row.entity)); 
 
-								przedmiotService.setSelectedProgram($scope.program);
-								przedmiotService.setSelectedPrzedmiot(row.entity);
-								$location.path('/przedmiot/' + row.entity.kodPrzedmiotu);  
+							$scope.rowDblClick = function(row) {
+								// alert(JSON.stringify(row.entity));
+
+								przedmiotService
+										.setSelectedProgram($scope.program);
+								przedmiotService
+										.setSelectedPrzedmiot(row.entity);
+								przedmiotService.setFromSelected(true);
+								$location.path('/przedmiot/'
+										+ row.entity.kodPrzedmiotu);
+							};
+
+							$scope.newPrzedmiot = function() {
+								przedmiotService.setFromSelected(false);
+								przedmiotService.setFormat({id:"",version:"",zajecia:[],kek:[],czyOgolnouczelniany:false,formaProwadzeniaZajec:[],pek:[],planyStudiow:[],kartaPrzedmiotu:{autorKarty:{tytul:"",imie:"",nazwisko:""},},grupaKursow:[],modulKsztalcenia:{nazwa:""},opiekun:{fullName:""},});
+								$location.path('/przedmiot/new');
+
 							};
 
 							$scope.gridOptionsPrzedmiot.onRegisterApi = function(
@@ -86,9 +115,6 @@ angular.module('application.listaPrzedmioty', [])
 										});
 							};
 
-
-							
-							
 							$scope.showProgramKsztalceniaLookUp = function() {
 								var modalInstancePK = $uibModal
 										.open({
@@ -109,6 +135,8 @@ angular.module('application.listaPrzedmioty', [])
 													$scope.program = selectedPK
 													$scope.fromModal = selectedPK.fromModal;
 													$scope.cykl = selectedPK.cykl.nazwa;
+													przedmiotService
+															.setSelectedProgram(selectedPK);
 												},
 												function() {
 													console
