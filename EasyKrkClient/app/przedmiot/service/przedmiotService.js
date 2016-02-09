@@ -62,19 +62,19 @@ var app = angular.module("application.przedmiot").factory('przedmiotService',
 
 			getFormyProwadzeniaZajec=function()
 			{
-				return $http.get("backend/przedmiot/getFormyProwadzenia")
+				return $http.get("/backend/przedmiot/getFormyProwadzenia")
 			}
 			;
 
 			getFormyZaliczeniaZajec=function()
 			{
-				return $http.get("backend/przedmiot/getFormyZaliczenia")
+				return $http.get("/backend/przedmiot/getFormyZaliczenia")
 			}
 			;
 
 			getLiczbaSemestrow=function(program)
 			{
-				return $http.get("backend/PK/getLiczbaSemestrow", {
+				return $http.get("/backend/PK/getLiczbaSemestrow", {
 					params : {
 						program : program
 					}
@@ -83,7 +83,7 @@ var app = angular.module("application.przedmiot").factory('przedmiotService',
 			;
 			getAllPrzedmioty=function(program)
 			{
-				return $http.get("backend/przedmiot/getAllInProgram", {
+				return $http.get("/backend/przedmiot/getAllInProgram", {
 					params : {
 						program : program
 					}
@@ -92,7 +92,7 @@ var app = angular.module("application.przedmiot").factory('przedmiotService',
 			;
 			getModul=function(id)
 			{
-				return $http.get("backend/modul/get", {
+				return $http.get("/backend/modul/get", {
 					params : {
 						id : id
 					}
@@ -101,7 +101,7 @@ var app = angular.module("application.przedmiot").factory('przedmiotService',
 			;
 			
 			savePrzedmiot = function(przedmiot) {
-				return $http.post("backend/przedmiot/save", przedmiot)
+				return $http.post("/backend/przedmiot/save", przedmiot)
 			};
 			getFormat = function() {
 				return format;

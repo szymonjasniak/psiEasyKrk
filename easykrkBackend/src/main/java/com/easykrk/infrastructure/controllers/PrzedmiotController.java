@@ -53,7 +53,7 @@ public class PrzedmiotController {
 
     @RequestMapping(value = "/getAllInProgram", method = RequestMethod.GET)
     @ResponseBody
-	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
+    @PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
     public List<Przedmiot> getAllInProgram(
 	    @RequestParam(value = "program", required = true, defaultValue = "") Long program) throws Exception {
 	return przedmiotRepository.findByModulKsztalceniaProgramKsztalceniaId(program);
@@ -61,7 +61,7 @@ public class PrzedmiotController {
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     @ResponseBody
-	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
+    @PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
     public Iterable<Przedmiot> getAll() throws Exception {
 	return przedmiotRepository.findAll();
     }
@@ -75,8 +75,9 @@ public class PrzedmiotController {
 
     @RequestMapping(value = "/getFormyZaliczenia", method = RequestMethod.GET)
     @ResponseBody
+    @PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
     public Iterable<FormaZaliczenia> getFormyZaliczenia() throws Exception {
-	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
+
 	return formaZaliczeniaRepository.findAll();
     }
 
