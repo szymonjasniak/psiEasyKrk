@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +42,7 @@ public class MEKController {
 	
 	@RequestMapping(value="/getAll/{programKsztalceniaId}/{kategoriaId}")
 	@ResponseBody
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public Iterable<Mek> getMek(
 			@PathVariable Long programKsztalceniaId,
 			@PathVariable Long kategoriaId,

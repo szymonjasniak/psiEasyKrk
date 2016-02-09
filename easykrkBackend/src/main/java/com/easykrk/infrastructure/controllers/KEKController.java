@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,12 +49,14 @@ public class KEKController {
 
 	@RequestMapping(value = "/kategoria", method = RequestMethod.GET)
 	@ResponseBody
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public Iterable<KategoriaEK> getAllKategoria() {
 		return kategoriaRepo.findAll();
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_ADMIN')")
 	public KEKOut saveKEK(@RequestBody KEKIn in) throws IllegalKEKInputException,TooManyKEKGenerated{
 
 		KEKOut out = KEKService.createKEK(in);
@@ -73,6 +76,7 @@ public class KEKController {
 
 	@RequestMapping(value = "/getAll/{programKsztalceniaId}/{kategoriaId}")
 	@ResponseBody
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public Iterable<Kek> getKek(
 			@PathVariable Long programKsztalceniaId,
 			@PathVariable Long kategoriaId,

@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,6 +61,7 @@ public class PrzedmiotController {
 	@RequestMapping(value = "/getAllInProgram", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public List<Przedmiot> getAllInProgram(
 			@RequestParam(value = "program", required = true, defaultValue = "") Long program)
 					throws Exception {
@@ -71,6 +73,7 @@ public class PrzedmiotController {
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public Iterable<Przedmiot> getAll() throws Exception {
 		return przedmiotRepository.findAll();
 	}
@@ -78,6 +81,7 @@ public class PrzedmiotController {
 	@RequestMapping(value = "/getFormyProwadzenia", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public List<FormaProwadzeniaZajecDTO> getFormyProwadzenia()
 			throws Exception {
 		return converter.convertListFormyProwadzeniaZajec(
@@ -87,6 +91,7 @@ public class PrzedmiotController {
 	@RequestMapping(value = "/getFormyZaliczenia", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public Iterable<FormaZaliczenia> getFormyZaliczenia()
 			throws Exception {
 		return formaZaliczeniaRepository.findAll();
@@ -95,6 +100,7 @@ public class PrzedmiotController {
 	@RequestMapping(value = "/save", method = RequestMethod.PUT)
 	@ResponseBody
 	@ExceptionHandler
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_ADMIN')")
 	public String save(@RequestBody Przedmiot przedmiot)
 			throws Exception {
 		LOG.debug("Przedmiot with ID: "

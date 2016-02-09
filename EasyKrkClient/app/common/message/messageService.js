@@ -11,7 +11,10 @@ angular.module('application.message', ['angular-growl', 'ngAnimate'])
         // Error handler for http promises. To be used as it is.
         genericErrorHandler: function(data, status, headers, config) {
         	console.error("An error occured. ErrorID: " + data.errorId);
-        	switch(status) {
+        	switch(data.status) {
+        	case 401:
+        		growl.error("unauthorized");
+        		break;
         	case 404:
         		growl.error(i18n.t("errConnectionFailed"));
         		break;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +29,7 @@ public class ModulKsztalceniaController {
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public List<ModulKsztalceniaDTO> getAll(
 			@RequestParam(value = "program", required = true, defaultValue = "") Long programKsztalceniaId)
 
@@ -41,6 +43,7 @@ public class ModulKsztalceniaController {
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public ModulKsztalceniaDTO get(
 			@RequestParam(value = "id", required = true, defaultValue = "") Long id)
 					throws Exception {

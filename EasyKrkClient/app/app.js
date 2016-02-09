@@ -1,8 +1,9 @@
 
-var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','application.przedmiot','application.message',
+var app = angular.module('application', ["application.login",'ngRoute','ngTouch', 'ui.grid','application.przedmiot','application.message',
                                          'ui.grid.edit', 'ui.grid.cellNav','ui.grid.selection','ui.grid.validate',
                                          'application.listaPrzedmioty',"application.KEK"])
-.config(function($routeProvider) {
+.config(['$routeProvider','$injector',function($routeProvider,$injector) {
+	
 	$routeProvider
 	.when('/przedmiot/:id', {
 		templateUrl : 'app/przedmiot/template/przedmiot.html',
@@ -15,11 +16,15 @@ var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','applica
 	.when('/kierunkowe',{
 		templateUrl: "app/KEK/template/KEK.html",
 		controller: "KEKController"
+	}).
+	when('/login',{
+		templateUrl: "app/auth/template/login.html",
+		controller: "loginCtrl"
 	})
 	.otherwise({
-		redirectTo	: '/'
+		redirectTo: "/login"
 	})
-})
+}])
 .service('translateService', function(){
 	language_complete = navigator.language.split("-");
 	language = (language_complete[0]);
@@ -60,5 +65,36 @@ var app = angular.module('application', ['ngRoute','ngTouch', 'ui.grid','applica
                 }
             });
     }
-    }});
-;
+    }})
+    .factory("authInterceptor",["$injector","$location",function($injector,$location){
+    	
+    	var interceptors={
+    			request:function(config){
+    				if(_.startsWith(config.url,"/backend")){
+    			var AuthService=$injector.get("AuthService");
+    			if(AuthService.hasToken()){
+    				config.headers['X-Auth-Token']=AuthService.getToken();
+    			}}
+    				return config;
+    			},
+    			
+//    			responseError: function(response){
+//    				var AuthService=$injector.get("AuthService");	
+//    				if(response.status === 401 && !AuthService.hasToken()){
+//    					$location.path("/login");
+//    				}
+//    				else if(response.status === 410 && AuthService.hasToken() && !AuthService.isTokenValid()){
+//    					$location.path("/login");
+//    				}
+//    				return response.data;
+//    			}
+    			
+    	}
+    	
+    	return interceptors;
+    }])
+    .config(["$httpProvider",function($httpProvider){
+    	
+    	$httpProvider.interceptors.push("authInterceptor");
+    }]);
+    

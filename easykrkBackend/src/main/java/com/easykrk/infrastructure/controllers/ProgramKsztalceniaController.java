@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +51,7 @@ public class ProgramKsztalceniaController {
 
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	@ResponseBody
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public Iterable<ProgramKsztalceniaLookUpDTO> getProgramyKsztalcenia(
 			@RequestParam(value = "kierunek", required = false, defaultValue = "") String kierunek,
 			@RequestParam(value = "wydzial", required = false, defaultValue = "") String wydzial,
@@ -94,6 +96,7 @@ public class ProgramKsztalceniaController {
 
 	@RequestMapping(value = "/getLiczbaSemestrow", method = RequestMethod.GET)
 	@ResponseBody
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public int getLiczbaSemestrow(
 			@RequestParam(value = "program", required = false, defaultValue = "0") Long program) {
 		if (program == 0) {

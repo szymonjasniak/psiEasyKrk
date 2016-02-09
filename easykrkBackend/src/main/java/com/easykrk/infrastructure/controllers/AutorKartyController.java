@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +33,7 @@ public class AutorKartyController {
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	@ResponseBody
 	@ExceptionHandler
+	@PreAuthorize("hasAuthority('ROLE_DOMAIN_USER')")
 	public List<AutorKartyDTO> getAll() throws Exception {
 		return converter.convertListAutorToDto(
 				autorKartyRepository.findAll());
