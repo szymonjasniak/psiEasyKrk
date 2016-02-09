@@ -29,7 +29,8 @@
 		"dlugaNazwa":"Too long",
 		"wymagane":"Required",
 		"kodPattern":"Invalid code",
-		"programPattern":"Invalid number for education programm"
+		"programPattern":"Invalid number for education programm",
+		"zatwierdzNowy":"Add new"
 		
 	},
 	"efekt":{
@@ -84,6 +85,10 @@
 	"non_unique_polish_name":"Subject with given polish name already exists for this cycle and education programm",
 	"non_unique_english_name":"Subject with given english name already exists for this cycle and education programm",
 	"subject_added":"Subject successfully added",
+	"more_forms_needed":"At least one course is needed",
+	"more_KEK_needed":"At least one effect is needed",
+	"invalid_semester":"Semester must be higher than 0 and lower than defined for programm",
+	"invalid_cnps":"CNPS must be higher than ZZU. Redefine hours and ECTS",
 	"errConnectionFailed":"Connection to the server failed.",
 	"errServerError":"Server side error occurred while processing the request.",
 	"errDefault":"An unknown error occurred. Please contact your administrator.",

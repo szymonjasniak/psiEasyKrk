@@ -29,7 +29,8 @@
 		"dlugaNazwa":"Nazwa zbyt długa",
 		"wymagane":"Pole wymagane",
 		"kodPattern":"Kod niepoprawnie zbudowany. Wzorzec to ABC123456",
-		"programPattern":"Niepoprawny numer programu kształcenia"
+		"programPattern":"Niepoprawny numer programu kształcenia",
+		"zatwierdzNowy" : "Dodaj nowy"
 	},
 	"efekt":{
 		"efekt":"Efekt kształcenia",
@@ -86,6 +87,10 @@
 	"non_unique_polish_name":"Przedmiot o podanej polskiej nazwie już istnieje w ramch wybranego cyklu i programu kształcenia",
 	"non_unique_english_name":"Przedmiot o podanej angielskiej nazwie już istnieje w ramch wybranego cyklu i programu kształcenia",
 	"subject_added":"Przedmiot poprawnie dodano do bazy",
+	"more_forms_needed":"Przedmiot wymaga przynajmniej jednego kursu",
+	"more_KEK_needed":"Wymagany jest co najmniej jeden KEK",
+	"invalid_semester":"Numer semestru nie może być mniejszy od 0 i większy od liczby semestrów zdefiniowanych dla programu",
+	"invalid_cnps":"Liczba CNPS musi być większa niż ZZU. Przedefinuj liczbę godzin i punkty ECTS",
 	"errConnectionFailed":"Nie można nawiązać połączenia z serwerem.",
 	"errServerError":"Podczas przetwarzania żądania wystąpił błąd.",
 	"errDefault":"Podczas przetwarzania żądania wystąpił nieoczekiwany błąd.",

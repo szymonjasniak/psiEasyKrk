@@ -3,8 +3,8 @@ app.factory("KEKLookUpServiceFactory",["$resource","$http", function($resource,$
 	
 		
 	getKEKByGet=function(programKsztalceniaId,kategoriaId,opis,obszar){
-		return $http.get("/backend/KEK/getAll/"+programKsztalceniaId+"/"+kategoriaId,
-		{params:{opis:opis}});
+		return $http.get("/backend/KEK/getAll/"+programKsztalceniaId,
+		{params:{opis:opis, kategoria:kategoriaId}});
 	}
 	
 	getKategoriaGet=function(){

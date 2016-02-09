@@ -2,9 +2,12 @@ package com.easykrk.infrastructure.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,92 +20,74 @@ import org.springframework.web.bind.annotation.RestController;
 import com.easykrk.domain.model.FormaZaliczenia;
 import com.easykrk.domain.model.Przedmiot;
 import com.easykrk.domain.model.dto.FormaProwadzeniaZajecDTO;
+import com.easykrk.domain.model.dto.PrzedmiotOut;
 import com.easykrk.infrastructure.common.utils.Converter;
+import com.easykrk.infrastructure.controllers.exceptions.ResponseErrornousEntity;
 import com.easykrk.infrastructure.repository.FormaProwadzeniaZajecRepository;
 import com.easykrk.infrastructure.repository.FormaZaliczeniaRepository;
-import com.easykrk.infrastructure.repository.GrupaKursowRepository;
-import com.easykrk.infrastructure.repository.KursRepository;
-import com.easykrk.infrastructure.repository.ModulKsztalceniaRepository;
 import com.easykrk.infrastructure.repository.PrzedmiotRepository;
 import com.easykrk.service.business.PrzedmiotService;
+import com.easykrk.service.business.exceptions.InvalidPrzedmiotPropertiesException;
 
 @RestController
 @RequestMapping(value = "/przedmiot", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PrzedmiotController {
 
-	private static Logger LOG = LoggerFactory
-			.getLogger(PrzedmiotController.class);
+    private static Logger LOG = LoggerFactory.getLogger(PrzedmiotController.class);
 
-	@Autowired
-	private PrzedmiotRepository przedmiotRepository;
+    @Autowired
+    private PrzedmiotRepository przedmiotRepository;
 
-	@Autowired
-	private FormaProwadzeniaZajecRepository formaProwadzeniaZajecRepository;
+    @Autowired
+    private FormaProwadzeniaZajecRepository formaProwadzeniaZajecRepository;
 
-	@Autowired
-	private FormaZaliczeniaRepository formaZaliczeniaRepository;
+    @Autowired
+    private FormaZaliczeniaRepository formaZaliczeniaRepository;
 
-	@Autowired
-	private ModulKsztalceniaRepository modulKsztalceniaRepository;
+    @Autowired
+    private PrzedmiotService przedmiotService;
 
-	@Autowired
-	private KursRepository kursRepository;
+    @Autowired
+    private Converter converter;
 
-	@Autowired
-	private GrupaKursowRepository gkursRepository;
+    @RequestMapping(value = "/getAllInProgram", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Przedmiot> getAllInProgram(
+	    @RequestParam(value = "program", required = true, defaultValue = "") Long program) throws Exception {
+	return przedmiotRepository.findByModulKsztalceniaProgramKsztalceniaId(program);
+    }
 
-	@Autowired
-	private PrzedmiotService przedmiotService;
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<Przedmiot> getAll() throws Exception {
+	return przedmiotRepository.findAll();
+    }
 
-	@Autowired
-	private Converter converter;
+    @RequestMapping(value = "/getFormyProwadzenia", method = RequestMethod.GET)
+    @ResponseBody
+    public List<FormaProwadzeniaZajecDTO> getFormyProwadzenia() throws Exception {
+	return converter.convertListFormyProwadzeniaZajec(formaProwadzeniaZajecRepository.findAll());
+    }
 
-	@RequestMapping(value = "/getAllInProgram", method = RequestMethod.GET)
-	@ResponseBody
-	@ExceptionHandler
-	public List<Przedmiot> getAllInProgram(
-			@RequestParam(value = "program", required = true, defaultValue = "") Long program)
-					throws Exception {
-		return przedmiotRepository
-				.findByModulKsztalceniaProgramKsztalceniaId(
-						program);
-	}
+    @RequestMapping(value = "/getFormyZaliczenia", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<FormaZaliczenia> getFormyZaliczenia() throws Exception {
+	return formaZaliczeniaRepository.findAll();
+    }
 
-	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
-	@ResponseBody
-	@ExceptionHandler
-	public Iterable<Przedmiot> getAll() throws Exception {
-		return przedmiotRepository.findAll();
-	}
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public PrzedmiotOut save(@RequestBody Przedmiot przedmiot) throws Exception {
+	LOG.debug("Przedmiot with ID: " + przedmiot.getKodPrzedmiotu() + " saved");
+	PrzedmiotOut przedmiotOut = przedmiotService.save(przedmiot);
+	return przedmiotOut;
+    }
 
-	@RequestMapping(value = "/getFormyProwadzenia", method = RequestMethod.GET)
-	@ResponseBody
-	@ExceptionHandler
-	public List<FormaProwadzeniaZajecDTO> getFormyProwadzenia()
-			throws Exception {
-		return converter.convertListFormyProwadzeniaZajec(
-				formaProwadzeniaZajecRepository.findAll());
-	}
-
-	@RequestMapping(value = "/getFormyZaliczenia", method = RequestMethod.GET)
-	@ResponseBody
-	@ExceptionHandler
-	public Iterable<FormaZaliczenia> getFormyZaliczenia()
-			throws Exception {
-		return formaZaliczeniaRepository.findAll();
-	}
-
-	@RequestMapping(value = "/save", method = RequestMethod.PUT)
-	@ResponseBody
-	@ExceptionHandler
-	public String save(@RequestBody Przedmiot przedmiot)
-			throws Exception {
-		LOG.debug("Przedmiot with ID: "
-				+ przedmiot.getKodPrzedmiotu() + " saved");
-		przedmiotService.save(przedmiot);
-
-		return "subject_added";
-
-	}
+    @ExceptionHandler({ InvalidPrzedmiotPropertiesException.class })
+    public ResponseErrornousEntity<PrzedmiotOut> rulesForInavlidPrzedmiotInput(HttpServletRequest req, Exception e) {
+	PrzedmiotOut out = new PrzedmiotOut();
+	out.setMessage(e.getMessage());
+	return new ResponseErrornousEntity<PrzedmiotOut>(out, req.getRequestURI(), HttpStatus.PRECONDITION_FAILED);
+    }
 
 }

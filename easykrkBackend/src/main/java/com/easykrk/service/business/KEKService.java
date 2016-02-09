@@ -23,79 +23,75 @@ import com.easykrk.service.business.exceptions.TooManyKEKGenerated;
 @Service
 public class KEKService {
 
-	@Autowired
-	ProgramKształceniaRepository programKształceniaRepository;
+    @Autowired
+    ProgramKształceniaRepository programKształceniaRepository;
 
-	@Autowired
-	MEKRepository mekRepository;
+    @Autowired
+    MEKRepository mekRepository;
 
-	@Autowired
-	KEKValidator validator;
+    @Autowired
+    KEKValidator validator;
 
-	@Autowired
-	KategoriaRepository kategoriaRepository;
+    @Autowired
+    KategoriaRepository kategoriaRepository;
 
-	@Autowired
-	KEKRepository KEKRepository;
+    @Autowired
+    KEKRepository KEKRepository;
 
-	private static final String TOO_MANY_KEK_GENERATED="too_many_kek_generated";
-	private String generateKekId(Kek kek) throws TooManyKEKGenerated {
-		StringBuilder sb=new StringBuilder();
-		if(kek.getSpecjalnosc()==null){
-			sb.append("K");
-		}
-		else{
-			sb.append("S");
-		}
-		sb.append(kek.getProgramKsztalcenia().getPoziomKsztalcenia().getId());
-		sb.append(kek.getProgramKsztalcenia().getKierunek().getSkrot());
-		sb.append("_");
-		sb.append(kek.getKategoria().getNazwa().substring(0, 1).toUpperCase());
-		String partialString=sb.toString();
-		int counts=KEKRepository.findByIdStartingWith(partialString).size()+1;
-		if(counts<10){
-			sb.append(0);
-			sb.append(counts);
-		}else if(counts>=10 && counts<=99){
-		sb.append(counts);
-		}
-		else{
-			throw new TooManyKEKGenerated(TOO_MANY_KEK_GENERATED);
-		}
-		
-		return sb.toString();
+    private static final String TOO_MANY_KEK_GENERATED = "too_many_kek_generated";
+
+    private String generateKekId(Kek kek) throws TooManyKEKGenerated {
+	StringBuilder sb = new StringBuilder();
+	if (kek.getSpecjalnosc() == null) {
+	    sb.append("K");
+	} else {
+	    sb.append("S");
+	}
+	sb.append(kek.getProgramKsztalcenia().getPoziomKsztalcenia().getId());
+	sb.append(kek.getProgramKsztalcenia().getKierunek().getSkrot());
+	sb.append("_");
+	sb.append(kek.getKategoria().getNazwa().substring(0, 1).toUpperCase());
+	String partialString = sb.toString();
+	int counts = KEKRepository.findByIdStartingWith(partialString).size() + 1;
+	if (counts < 10) {
+	    sb.append(0);
+	    sb.append(counts);
+	} else if (counts >= 10 && counts <= 99) {
+	    sb.append(counts);
+	} else {
+	    throw new TooManyKEKGenerated(TOO_MANY_KEK_GENERATED);
 	}
 
-	@Transactional(rollbackFor={IllegalKEKInputException.class,TooManyKEKGenerated.class})
-	public KEKOut createKEK(KEKIn in) throws IllegalKEKInputException,TooManyKEKGenerated {
+	return sb.toString();
+    }
 
-		Kek KEK = new Kek();
-		KEKOut out=new KEKOut();
+    @Transactional(rollbackFor = { IllegalKEKInputException.class, TooManyKEKGenerated.class })
+    public KEKOut createKEK(KEKIn in) throws IllegalKEKInputException, TooManyKEKGenerated {
 
-			validator.validateKEK(in);
-			ProgramKsztalcenia PK = programKształceniaRepository.findOne(in
-					.getProgramKsztalceniaId());
-			List<String> MEKIds=in.getMekIds().stream().map(i->i.getId()).collect(Collectors.toList());
-			List<Mek> meks = (List<Mek>) mekRepository.findAll(MEKIds);
-			KategoriaEK kategoria = kategoriaRepository.findOne(in
-					.getKategoriaId());
+	Kek KEK = new Kek();
+	KEKOut out = new KEKOut();
 
-			
-			KEK.setOpis(in.getOpis());
-			KEK.setKategoria(kategoria);
-			KEK.setProgramKsztalcenia(PK);
-			KEK.setMek(meks);
-			KEK.setSpecjalnosc(PK.getSpecjalnosc());
-			String kekId=generateKekId(KEK);
-			KEK.setId(kekId);
-			Kek saved = KEKRepository.save(KEK);
+	validator.validateKEK(in);
+	ProgramKsztalcenia PK = programKształceniaRepository.findOne(in.getProgramKsztalceniaId());
+	List<String> MEKIds = in.getMekIds().stream().map(i -> i.getId()).collect(Collectors.toList());
+	List<Mek> meks = (List<Mek>) mekRepository.findAll(MEKIds);
+	KategoriaEK kategoria = kategoriaRepository.findOne(in.getKategoriaId());
 
-			PK.getKek().add(saved);
-			meks.stream().forEach(m -> m.getKek().add(saved));
-			PK.getSpecjalnosc().getKek().add(saved);
-			
-			out.setId(saved.getId());
-		
-		return out;
-	}
+	KEK.setOpis(in.getOpis());
+	KEK.setKategoria(kategoria);
+	KEK.setProgramKsztalcenia(PK);
+	KEK.setMek(meks);
+	KEK.setSpecjalnosc(PK.getSpecjalnosc());
+	String kekId = generateKekId(KEK);
+	KEK.setId(kekId);
+	Kek saved = KEKRepository.save(KEK);
+
+	PK.getKek().add(saved);
+	meks.stream().forEach(m -> m.getKek().add(saved));
+	PK.getSpecjalnosc().getKek().add(saved);
+
+	out.setId(saved.getId());
+
+	return out;
+    }
 }
