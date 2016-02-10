@@ -15,6 +15,9 @@ angular.module('application.message', ['angular-growl', 'ngAnimate'])
         	case 401:
         		growl.error("unauthorized");
         		break;
+        	case 403:
+        		growl.error("acces_denied");
+        		break;
         	case 404:
         		growl.error(i18n.t("errConnectionFailed"));
         		break;

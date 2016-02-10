@@ -1,6 +1,7 @@
 package com.easykrk.infrastructure.security;
 
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -77,7 +78,10 @@ public class AuthenticationFilter extends GenericFilterBean {
         } catch (AuthenticationException authenticationException) {
             SecurityContextHolder.clearContext();
             httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, authenticationException.getMessage());
-        } finally {
+        }catch(AccessDeniedException accesDenied){
+        	 httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, accesDenied.getMessage());
+        }
+        finally {
             MDC.remove(TOKEN_SESSION_KEY);
             MDC.remove(USER_SESSION_KEY);
         }
